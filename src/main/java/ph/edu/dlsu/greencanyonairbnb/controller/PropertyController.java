@@ -19,5 +19,7 @@ public class PropertyController {
 
         Property savedProperty = propertyService.addNewProperty(photo, propertyType, propertyPrice);
         PropertyResponse response = new PropertyResponse(savedProperty.getPropertyID(), savedProperty.getPropertyType(), savedProperty.getPropertyPrice());
+
+        return ResponseEntity.ok(response);
     }
 }
