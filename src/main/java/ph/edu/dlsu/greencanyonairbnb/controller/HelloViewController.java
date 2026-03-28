@@ -13,10 +13,7 @@ import java.io.IOException;
 
 public class HelloViewController {
 
-        public Button listingsView2;
-        public Button listingsView3;
-        public Button listingsView4;
-        public Button listingsView5;
+
         private Stage stage;
         private Scene scene;
         private Parent root;

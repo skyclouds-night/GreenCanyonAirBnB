@@ -30,4 +30,16 @@ public class ListingsViewController {
         stage.setScene(scene);
         stage.show();
     }
+
+    @FXML
+    private void goToHelloView(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("/ph/edu/dlsu/automatedairbnbbookingsystem/hello-view.fxml"));
+        switchScene(event);
+    }
+
+    @FXML
+    private void goToLogin(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("/ph/edu/dlsu/automatedairbnbbookingsystem/LoginView.fxml"));
+        switchScene(event);
+    }
 }

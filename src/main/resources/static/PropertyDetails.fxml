@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<ScrollPane fitToWidth="true" prefHeight="1289.0" prefWidth="784.0" styleClass="main-container" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<ScrollPane fitToWidth="true" prefHeight="1289.0" prefWidth="784.0" styleClass="main-container" stylesheets="@/templates/styles.css" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ph.edu.dlsu.greencanyonairbnb.controller.PropertyDetailsController">
     <content>
         <VBox prefHeight="1287.0" prefWidth="746.0" spacing="40.0" styleClass="main-container">
             <children>
@@ -25,7 +25,7 @@
                         <Button styleClass="menu-btn" text="☰" />
                     </children>
                 </HBox>
-                <VBox alignment="CENTER" prefHeight="338.0" prefWidth="618.0" stylesheets="@styles.css">
+                <VBox alignment="CENTER" prefHeight="338.0" prefWidth="618.0" stylesheets="@/templates/styles.css">
                     <children>
                         <ImageView fitHeight="336.0" fitWidth="506.0" pickOnBounds="true" preserveRatio="true">
                             <image>
