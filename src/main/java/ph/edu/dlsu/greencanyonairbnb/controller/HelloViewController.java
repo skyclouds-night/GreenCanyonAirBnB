@@ -13,8 +13,6 @@ import java.io.IOException;
 
 public class HelloViewController {
 
-    public class HelloViewController {
-
         public Button listingsView2;
         public Button listingsView3;
         public Button listingsView4;
