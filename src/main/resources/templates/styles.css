@@ -1,0 +1,235 @@
+/*main container*/
+.main-container {
+    -fx-background-color: F8F3F1;
+}
+
+/*navigation bar*/
+.navbar {
+    -fx-background-color: E5D9B6;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 5, 0, 0, 2);
+    max-width: 100%;
+}
+
+.navbar-name {
+    -fx-font-family: Georgia;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-font-size: 35px;
+    -fx-text-fill: #40513b;
+}
+
+.navbar-name:hover {
+    -fx-background-color: transparent;
+    -fx-text-fill: #6A7E3F;
+}
+
+.navbar-buttons {
+    -fx-font-family: Georgia;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-font-size: 20px;
+    -fx-text-fill: #40513b;
+}
+
+.navbar-buttons:hover {
+    -fx-background-color: transparent;
+    -fx-text-fill: #6A7E3F;
+}
+
+.navbar-book-now {
+    -fx-font-family: Georgia;
+    -fx-font-size: 20px;
+    -fx-background-color: #40513b;
+    -fx-border-color: transparent;
+    -fx-text-fill: E5D9B6;
+    -fx-background-radius: 17;
+}
+
+.navbar-book-now:hover {
+    -fx-background-color: #6A7E3F;
+}
+
+.scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: F8F3F1;
+}
+
+.stack-pane {
+    -fx-background-color: #40513b;
+}
+
+.stack-pane-label {
+    -fx-font-family: "Lucida Calligraphy";
+    -fx-text-fill: E5D9B6;
+    -fx-font-size: 30px;
+}
+
+.find-property-text {
+    -fx-font-family: Inter;
+    -fx-text-fill: #40513b;
+    -fx-font-size: 30px;
+    -fx-font-weight: bolder;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10,0,0,2);
+}
+
+/* search bar */
+.search-bar {
+    -fx-background-color: white;
+    -fx-padding: 15;
+    -fx-spacing: 30;
+    -fx-background-radius: 30;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10,0,0,2);
+}
+
+.search-btn {
+    -fx-background-color: #40513b;
+    -fx-text-fill: white;
+    -fx-background-radius: 20;
+}
+
+.search-btn:hover {
+    -fx-background-color: #6A7E3F;
+}
+
+.search-bar-title {
+    -fx-text-fill: #40513b;
+    -fx-font-size: 15px;
+    -fx-font-family: Georgia;
+    -fx-font-weight: bold;
+}
+
+.search-text-field {
+    -fx-border-color: transparent;
+    -fx-background-color: #ffffff;
+}
+
+.vbox-listings {
+    -fx-background-color: #ebebeb;
+    -fx-background-radius: 20;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10,0,0,2);
+}
+
+.property-name-button {
+    -fx-font-family: Georgia;
+    -fx-text-fill: #40513b;
+    -fx-font-size: 25px;
+    -fx-font-weight: bold;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.property-name-button:hover {
+    -fx-background-color: transparent;
+    -fx-text-fill: #6A7E3F;
+}
+
+.property-desc {
+    -fx-font-family: Georgia;
+    -fx-text-fill: #40513b;
+    -fx-font-size: 15px;
+    -fx-font-weight: 100;
+}
+
+.property-price {
+    -fx-font-family: Georgia;
+    -fx-text-fill: #40513b;
+    -fx-font-size: 23px;
+}
+
+.footer-title {
+    -fx-font-family: Georgia;
+    -fx-text-fill: #40513b;
+    -fx-font-size: 25px;
+    -fx-font-weight: bold;
+}
+
+.footer-info {
+    -fx-font-family: Georgia;
+    -fx-text-fill: #40513b;
+    -fx-font-size: 15px;
+    -fx-font-weight: 100;
+}
+
+.login-motto-button {
+    -fx-font-family: "Lucida Calligraphy";
+    -fx-font-size: 15px;
+    -fx-text-fill: #40513b;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.login-motto-button:hover {
+    -fx-background-color: transparent;
+    -fx-text-fill: #6A7E3F;
+}
+
+.login-text-field {
+    -fx-border-color: transparent;
+    -fx-background-color: #ffffff;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10,0,0,2);
+}
+
+.login-details {
+    -fx-font-family: Inter;
+    -fx-text-fill: #40513b;
+    -fx-font-size: 20px;
+    -fx-font-weight: bolder;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10,0,0,2);
+}
+
+.signup-button {
+    -fx-font-family: Georgia;
+    -fx-font-size: 15px;
+    -fx-text-fill: #40513b;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.signup-button:hover {
+    -fx-background-color: transparent;
+    -fx-text-fill: #6A7E3F;
+}
+
+.login-footer {
+    -fx-font-family: Georgia;
+    -fx-text-fill: #40513b;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+}
+
+.login-footer-info {
+    -fx-font-family: Georgia;
+    -fx-text-fill: #40513b;
+    -fx-font-size: 10px;
+    -fx-font-weight: 100;
+}
+
+.radio-button {
+    -fx-font-size: 15px;
+    -fx-text-fill: #40513b;
+    -fx-font-family: Georgia;
+    -fx-padding: 8 0;
+}
+
+.radio-button .radio {
+    -fx-background-color: white;
+    -fx-border-color: #ccc;
+    -fx-border-radius: 50%;
+    -fx-background-radius: 50%;
+    -fx-padding: 5;
+}
+
+.radio-button:selected .dot {
+    -fx-background-color: #40513b;
+}
+
+.radio-button:selected .radio {
+    -fx-border-color: #40513b;
+}
+
+.radio-button:hover .radio {
+    -fx-border-color: #6A7E3F;
+}

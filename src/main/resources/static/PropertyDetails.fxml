@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<ScrollPane fitToWidth="true" prefHeight="1289.0" prefWidth="784.0" styleClass="main-container" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <content>
+        <VBox prefHeight="1287.0" prefWidth="746.0" spacing="40.0" styleClass="main-container">
+            <children>
+                <HBox styleClass="navbar">
+                    <children>
+                        <Label styleClass="logo" text="GREEN CANYON" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Label styleClass="nav-item" text="Properties" />
+                        <Label styleClass="nav-item" text="About" />
+                        <Label styleClass="nav-item" text="Contact" />
+                        <Button styleClass="menu-btn" text="☰" />
+                    </children>
+                </HBox>
+                <VBox alignment="CENTER" prefHeight="338.0" prefWidth="618.0" stylesheets="@styles.css">
+                    <children>
+                        <ImageView fitHeight="336.0" fitWidth="506.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@airbnbpic1.jpg" />
+                            </image></ImageView>
+                    </children>
+                </VBox>
+                <HBox prefHeight="190.0" prefWidth="742.0" spacing="20.0">
+                    <children>
+                        <VBox prefHeight="130.0" prefWidth="347.0">
+                            <children>
+                                <Label styleClass="section-title" text="Well-Furnished Apartment" />
+                                <Label styleClass="address" text="Address" />
+                                <HBox prefHeight="100.0" prefWidth="200.0">
+                                    <children>
+                                        <StackPane prefHeight="150.0" prefWidth="200.0">
+                                            <children>
+                                                <Label text="Bedrooms" />
+                                            </children>
+                                        </StackPane>
+                                        <StackPane prefHeight="150.0" prefWidth="200.0">
+                                            <children>
+                                                <Label text="Bathrooms" />
+                                            </children>
+                                        </StackPane>
+                                        <StackPane prefHeight="150.0" prefWidth="200.0">
+                                            <children>
+                                                <Label text="Parking" />
+                                            </children>
+                                        </StackPane>
+                                        <StackPane prefHeight="150.0" prefWidth="200.0">
+                                            <children>
+                                                <Label text="Pets Allowed" />
+                                            </children>
+                                        </StackPane>
+                                    </children>
+                                </HBox>
+                                <VBox prefHeight="200.0" prefWidth="100.0">
+                                    <children>
+                                        <Label styleClass="section-title" text="Apartment Description" />
+                                        <Label styleClass="desc" text="Description here" />
+                                    </children>
+                                </VBox>
+                            </children></VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                            <children>
+                                <Label text="Price" />
+                            </children></VBox>
+                    </children>
+                </HBox>
+                <VBox prefHeight="200.0" prefWidth="100.0">
+                    <children>
+                        <Label styleClass="section-title" text="Offered Amenities">
+                            <padding>
+                                <Insets bottom="20.0" />
+                            </padding>
+                        </Label>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                            <children>
+                                <Label text="Amenity #1">
+                                    <padding>
+                                        <Insets right="50.0" />
+                                    </padding>
+                                </Label>
+                                <Label text="Amenity #2" />
+                            </children>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                            <children>
+                                <Label text="Amenity #3">
+                                    <padding>
+                                        <Insets right="50.0" />
+                                    </padding>
+                                </Label>
+                                <Label text="Amenity #4" />
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                    <children>
+                        <ImageView fitHeight="218.0" fitWidth="442.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@Screenshot%202026-03-26%20105539.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </VBox>
+                <VBox prefHeight="200.0" prefWidth="100.0">
+                    <children>
+                        <Label text="Review">
+                            <VBox.margin>
+                                <Insets bottom="20.0" />
+                            </VBox.margin>
+                        </Label>
+                        <Label text="# of Stars / 5" />
+                    </children>
+                </VBox>
+                <HBox styleClass="footer">
+                    <VBox>
+                        <Label styleClass="logo" text="LOGO" />
+                        <Label styleClass="placeholder" text="Company Description" />
+                    </VBox>
+
+                    <VBox>
+                        <Label text="COMPANY" />
+                        <Label text="About Us" />
+                        <Label text="Legal Information" />
+                    </VBox>
+
+                    <VBox>
+                        <Label text="HELP CENTER" />
+                        <Label text="Find a Property" />
+                        <Label text="FAQs" />
+                    </VBox>
+
+                    <VBox>
+                        <Label text="CONTACT INFO" />
+                        <Label text="Email: example@gmail.com" />
+                    </VBox>
+                </HBox>
+            </children>
+        </VBox>
+    </content>
+    <opaqueInsets>
+        <Insets />
+    </opaqueInsets>
+</ScrollPane>
