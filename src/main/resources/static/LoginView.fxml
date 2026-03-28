@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="800.0" maxWidth="600.0" minHeight="800.0" minWidth="600.0" prefHeight="800.0" prefWidth="600.0" styleClass="main-container" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ph.edu.dlsu.automatedairbnbbookingsystem.controller.LoginViewController">
+<BorderPane maxHeight="800.0" maxWidth="600.0" minHeight="800.0" minWidth="600.0" prefHeight="800.0" prefWidth="600.0" styleClass="main-container" stylesheets="@/templates/styles.css" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ph.edu.dlsu.greencanyonairbnb.controller.LoginViewController">
     <top>
         <VBox alignment="CENTER" prefHeight="110.0" prefWidth="100.0" styleClass="navbar" BorderPane.alignment="CENTER">
             <children>

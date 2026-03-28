@@ -1,13 +1,40 @@
 package ph.edu.dlsu.greencanyonairbnb;
 
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.io.IOException;
+
+import static javafx.application.Application.launch;
+
 @SpringBootApplication
-public class GreenCanyonAirBnBApplication {
+public class GreenCanyonAirBnBApplication extends Application {
+
+	@Override
+	public void start(Stage stage) throws Exception {
+		FXMLLoader fxmlLoader = new FXMLLoader(
+				getClass().getResource("/static/hello-view.fxml")
+		);
+
+		Scene scene = new Scene(fxmlLoader.load(), 1000, 800);
+
+		scene.getStylesheets().add(
+				getClass().getResource("/templates/styles.css").toExternalForm()
+		);
+
+		stage.setTitle("Automated AirBnB Booking System");
+		stage.setScene(scene);
+		stage.show();
+	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(GreenCanyonAirBnBApplication.class, args);
+		launch();
 	}
 
 }
+
+
