@@ -28,7 +28,7 @@ public class PropertyResponse {
         this.propertyType = propertyType;
         this.propertyPrice = propertyPrice;
         this.isBooked = isBooked;
-        //this.photo = photoBytes != null ? Base64.encodeBase64String(photoBytes): null;
+        this.photo = photoBytes != null ? Base64.encodeBase64String(photoBytes): null;
         this.bookings = bookings;
     }
 }
