@@ -14,7 +14,6 @@ import ph.edu.dlsu.greencanyonairbnb.model.response.PropertyResponse;
 import ph.edu.dlsu.greencanyonairbnb.model.service.BookingService;
 import ph.edu.dlsu.greencanyonairbnb.model.service.PropertyService;
 import ph.edu.dlsu.greencanyonairbnb.model.service.PropertyServiceInt;
-
 import javax.sql.rowset.serial.SerialBlob;
 import java.math.BigDecimal;
 import java.sql.Blob;
