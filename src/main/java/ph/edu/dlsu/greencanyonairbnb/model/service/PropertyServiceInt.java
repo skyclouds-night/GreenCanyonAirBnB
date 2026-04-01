@@ -20,4 +20,11 @@ public interface PropertyServiceInt {
             PropertyRepository.deleteByID(propertyID);
         }
     }
+
+    @Override
+    void deleteProperty(long propertyID);
+
+    Property updateProperty(long propertyID, String propertyType, BigDecimal propertyPrice, byte[] photoBytes);
+
+    Optional<Property> getPropertyByID(long propertyID);
 }

@@ -2,6 +2,7 @@ package ph.edu.dlsu.greencanyonairbnb.model.service;
 
 import org.springframework.web.multipart.MultipartFile;
 import ph.edu.dlsu.greencanyonairbnb.model.Property;
+import ph.edu.dlsu.greencanyonairbnb.model.exception.InternalServerException;
 import ph.edu.dlsu.greencanyonairbnb.model.exception.ResourceNotFoundException;
 import ph.edu.dlsu.greencanyonairbnb.model.repository.PropertyRepository;
 
@@ -13,6 +14,27 @@ import java.util.List;
 import java.util.Optional;
 
 public class PropertyService implements PropertyServiceInt{
+
+    @Override
+    public static Property updateProperty(long propertyID, String propertyType, BigDecimal propertyPrice, byte[] photoBytes) {
+        Property property = PropertyRepository.findByID(propertyID).orElseThrow(() -> new ResourceNotFoundException("Property not Found."));
+        if (propertyType != null) property.setPropertyType(propertyType);
+        if (propertyPrice != null) property.setPropertyPrice(propertyPrice);
+        if (photoBytes != null && photoBytes.length > 0){
+            try{
+                property.setPhoto(new SerialBlob(photoBytes));
+            }catch(SQLException ex){
+                throw new InternalServerException("Error. Updating Proeprty.");
+            }
+        }
+        return PropertyRepository.save(property);
+    }
+
+    @Override
+    public Optional<Property> getPropertyByID(long propertyID) {
+
+        return Optional.of((Property) PropertyRepository.findByID(propertyID).get());
+    }
 
     @Override
     public Property addNewProperty(MultipartFile photo, String propertyType, BigDecimal propertyPrice){
@@ -44,6 +66,7 @@ public class PropertyService implements PropertyServiceInt{
     public void deleteProperty(long propertyID) {
 
     }
+
 
     @Override
     public List<String> getAllPropertyTypes(){
