@@ -16,9 +16,6 @@ public class BookingService implements BookingServiceInt {
     private final BookingRepository bookingRepository;
     private final PropertyServiceInt propertyService;
 
-    public List<BookedProperty> getAllBookingsByPropertyID(Long propertyID) {
-        return bookingRepository.findByPropertyID(propertyID);
-    }
 
     @Override
     public void cancelBooking(long bookingID) {
@@ -26,10 +23,6 @@ public class BookingService implements BookingServiceInt {
 
     }
 
-    @Override
-    public List<BookedProperty> getAllBookingsByPropertyID(long propertyID) {
-        return bookingRepository.findByPropertyID(propertyID);
-    }
 
     @Override
     public String saveBooking(long propertyID, BookedProperty bookingRequest) {
@@ -47,6 +40,10 @@ public class BookingService implements BookingServiceInt {
                     "Please select another dates." );
         }
         return bookingRequest.getBookingConfirmationCode();
+    }
+    @Override
+    public List<BookedProperty> getAllBookingsByPropertyID(long propertyID) {
+        return bookingRepository.findByPropertyID(propertyID);
     }
 
     private boolean propertyAvailable(BookedProperty bookingRequest, List<BookedProperty> existingBookings) {
