@@ -2,7 +2,7 @@ package ph.edu.dlsu.greencanyonairbnb.model.response;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+import org.apache.commons.codec.binary.Base64;
 
 import java.math.BigDecimal;
 import java.util.*;
