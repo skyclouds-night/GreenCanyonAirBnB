@@ -54,7 +54,7 @@ public class BookingController {
        List<BookingResponse> bookingResponses = new ArrayList<>();
        for (BookedProperty booking: bookings){
            BookingResponse bookingResponse = getBookingResponse(booking);
-           bookingResponse.add(bookingResponse);
+           bookingResponses.add(bookingResponse);
        }
        return ResponseEntity.ok(bookingResponses);
     }
