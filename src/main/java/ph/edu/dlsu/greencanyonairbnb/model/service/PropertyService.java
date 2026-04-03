@@ -9,6 +9,7 @@ import ph.edu.dlsu.greencanyonairbnb.model.exception.ResourceNotFoundException;
 import ph.edu.dlsu.greencanyonairbnb.model.repository.PropertyRepository;
 
 import javax.sql.rowset.serial.SerialBlob;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.Blob;
 import java.sql.SQLException;
@@ -23,7 +24,7 @@ public class PropertyService implements PropertyServiceInt{
     private final PropertyRepository propertyRepository;
 
     @Override
-    public Property addNewProperty(MultipartFile photo, String propertyType, BigDecimal propertyPrice){
+    public Property addNewProperty(MultipartFile file, String propertyType, BigDecimal propertyPrice) throws SQLException, IOException {
         Property property = new Property();
         property.setPropertyType(propertyType);
         property.setPropertyPrice(propertyPrice);
@@ -31,66 +32,18 @@ public class PropertyService implements PropertyServiceInt{
         if (!file.isEmpty()){
             byte[] photoBytes = file.getBytes();
             Blob photoBlob = new SerialBlob(photoBytes);
+            property.setPhoto(photoBlob);
         }
         return propertyRepository.save(property);
     }
 
     @Override
-    public static Property updateProperty(long propertyID, String propertyType, BigDecimal propertyPrice, byte[] photoBytes) {
-        Property property = PropertyRepository.findByID(propertyID).orElseThrow(() -> new ResourceNotFoundException("Property not Found."));
-        if (propertyType != null) property.setPropertyType(propertyType);
-        if (propertyPrice != null) property.setPropertyPrice(propertyPrice);
-        if (photoBytes != null && photoBytes.length > 0){
-            try{
-                property.setPhoto(new SerialBlob(photoBytes));
-            }catch(SQLException ex){
-                throw new InternalServerException("Error. Updating Proeprty.");
-            }
-        }
-        return PropertyRepository.save(property);
-    }
-
-    @Override
-    public Optional<Property> getPropertyByID(long propertyID) {
-
-        return Optional.of((Property) PropertyRepository.findByID(propertyID).get());
-    }
-
-    @Override
-    public List<Property> getAvailableProperties(LocalDate checkInDate, LocalDate checkOutDate, String propertyType) {
-        return propertyRepository.findAvaliablePropertiesByDatesAndType(checkInDate,checkOutDate, propertyType);
-    }
-
-
-    @Override
-    public byte[] getPropertyPhotobyPropertyID(Long propertyID) throws SQLException {
-        Optional<Property> theProperty = PropertyRepository.findById(propertyID);
-        if(theProperty.isEmpty()){
-            throw new ResourceNotFoundException("Sorry, Property not found.");
-        }
-        Blob photoBlob = theProperty.get().getPhoto();
-        if(photoBlob != null){
-            return photoBlob.getBytes(1,(int) photoBlob.length());
-        }
-        return null;
-    }
-
-    @Override
-    public void deleteProperty(long propertyID) {
-        Optional<Property> theProperty = propertyRepository.findByID(propertyID);
-        if (theProperty.isPresent()){
-            propertyRepository.deleteByID(propertyID);
-        }
-
-    }
-
-    @Override
-    public List<String> getAllPropertyTypes(){
+    public List<String> getAllPropertyTypes() {
         return propertyRepository.findDistinctPropertyTypes();
     }
 
     @Override
-    public List<Property> getAllProperties(){
+    public List<Property> getAllProperties() {
         return propertyRepository.findAll();
     }
 
@@ -101,9 +54,44 @@ public class PropertyService implements PropertyServiceInt{
             throw new ResourceNotFoundException("Sorry, Property not found.");
         }
         Blob photoBlob = theProperty.get().getPhoto();
-        if(photoBlob != null){
-            return photoBlob.getBytes(1,(int) photoBlob.length());
+        if (photoBlob != null){
+            return photoBlob.getBytes(1, (int) photoBlob.length());
         }
         return null;
     }
+
+    @Override
+    public void deleteProperty(long propertyID) {
+        Optional<Property> theProperty = propertyRepository.findById(propertyID);
+        if(theProperty.isPresent()){
+            propertyRepository.deleteById(propertyID);
+        }
+    }
+
+    @Override
+    public Property updateProperty(long propertyID, String propertyType, BigDecimal propertyPrice, byte[] photoBytes) {
+        Property property =  propertyRepository.findById(propertyID).get();
+        if (propertyType != null) property.setPropertyType(propertyType);
+        if (propertyPrice != null) property.setPropertyPrice(propertyPrice);
+        if (photoBytes != null && photoBytes.length > 0){
+            try{
+                property.setPhoto(new SerialBlob(photoBytes));
+            } catch (SQLException ex){
+                throw new InternalServerException("Error updating property");
+            }
+        }
+        return propertyRepository.save(property);
+    }
+
+    @Override
+    public Optional<Property> getPropertyByID(long propertyID) {
+        return Optional.of(propertyRepository.findById(propertyID).get());
+    }
+
+    @Override
+    public List<Property> getAvailableProperties(LocalDate checkInDate, LocalDate checkOutDate, String propertyType) {
+        return propertyRepository.findAvailablePropertiesByDatesAndType(checkInDate,checkOutDate, propertyType);
+    }
+
+
 }
