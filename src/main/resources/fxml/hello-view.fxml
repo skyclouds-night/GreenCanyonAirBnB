@@ -13,11 +13,11 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="800.0" maxWidth="1000.0" minHeight="800.0" minWidth="1000.0" prefHeight="800.0" prefWidth="1000.0" styleClass="main-container" stylesheets="@/css/styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ph.edu.dlsu.greencanyonairbnb.controller.HelloViewController">
+<BorderPane maxHeight="800.0" maxWidth="1000.0" minHeight="800.0" minWidth="1000.0" prefHeight="800.0" prefWidth="1000.0" styleClass="main-container" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ph.edu.dlsu.greencanyonairbnb.controller.HelloViewController">
     <center>
         <ScrollPane fitToWidth="true" pannable="true" BorderPane.alignment="CENTER">
             <content>
-                <VBox alignment="TOP_CENTER" maxWidth="980.0" minWidth="980.0" prefWidth="980.0" spacing="20.0">
+                <VBox alignment="TOP_CENTER" maxWidth="980.0" minWidth="980.0" prefWidth="980.0" spacing="20.0" stylesheets="@../css/styles.css">
                     <children>
                         <HBox prefHeight="300.0" prefWidth="980.0" stylesheets="@../css/styles.css">
                             <children>
