@@ -233,3 +233,52 @@
 .radio-button:hover .radio {
     -fx-border-color: #6A7E3F;
 }
+
+.img {
+    -fx-background-radius: 50;
+    -fx-effect: dropshadow(gaussian, gray, 15, 0.3, 0, 4);
+}
+
+/*************************************************************************/
+/*Property Details*/
+
+.property-name {
+    -fx-font: Inter;
+    -fx-text-fill: #40513b;
+    -fx-font-size: 35px;
+    -fx-font-weight: bold;
+}
+
+.property-address {
+    -fx-font: Inter;
+    -fx-text-fill: #40513b;
+    -fx-font-size: 19px;
+}
+
+.image-stack {
+    -fx-background-color: #ebebeb;
+    -fx-background-radius: 20;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10,0,0,2);
+}
+
+.property-feature {
+    -fx-background-color: #ebebeb;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10,0,0,2);
+    -fx-background-radius: 20;
+}
+
+.property-price {
+    -fx-font: Inter;
+    -fx-text-fill: #40513b;
+    -fx-font-size: 25px;
+    -fx-font-weight: bold;
+}
+
+.book-now {
+    -fx-font-family: Georgia;
+    -fx-font-size: 15px;
+    -fx-background-color: #40513b;
+    -fx-border-color: transparent;
+    -fx-text-fill: E5D9B6;
+    -fx-background-radius: 17;
+}
