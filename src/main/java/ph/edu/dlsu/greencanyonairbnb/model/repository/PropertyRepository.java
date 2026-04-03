@@ -18,6 +18,6 @@ public interface PropertyRepository extends JpaRepository<Property, Long> {
             "Where ((bp.checkInDate <= :checkOutDate) and (bp.checkOutDate >= :checkInDate))" +
             ")")
 
-    List<Property> findAvailableProperties(LocalDate checkInDate, LocalDate checkOutDate, String propertyType);
+    List<Property> findAvailablePropertiesByDatesAndType(LocalDate checkInDate, LocalDate checkOutDate, String propertyType);
 
 }
