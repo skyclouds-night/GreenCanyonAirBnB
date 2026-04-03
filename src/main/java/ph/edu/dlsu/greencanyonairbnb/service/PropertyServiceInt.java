@@ -3,6 +3,7 @@ package ph.edu.dlsu.greencanyonairbnb.service;
 import org.springframework.web.multipart.MultipartFile;
 import ph.edu.dlsu.greencanyonairbnb.model.Property;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -11,7 +12,7 @@ import java.util.Optional;
 
 public interface PropertyServiceInt {
 
-    Property addNewProperty(MultipartFile photo, String propertyType, BigDecimal propertyPrice);
+    Property addNewProperty(MultipartFile photo, String propertyType, BigDecimal propertyPrice) throws SQLException, IOException;
 
     List<String> getAllPropertyTypes();
 
