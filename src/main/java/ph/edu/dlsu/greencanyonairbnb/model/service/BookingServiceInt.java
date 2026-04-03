@@ -5,12 +5,17 @@ import ph.edu.dlsu.greencanyonairbnb.model.BookedProperty;
 import java.util.List;
 
 public interface BookingServiceInt {
-    public void cancelBooking(long bookingID);
+    void cancelBooking(long bookingID);
 
-    public String saveBooking(long propertyID, BookedProperty bookingRequest);
+    List<BookedProperty> getAllBookingsByPropertyID(long propertyID);
 
-    public BookedProperty findByBookingConfirmationCode(String confirmationCode);
+    String saveBooking(long propertyID, BookedProperty bookingRequest);
 
-    public List<BookedProperty> getAllBookings();
+    BookedProperty findByBookingConfirmationCode(String confirmationCode);
+
+    List<BookedProperty> getAllBookings();
+
+    List<BookedProperty> getBookingsByUserEmail(String guestEmail);
+
 
 }
