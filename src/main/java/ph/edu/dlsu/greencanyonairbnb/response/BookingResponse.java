@@ -1,13 +1,8 @@
-package ph.edu.dlsu.greencanyonairbnb.model.response;
+package ph.edu.dlsu.greencanyonairbnb.response;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import ph.edu.dlsu.greencanyonairbnb.model.Property;
 
 import java.time.LocalDate;
 

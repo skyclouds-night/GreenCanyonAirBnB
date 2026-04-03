@@ -1,4 +1,4 @@
-package ph.edu.dlsu.greencanyonairbnb.model.service;
+package ph.edu.dlsu.greencanyonairbnb.service;
 
 import ph.edu.dlsu.greencanyonairbnb.model.BookedProperty;
 

@@ -1,4 +1,4 @@
-package ph.edu.dlsu.greencanyonairbnb.model.response;
+package ph.edu.dlsu.greencanyonairbnb.response;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

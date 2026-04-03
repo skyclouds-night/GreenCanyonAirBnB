@@ -1,11 +1,11 @@
-package ph.edu.dlsu.greencanyonairbnb.model.service;
+package ph.edu.dlsu.greencanyonairbnb.service;
 
 import org.springframework.stereotype.Service;
 import ph.edu.dlsu.greencanyonairbnb.model.BookedProperty;
 import ph.edu.dlsu.greencanyonairbnb.model.Property;
-import ph.edu.dlsu.greencanyonairbnb.model.exception.InvalidBookingRequestException;
-import ph.edu.dlsu.greencanyonairbnb.model.exception.ResourceNotFoundException;
-import ph.edu.dlsu.greencanyonairbnb.model.repository.BookingRepository;
+import ph.edu.dlsu.greencanyonairbnb.exception.InvalidBookingRequestException;
+import ph.edu.dlsu.greencanyonairbnb.exception.ResourceNotFoundException;
+import ph.edu.dlsu.greencanyonairbnb.repository.BookingRepository;
 
 
 import java.util.List;

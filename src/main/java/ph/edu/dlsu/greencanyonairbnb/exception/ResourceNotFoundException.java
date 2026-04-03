@@ -1,4 +1,4 @@
-package ph.edu.dlsu.greencanyonairbnb.model.exception;
+package ph.edu.dlsu.greencanyonairbnb.exception;
 
 public class ResourceNotFoundException extends RuntimeException {
     public ResourceNotFoundException(String messages) {

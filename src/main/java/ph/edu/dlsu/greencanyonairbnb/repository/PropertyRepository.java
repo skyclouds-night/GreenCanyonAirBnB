@@ -1,4 +1,4 @@
-package ph.edu.dlsu.greencanyonairbnb.model.repository;
+package ph.edu.dlsu.greencanyonairbnb.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

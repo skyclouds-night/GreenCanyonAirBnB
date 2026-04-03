@@ -1,4 +1,4 @@
-package ph.edu.dlsu.greencanyonairbnb.model.exception;
+package ph.edu.dlsu.greencanyonairbnb.exception;
 
 public class InternalServerException extends RuntimeException {
     public InternalServerException(String message) {

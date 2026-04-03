@@ -1,4 +1,4 @@
-package ph.edu.dlsu.greencanyonairbnb.model.service;
+package ph.edu.dlsu.greencanyonairbnb.service;
 
 import org.springframework.web.multipart.MultipartFile;
 import ph.edu.dlsu.greencanyonairbnb.model.Property;

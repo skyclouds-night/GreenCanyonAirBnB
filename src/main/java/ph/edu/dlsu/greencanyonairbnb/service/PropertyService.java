@@ -1,12 +1,12 @@
-package ph.edu.dlsu.greencanyonairbnb.model.service;
+package ph.edu.dlsu.greencanyonairbnb.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import ph.edu.dlsu.greencanyonairbnb.model.Property;
-import ph.edu.dlsu.greencanyonairbnb.model.exception.InternalServerException;
-import ph.edu.dlsu.greencanyonairbnb.model.exception.ResourceNotFoundException;
-import ph.edu.dlsu.greencanyonairbnb.model.repository.PropertyRepository;
+import ph.edu.dlsu.greencanyonairbnb.exception.InternalServerException;
+import ph.edu.dlsu.greencanyonairbnb.exception.ResourceNotFoundException;
+import ph.edu.dlsu.greencanyonairbnb.repository.PropertyRepository;
 
 import javax.sql.rowset.serial.SerialBlob;
 import java.io.IOException;
