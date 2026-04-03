@@ -1,6 +1,7 @@
 package ph.edu.dlsu.greencanyonairbnb.controller;
 
 
+import jakarta.annotation.Resource;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,12 +10,12 @@ import java.util.*;
 import org.springframework.web.bind.annotation.*;
 import ph.edu.dlsu.greencanyonairbnb.model.BookedProperty;
 import ph.edu.dlsu.greencanyonairbnb.model.Property;
-import ph.edu.dlsu.greencanyonairbnb.exception.InvalidBookingRequestException;
-import ph.edu.dlsu.greencanyonairbnb.exception.ResourceNotFoundException;
-import ph.edu.dlsu.greencanyonairbnb.response.BookingResponse;
-import ph.edu.dlsu.greencanyonairbnb.response.PropertyResponse;
-import ph.edu.dlsu.greencanyonairbnb.service.BookingServiceInt;
-import ph.edu.dlsu.greencanyonairbnb.service.PropertyServiceInt;
+import ph.edu.dlsu.greencanyonairbnb.model.exception.InvalidBookingRequestException;
+import ph.edu.dlsu.greencanyonairbnb.model.exception.ResourceNotFoundException;
+import ph.edu.dlsu.greencanyonairbnb.model.response.BookingResponse;
+import ph.edu.dlsu.greencanyonairbnb.model.response.PropertyResponse;
+import ph.edu.dlsu.greencanyonairbnb.model.service.BookingServiceInt;
+import ph.edu.dlsu.greencanyonairbnb.model.service.PropertyServiceInt;
 
 
 @RequiredArgsConstructor
@@ -50,11 +51,10 @@ public class BookingController {
     @GetMapping("user/{guestEmail}/bookings")
     public ResponseEntity<List<BookingResponse>> getBookingsByUserEmail(@PathVariable String guestEmail){
        List<BookedProperty> bookings = bookingService.getBookingsByUserEmail(guestEmail);
-       List<BookingResponse> bookingResponses = new ArrayList<>();
-       for (BookedProperty booking: bookings){
-           BookingResponse bookingResponse = getBookingResponse(booking);
-           bookingResponses.add(bookingResponse);
-       }
+        List<BookingResponse> bookingResponses = bookingService.getBookingsByUserEmail(guestEmail)
+                .stream()
+                .map(this::getBookingResponse)
+                .toList();
        return ResponseEntity.ok(bookingResponses);
     }
 
