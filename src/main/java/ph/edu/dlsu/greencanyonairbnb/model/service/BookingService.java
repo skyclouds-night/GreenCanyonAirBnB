@@ -22,8 +22,13 @@ public class BookingService implements BookingServiceInt {
 
     @Override
     public void cancelBooking(long bookingID) {
-        bookingRepository.deleteByID(bookingID);
+        bookingRepository.deleteById(bookingID);
 
+    }
+
+    @Override
+    public List<BookedProperty> getAllBookingsByPropertyID(long propertyID) {
+        return bookingRepository.findByPropertyID(propertyID);
     }
 
     @Override
@@ -31,7 +36,7 @@ public class BookingService implements BookingServiceInt {
         if (bookingRequest.getCheckOutDate().isBefore(bookingRequest.getCheckInDate())){
             throw new InvalidBookingRequestException("Check-In date must come before Check-out date");
         }
-        Property property = propertyService.getPropertyByID((propertyID));
+        Property property = propertyService.getPropertyByID(propertyID).get();
         List<BookedProperty> existingBookings = property.getBookings();
         boolean propertyAvailable = propertyAvailable(bookingRequest,existingBookings);
         if(propertyAvailable){
@@ -75,5 +80,10 @@ public class BookingService implements BookingServiceInt {
     @Override
     public List<BookedProperty> getAllBookings() {
         return bookingRepository.findAll();
+    }
+
+    @Override
+    public List<BookedProperty> getBookingsByUserEmail(String guestEmail) {
+        return bookingRepository.findByGuestEmail(guestEmail);
     }
 }
