@@ -14,16 +14,17 @@ import ph.edu.dlsu.greencanyonairbnb.model.exception.InvalidBookingRequestExcept
 import ph.edu.dlsu.greencanyonairbnb.model.exception.ResourceNotFoundException;
 import ph.edu.dlsu.greencanyonairbnb.model.response.BookingResponse;
 import ph.edu.dlsu.greencanyonairbnb.model.response.PropertyResponse;
-import ph.edu.dlsu.greencanyonairbnb.model.service.BookingService;
-import ph.edu.dlsu.greencanyonairbnb.model.service.PropertyService;
+import ph.edu.dlsu.greencanyonairbnb.model.service.BookingServiceInt;
+import ph.edu.dlsu.greencanyonairbnb.model.service.PropertyServiceInt;
+
 
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/bookings")
 public class BookingController {
 
-    private final BookingService bookingService;
-    private final PropertyService propertyService;
+    private final BookingServiceInt bookingService;
+    private final PropertyServiceInt propertyService;
 
     @GetMapping("/all-bookings")
     public ResponseEntity<List<BookingResponse>> getAllBookings(){
@@ -45,6 +46,17 @@ public class BookingController {
         }catch (ResourceNotFoundException ex){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
         }
+    }
+
+    @GetMapping("user/{guestEmail}/bookings")
+    public ResponseEntity<List<BookingResponse>> getBookingsByUserEmail(@PathVariable String guestEmail){
+       List<BookedProperty> bookings = bookingService.getBookingsByUserEmail(guestEmail);
+       List<BookingResponse> bookingResponses = new ArrayList<>();
+       for (BookedProperty booking: bookings){
+           BookingResponse bookingResponse = getBookingResponse(booking);
+           bookingResponse.add(bookingResponse);
+       }
+       return ResponseEntity.ok(bookingResponses);
     }
 
 

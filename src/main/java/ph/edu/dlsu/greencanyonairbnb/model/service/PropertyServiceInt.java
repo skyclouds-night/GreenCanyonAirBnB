@@ -2,7 +2,7 @@ package ph.edu.dlsu.greencanyonairbnb.model.service;
 
 import org.springframework.web.multipart.MultipartFile;
 import ph.edu.dlsu.greencanyonairbnb.model.Property;
-import ph.edu.dlsu.greencanyonairbnb.model.repository.PropertyRepository;
+
 import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.time.LocalDate;

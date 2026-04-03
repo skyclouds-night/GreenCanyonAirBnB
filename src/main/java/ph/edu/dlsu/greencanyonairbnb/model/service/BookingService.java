@@ -4,7 +4,9 @@ import org.springframework.stereotype.Service;
 import ph.edu.dlsu.greencanyonairbnb.model.BookedProperty;
 import ph.edu.dlsu.greencanyonairbnb.model.Property;
 import ph.edu.dlsu.greencanyonairbnb.model.exception.InvalidBookingRequestException;
+import ph.edu.dlsu.greencanyonairbnb.model.exception.ResourceNotFoundException;
 import ph.edu.dlsu.greencanyonairbnb.model.repository.BookingRepository;
+
 
 import java.util.List;
 
@@ -15,7 +17,7 @@ public class BookingService implements BookingServiceInt {
     private final PropertyServiceInt propertyService;
 
     public List<BookedProperty> getAllBookingsByPropertyID(Long propertyID) {
-        return bookingRepository.findPropertyID(propertyID);
+        return bookingRepository.findByPropertyID(propertyID);
     }
 
     @Override
@@ -67,7 +69,7 @@ public class BookingService implements BookingServiceInt {
 
     @Override
     public BookedProperty findByBookingConfirmationCode(String confirmationCode) {
-        return null;
+        return bookingRepository.findByBookingConfirmationCode(confirmationCode).orElseThrow(() -> new ResourceNotFoundException("No booking found with code:" +confirmationCode));
     }
 
     @Override

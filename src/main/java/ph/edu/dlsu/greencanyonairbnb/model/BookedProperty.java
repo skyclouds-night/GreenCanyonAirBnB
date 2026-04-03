@@ -29,6 +29,7 @@ public class BookedProperty {
 
     @Column(name = "guest_email")
     private String guestEmail;
+
     @Column(name = "num_of_Guests")
     private int NumofGuests;
 
@@ -39,7 +40,11 @@ public class BookedProperty {
     @JoinColumn(name = "property_id")
     private Property property;
 
-    public BookedProperty(String bookingConfirmationCode) {
+    public void setGuests(int NumofGuests){
+        this.NumofGuests = NumofGuests;
+    }
+
+    public void setBookingConfirmationCode(String bookingConfirmationCode) {
         this.bookingConfirmationCode = bookingConfirmationCode;
     }
 }

@@ -2,7 +2,6 @@ package ph.edu.dlsu.greencanyonairbnb.model.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.multipart.MultipartFile;
 import ph.edu.dlsu.greencanyonairbnb.model.Property;
 import ph.edu.dlsu.greencanyonairbnb.model.exception.InternalServerException;
@@ -13,6 +12,7 @@ import javax.sql.rowset.serial.SerialBlob;
 import java.math.BigDecimal;
 import java.sql.Blob;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -54,6 +54,11 @@ public class PropertyService implements PropertyServiceInt{
     public Optional<Property> getPropertyByID(long propertyID) {
 
         return Optional.of((Property) PropertyRepository.findByID(propertyID).get());
+    }
+
+    @Override
+    public List<Property> getAvailableProperties(LocalDate checkInDate, LocalDate checkOutDate, String propertyType) {
+        return propertyRepository.findAvaliablePropertiesByDatesAndType(checkInDate,checkOutDate, propertyType);
     }
 
 

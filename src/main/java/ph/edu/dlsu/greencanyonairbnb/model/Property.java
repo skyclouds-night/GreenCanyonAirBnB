@@ -36,7 +36,7 @@ public class Property {
     }
 
     public void addBooking(BookedProperty booking) {
-    if (bookings = null){
+    if (bookings == null){
     bookings = new ArrayList<>();
     }
     bookings.add(booking);
