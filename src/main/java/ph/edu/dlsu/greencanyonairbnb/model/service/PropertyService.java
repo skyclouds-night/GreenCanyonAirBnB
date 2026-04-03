@@ -93,4 +93,17 @@ public class PropertyService implements PropertyServiceInt{
     public List<Property> getAllProperties(){
         return propertyRepository.findAll();
     }
+
+    @Override
+    public byte[] getPropertyPhotoByPropertyID(Long propertyID) throws SQLException {
+        Optional<Property> theProperty = propertyRepository.findById(propertyID);
+        if(theProperty.isEmpty()){
+            throw new ResourceNotFoundException("Sorry, Property not found.");
+        }
+        Blob photoBlob = theProperty.get().getPhoto();
+        if(photoBlob != null){
+            return photoBlob.getBytes(1,(int) photoBlob.length());
+        }
+        return null;
+    }
 }
