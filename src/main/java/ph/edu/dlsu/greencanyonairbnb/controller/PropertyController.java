@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import ph.edu.dlsu.greencanyonairbnb.model.BookedProperty;
@@ -17,6 +18,8 @@ import ph.edu.dlsu.greencanyonairbnb.model.service.PropertyService;
 import ph.edu.dlsu.greencanyonairbnb.model.service.PropertyServiceInt;
 import javax.sql.rowset.serial.SerialBlob;
 import org.apache.commons.codec.binary.Base64;
+
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.Blob;
 import java.sql.SQLException;
@@ -34,7 +37,8 @@ public class PropertyController {
     private final BookingService bookingService;
 
     @PostMapping("/add-property")
-    public ResponseEntity<PropertyResponse> addNewProperty(@RequestParam("photo") MultipartFile photo, @RequestParam("propertyType") String propertyType, @RequestParam("propertyPrice") BigDecimal propertyPrice) throws SQLException {
+    @PreAuthorize("hasRole('ADMIN') or hasRole('HOST') ")
+    public ResponseEntity<PropertyResponse> addNewProperty(@RequestParam("photo") MultipartFile photo, @RequestParam("propertyType") String propertyType, @RequestParam("propertyPrice") BigDecimal propertyPrice) throws SQLException, IOException {
 
         Property savedProperty = propertyService.addNewProperty(photo, propertyType, propertyPrice);
         PropertyResponse response = new PropertyResponse(savedProperty.getPropertyID(), savedProperty.getPropertyType(), savedProperty.getPropertyPrice());
@@ -65,16 +69,18 @@ public class PropertyController {
     }
 
     @DeleteMapping("/delete/property/{propertyID}")
+    @PreAuthorize("hasRole('ADMIN') or hasRole('HOST') ")
     public ResponseEntity<Void> deleteProperty(@PathVariable long propertyID){
         propertyService.deleteProperty(propertyID);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @PutMapping("/update/{propertyID}")
-    public ResponseEntity<PropertyResponse> updateProperty(@PathVariable long propertyID, @RequestParam(required = false) String propertyType, @RequestParam(required = false) BigDecimal propertyPrice, @RequestParam(required = false) MultipartFile photo){
-        byte[] photoBytes = photo != null && !photo.isEmpty()? photo.getBytes(): PropertyService.getPropertyPhotoByPropertyID(propertyID);
+    @PreAuthorize("hasRole('ADMIN') or hasRole('HOST') ")
+    public ResponseEntity<PropertyResponse> updateProperty(@PathVariable long propertyID, @RequestParam(required = false) String propertyType, @RequestParam(required = false) BigDecimal propertyPrice, @RequestParam(required = false) MultipartFile photo) throws SQLException, IOException {
+        byte[] photoBytes = photo != null && !photo.isEmpty()? photo.getBytes(): propertyService.getPropertyPhotoByPropertyID(propertyID);
     Blob photoBlob = photoBytes != null && photoBytes.length > 0 ? new SerialBlob(photoBytes) : null;
-    Property theProperty = PropertyService.updateProperty(propertyID,propertyType,propertyPrice, photoBytes);
+    Property theProperty = propertyService.updateProperty(propertyID,propertyType,propertyPrice, photoBytes);
     theProperty.setPhoto(photoBlob);
     PropertyResponse propertyResponse = getPropertyResponse(theProperty);
     return ResponseEntity.ok(propertyResponse);
@@ -90,14 +96,13 @@ public class PropertyController {
     }
 
     private PropertyResponse getPropertyResponse(Property property) {
-
         List<BookedProperty> bookings = getAllBookingsByPropertyID(property.getPropertyID());
-        List<BookingResponse> bookingInfo = bookings.stream().map(bookings -> new BookingResponse(bookings.getBookingID(), bookings.getCheckInDate(), bookings.getCheckOutDate(), bookings.getBookingConfirmationCode())).toList();
+        List<BookingResponse> bookingInfo = bookings.stream().map(booking -> new BookingResponse(booking.getBookingID(), booking.getCheckInDate(), booking.getCheckOutDate(), booking.getBookingConfirmationCode())).toList();
         byte[] photoBytes = null;
         Blob photoBlob = property.getPhoto();
         if (photoBlob != null){
             try {
-                photoBytes = photoBlob.getBytes(1, (int) photoBlob.length);
+                photoBytes = photoBlob.getBytes(1, (int) photoBlob.length());
             } catch(SQLException e){
                 throw new PhotoRetrieverException("Error retrieving photo.");
             }
