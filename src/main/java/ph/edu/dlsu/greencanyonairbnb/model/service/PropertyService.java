@@ -1,5 +1,8 @@
 package ph.edu.dlsu.greencanyonairbnb.model.service;
 
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.multipart.MultipartFile;
 import ph.edu.dlsu.greencanyonairbnb.model.Property;
 import ph.edu.dlsu.greencanyonairbnb.model.exception.InternalServerException;
@@ -13,7 +16,24 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
+@Service
+@RequiredArgsConstructor
 public class PropertyService implements PropertyServiceInt{
+
+    private final PropertyRepository propertyRepository;
+
+    @Override
+    public Property addNewProperty(MultipartFile photo, String propertyType, BigDecimal propertyPrice){
+        Property property = new Property();
+        property.setPropertyType(propertyType);
+        property.setPropertyPrice(propertyPrice);
+
+        if (!file.isEmpty()){
+            byte[] photoBytes = file.getBytes();
+            Blob photoBlob = new SerialBlob(photoBytes);
+        }
+        return propertyRepository.save(property);
+    }
 
     @Override
     public static Property updateProperty(long propertyID, String propertyType, BigDecimal propertyPrice, byte[] photoBytes) {
@@ -36,18 +56,6 @@ public class PropertyService implements PropertyServiceInt{
         return Optional.of((Property) PropertyRepository.findByID(propertyID).get());
     }
 
-    @Override
-    public Property addNewProperty(MultipartFile photo, String propertyType, BigDecimal propertyPrice){
-        Property property = new Property();
-        property.setPropertyType(propertyType);
-        property.setPropertyPrice(propertyPrice);
-
-        if (!file.isEmpty()){
-            byte[] photoBytes = file.getBytes();
-            Blob photoBlob = new SerialBlob(photoBytes);
-        }
-        return null;
-    }
 
     @Override
     public byte[] getPropertyPhotobyPropertyID(Long propertyID) throws SQLException {
@@ -64,9 +72,12 @@ public class PropertyService implements PropertyServiceInt{
 
     @Override
     public void deleteProperty(long propertyID) {
+        Optional<Property> theProperty = propertyRepository.findByID(propertyID);
+        if (theProperty.isPresent()){
+            propertyRepository.deleteByID(propertyID);
+        }
 
     }
-
 
     @Override
     public List<String> getAllPropertyTypes(){
