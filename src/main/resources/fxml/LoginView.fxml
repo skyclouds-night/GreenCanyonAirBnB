@@ -3,22 +3,20 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="800.0" maxWidth="600.0" minHeight="800.0" minWidth="600.0" prefHeight="800.0" prefWidth="600.0" styleClass="main-container" stylesheets="@/templates/styles.css" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ph.edu.dlsu.greencanyonairbnb.controller.SignupViewController">
+<BorderPane maxHeight="800.0" maxWidth="600.0" minHeight="800.0" minWidth="600.0" prefHeight="800.0" prefWidth="600.0" styleClass="main-container" stylesheets="@/css/styles.css" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ph.edu.dlsu.greencanyonairbnb.controller.LoginViewController">
     <top>
         <VBox alignment="CENTER" prefHeight="110.0" prefWidth="100.0" styleClass="navbar" BorderPane.alignment="CENTER">
             <children>
                 <ImageView fitHeight="68.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@logopic.png" />
+                        <Image url="@../static/logopic.png" />
                     </image>
                 </ImageView>
                 <Button mnemonicParsing="false" onAction="#goToHelloView" styleClass="login-motto-button" text="Your Perfect Travel Companion" />
@@ -26,38 +24,33 @@
         </VBox>
     </top>
     <center>
-        <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" BorderPane.alignment="CENTER">
+        <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0" BorderPane.alignment="CENTER">
             <children>
-                <Label styleClass="login-details" text="Full Name" />
-                <TextField styleClass="login-text-field" />
                 <Label styleClass="login-details" text="Username" />
-                <TextField styleClass="login-text-field" />
+                <TextField minWidth="100.0" prefWidth="100.0" styleClass="login-text-field" />
                 <Label styleClass="login-details" text="Password" />
                 <TextField styleClass="login-text-field" />
-                <Label styleClass="login-details" text="Type of User" />
-                <RadioButton mnemonicParsing="false" text="Guest">
-                    <toggleGroup>
-                        <ToggleGroup fx:id="userTypeGroup" />
-                    </toggleGroup></RadioButton>
-                <RadioButton mnemonicParsing="false" text="Admin" toggleGroup="$userTypeGroup" />
-                <Button mnemonicParsing="false" styleClass="navbar-book-now" text="Sign up">
+                <Button mnemonicParsing="false" styleClass="navbar-book-now" text="Log in">
                     <VBox.margin>
                         <Insets left="160.0" />
                     </VBox.margin>
                 </Button>
                 <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
                     <children>
-                        <Button mnemonicParsing="false" onAction="#goToLogin" styleClass="signup-button" text="Already have an account? Log in" />
+                        <Button mnemonicParsing="false" onAction="#goToSignup" styleClass="signup-button" text="New here? Sign up" />
                     </children>
                 </HBox>
             </children>
             <BorderPane.margin>
-                <Insets left="100.0" right="100.0" top="50.0" />
+                <Insets left="100.0" right="100.0" top="100.0" />
             </BorderPane.margin>
         </VBox>
     </center>
     <bottom>
         <HBox alignment="CENTER" minHeight="150.0" minWidth="400.0" prefHeight="150.0" prefWidth="600.0" spacing="50.0" styleClass="navbar" BorderPane.alignment="CENTER">
+            <BorderPane.margin>
+                <Insets />
+            </BorderPane.margin>
             <children>
                 <VBox alignment="CENTER" prefHeight="200.0" prefWidth="150.0" spacing="15.0">
                     <children>

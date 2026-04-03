@@ -53,7 +53,7 @@ public class PropertyService implements PropertyServiceInt{
     public byte[] getPropertyPhotobyPropertyID(Long propertyID) throws SQLException {
         Optional<Property> theProperty = PropertyRepository.findById(propertyID);
         if(theProperty.isEmpty()){
-            throw new ResourceNotFoundException("Sorry, Property not found.")
+            throw new ResourceNotFoundException("Sorry, Property not found.");
         }
         Blob photoBlob = theProperty.get().getPhoto();
         if(photoBlob != null){

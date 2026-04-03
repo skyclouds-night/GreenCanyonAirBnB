@@ -29,7 +29,7 @@ public class BookingService implements BookingServiceInt {
         if (bookingRequest.getCheckOutDate().isBefore(bookingRequest.getCheckInDate())){
             throw new InvalidBookingRequestException("Check-In date must come before Check-out date");
         }
-        Property property = propertyService.getPropertyByID((propertyID).get();
+        Property property = propertyService.getPropertyByID((propertyID));
         List<BookedProperty> existingBookings = property.getBookings();
         boolean propertyAvailable = propertyAvailable(bookingRequest,existingBookings);
         if(propertyAvailable){
