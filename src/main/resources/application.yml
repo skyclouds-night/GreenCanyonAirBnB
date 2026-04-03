@@ -1,1 +1,2 @@
 spring.application.name=GreenCanyonAirBnB
+spring.application.ui.title=Automated AirBnB Booking System
