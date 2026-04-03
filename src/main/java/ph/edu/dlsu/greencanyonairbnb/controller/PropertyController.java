@@ -46,7 +46,7 @@ public class PropertyController {
     }
 
     @GetMapping("/all-properties")
-    public ResponseEntity<List<PropertyResponse>> getAllProperties(){
+    public ResponseEntity<List<PropertyResponse>> getAllProperties() throws SQLException {
         List<Property> properties = propertyService.getAllProperties();
         List<PropertyResponse> propertyResponses = new ArrayList<>();
         for (Property property: properties){
