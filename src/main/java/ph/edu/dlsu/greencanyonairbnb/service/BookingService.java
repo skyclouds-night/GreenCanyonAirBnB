@@ -1,6 +1,8 @@
 package ph.edu.dlsu.greencanyonairbnb.service;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 import ph.edu.dlsu.greencanyonairbnb.model.BookedProperty;
 import ph.edu.dlsu.greencanyonairbnb.model.Property;
 import ph.edu.dlsu.greencanyonairbnb.exception.InvalidBookingRequestException;
@@ -11,6 +13,7 @@ import ph.edu.dlsu.greencanyonairbnb.repository.BookingRepository;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class BookingService implements BookingServiceInt {
 
     private final BookingRepository bookingRepository;
