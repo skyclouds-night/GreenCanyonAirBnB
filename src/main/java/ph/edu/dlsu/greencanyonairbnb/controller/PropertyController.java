@@ -1,6 +1,7 @@
 package ph.edu.dlsu.greencanyonairbnb.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,20 +16,25 @@ import ph.edu.dlsu.greencanyonairbnb.model.service.BookingService;
 import ph.edu.dlsu.greencanyonairbnb.model.service.PropertyService;
 import ph.edu.dlsu.greencanyonairbnb.model.service.PropertyServiceInt;
 import javax.sql.rowset.serial.SerialBlob;
+import org.apache.commons.codec.binary.Base64;
 import java.math.BigDecimal;
 import java.sql.Blob;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@RestController
 @RequiredArgsConstructor
+@RequestMapping("/properties")
 public class PropertyController {
 
     private final PropertyServiceInt propertyService;
     private final BookingService bookingService;
 
-    public ResponseEntity<PropertyResponse> addNewProperty(@RequestParam("photo") MultipartFile photo, @RequestParam("propertyType") String propertyType, @RequestParam("propertyPrice") BigDecimal propertyPrice) {
+    @PostMapping("/add-property")
+    public ResponseEntity<PropertyResponse> addNewProperty(@RequestParam("photo") MultipartFile photo, @RequestParam("propertyType") String propertyType, @RequestParam("propertyPrice") BigDecimal propertyPrice) throws SQLException {
 
         Property savedProperty = propertyService.addNewProperty(photo, propertyType, propertyPrice);
         PropertyResponse response = new PropertyResponse(savedProperty.getPropertyID(), savedProperty.getPropertyType(), savedProperty.getPropertyPrice());
@@ -36,11 +42,12 @@ public class PropertyController {
         return ResponseEntity.ok(response);
     }
 
+    @GetMapping("/all-properties")
     public ResponseEntity<List<PropertyResponse>> getAllProperties(){
         List<Property> properties = propertyService.getAllProperties();
         List<PropertyResponse> propertyResponses = new ArrayList<>();
         for (Property property: properties){
-            byte[] photoBytes = propertyService.getPropertyPhotobyPropertyID(property.getPropertyID());
+            byte[] photoBytes = propertyService.getPropertyPhotoByPropertyID(property.getPropertyID());
             if(photoBytes != null && photoBytes.length >0){
                 String base64Photo = Base64.encodeBase64String(photoBytes);
                 PropertyResponse propertyResponse = getPropertyResponse(property);
@@ -49,14 +56,18 @@ public class PropertyController {
             }
 
         }
-        return ResponseEntity.ok(propertyResponse);
+        return ResponseEntity.ok(propertyResponses);
     }
-    //
+
+    @GetMapping("/property-types")
+    public List<String> getPropertyType(){
+        return propertyService.getAllPropertyTypes();
+    }
 
     @DeleteMapping("/delete/property/{propertyID}")
     public ResponseEntity<Void> deleteProperty(@PathVariable long propertyID){
         propertyService.deleteProperty(propertyID);
-        return new ResponseEntity(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @PutMapping("/update/{propertyID}")
@@ -96,5 +107,27 @@ public class PropertyController {
 
     private List<BookedProperty> getAllBookingsByPropertyID(Long propertyID) {
         return bookingService.getAllBookingsByPropertyID(propertyID);
+    }
+
+    @GetMapping("/available-properties")
+    public ResponseEntity<List<PropertyResponse>> getAvailableProperties(@RequestParam("checkInDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate checkInDate,
+                                                                         @RequestParam("checkOutDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate checkOutDate,
+                                                                         @RequestParam("propertyType") String propertyType) throws SQLException {
+        List<Property> availableProperties = propertyService.getAvailableProperties(checkInDate, checkOutDate, propertyType);
+        List<PropertyResponse> propertyResponses = new ArrayList<>();
+        for (Property property: availableProperties){
+            byte[] photoBytes = propertyService.getPropertyPhotoByPropertyID(property.getPropertyID());
+            if (photoBytes != null && photoBytes.length > 0){
+                String photoBase64 = Base64.encodeBase64String(photoBytes);
+                PropertyResponse propertyResponse = getPropertyResponse(property);
+                propertyResponse.setPhoto(photoBase64);
+                propertyResponses.add(propertyResponse);
+            }
+        }
+        if(propertyResponses.isEmpty()){
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.ok(propertyResponses);
+        }
     }
 }

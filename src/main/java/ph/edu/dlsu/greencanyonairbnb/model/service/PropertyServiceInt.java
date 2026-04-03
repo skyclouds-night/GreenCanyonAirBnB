@@ -17,7 +17,7 @@ public interface PropertyServiceInt {
 
     List<Property> getAllProperties();
 
-    byte[] getPropertyPhotobyPropertyID(Long propertyID) throws SQLException;
+    byte[] getPropertyPhotoByPropertyID(Long propertyID) throws SQLException;
 
     void deleteProperty(long propertyID);
 
