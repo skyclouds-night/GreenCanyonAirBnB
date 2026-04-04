@@ -17,7 +17,7 @@
                 <Button mnemonicParsing="false" onAction="#goToHelloView" styleClass="navbar-name" stylesheets="@../css/styles.css" text="GREEN CANYON" />
                 <Button fx:id="listingsView" mnemonicParsing="false" onAction="#goToListingsView" styleClass="navbar-buttons" stylesheets="@../css/styles.css" text="Properties" />
                 <Button mnemonicParsing="false" onAction="#goToLogin" styleClass="navbar-buttons" stylesheets="@../css/styles.css" text="Login" />
-                <Button mnemonicParsing="false" styleClass="navbar-book-now" stylesheets="@../css/styles.css" text="Book Now" />
+                <Button mnemonicParsing="false" onAction="#goToReservation" styleClass="navbar-book-now" stylesheets="@../css/styles.css" text="Book Now" />
             </children>
         </HBox>
     </top>
@@ -46,7 +46,7 @@
                                                 <Insets left="35.0" top="10.0" />
                                             </VBox.margin>
                                         </ImageView>
-                                        <Button mnemonicParsing="false" onAction="#goToListingsView" styleClass="property-name-button" text="Property Name" />
+                                        <Button mnemonicParsing="false" onAction="#goToPropertyDetails" styleClass="property-name-button" text="Property Name" />
                                         <Label styleClass="property-desc" text="Description of the property">
                                             <VBox.margin>
                                                 <Insets left="15.0" />
@@ -69,7 +69,7 @@
                                                 <Insets left="35.0" top="10.0" />
                                             </VBox.margin>
                                         </ImageView>
-                                        <Button mnemonicParsing="false" onAction="#goToListingsView" styleClass="property-name-button" text="Property Name" />
+                                        <Button mnemonicParsing="false" onAction="#goToPropertyDetails" styleClass="property-name-button" text="Property Name" />
                                         <Label styleClass="property-desc" text="Description of the property">
                                             <VBox.margin>
                                                 <Insets left="15.0" />
@@ -96,7 +96,7 @@
                                                 <Insets left="35.0" top="10.0" />
                                             </VBox.margin>
                                         </ImageView>
-                                        <Button mnemonicParsing="false" onAction="#goToListingsView" styleClass="property-name-button" text="Property Name" />
+                                        <Button mnemonicParsing="false" onAction="#goToPropertyDetails" styleClass="property-name-button" text="Property Name" />
                                         <Label styleClass="property-desc" text="Description of the property">
                                             <VBox.margin>
                                                 <Insets left="15.0" />
@@ -119,7 +119,7 @@
                                                 <Insets left="35.0" top="10.0" />
                                             </VBox.margin>
                                         </ImageView>
-                                        <Button mnemonicParsing="false" onAction="#goToListingsView" styleClass="property-name-button" text="Property Name" />
+                                        <Button mnemonicParsing="false" onAction="#goToPropertyDetails" styleClass="property-name-button" text="Property Name" />
                                         <Label styleClass="property-desc" text="Description of the property">
                                             <VBox.margin>
                                                 <Insets left="15.0" />

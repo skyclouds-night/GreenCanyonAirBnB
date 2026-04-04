@@ -15,33 +15,38 @@ import java.io.IOException;
 @Controller
 public class HelloViewController {
 
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
 
-        private Stage stage;
-        private Scene scene;
-        private Parent root;
+    @FXML
+    private void goToHelloView(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("/fxml/hello-view.fxml"));
+        switchScene(event);
+    }
 
-        @FXML
-        private void goToHelloView(ActionEvent event) throws IOException {
-            root = FXMLLoader.load(getClass().getResource("/ph/edu/dlsu/automatedairbnbbookingsystem/hello-view.fxml"));
-            switchScene(event);
-        }
+    @FXML
+    private void goToListingsView(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("/fxml/ListingsView.fxml"));
+        switchScene(event);
+    }
 
-        @FXML
-        private void goToListingsView(ActionEvent event) throws IOException {
-            root = FXMLLoader.load(getClass().getResource("/ph/edu/dlsu/automatedairbnbbookingsystem/ListingsView.fxml"));
-            switchScene(event);
-        }
+    private void switchScene(ActionEvent event) {
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 
-        private void switchScene(ActionEvent event) {
-            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        }
+    @FXML
+    private void goToLogin(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("/fxml/LoginView.fxml"));
+        switchScene(event);
+    }
 
-        @FXML
-        private void goToLogin(ActionEvent event) throws IOException {
-            root = FXMLLoader.load(getClass().getResource("/ph/edu/dlsu/automatedairbnbbookingsystem/LoginView.fxml"));
-            switchScene(event);
-        }
+    @FXML
+    private void goToReservation(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("/fxml/ReservationView.fxml"));
+        switchScene(event);
+    }
 }

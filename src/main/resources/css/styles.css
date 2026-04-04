@@ -274,6 +274,9 @@
     -fx-font-weight: bold;
 }
 
+
+/* Reservation View */
+
 .book-now {
     -fx-font-family: Georgia;
     -fx-font-size: 15px;
@@ -281,4 +284,32 @@
     -fx-border-color: transparent;
     -fx-text-fill: E5D9B6;
     -fx-background-radius: 17;
+}
+
+.booking {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 20;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10,0,0,2);
+    -fx-border-color: black;
+    -fx-border-radius: 20;
+}
+
+.booking-bruh {
+    -fx-text-fill: #40513b;
+    -fx-font-size: 20px;
+    -fx-font-family: Georgia;
+    -fx-font-weight: bold;
+}
+
+.reserve-button {
+    -fx-font-family: Georgia;
+    -fx-font-size: 20px;
+    -fx-background-color: #40513b;
+    -fx-border-color: transparent;
+    -fx-text-fill: E5D9B6;
+    -fx-background-radius: 17;
+}
+
+.reserve-button:hover {
+    -fx-background-color: #6A7E3F;
 }

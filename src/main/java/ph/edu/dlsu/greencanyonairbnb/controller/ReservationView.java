@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class PropertyDetailsController {
+public class ReservationView {
 
     private Stage stage;
     private Scene scene;

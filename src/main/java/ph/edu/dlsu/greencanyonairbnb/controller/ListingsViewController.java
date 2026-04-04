@@ -19,8 +19,14 @@ public class ListingsViewController {
     private Parent root;
 
     @FXML
+    private void goToHelloView(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("/fxml/hello-view.fxml"));
+        switchScene(event);
+    }
+
+    @FXML
     private void goToListingsView(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/ph/edu/dlsu/automatedairbnbbookingsystem/ListingsView.fxml"));
+        root = FXMLLoader.load(getClass().getResource("/fxml/ListingsView.fxml"));
         switchScene(event);
     }
 
@@ -32,14 +38,20 @@ public class ListingsViewController {
     }
 
     @FXML
-    private void goToHelloView(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/ph/edu/dlsu/automatedairbnbbookingsystem/hello-view.fxml"));
+    private void goToLogin(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("/fxml/LoginView.fxml"));
         switchScene(event);
     }
 
     @FXML
-    private void goToLogin(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/ph/edu/dlsu/automatedairbnbbookingsystem/LoginView.fxml"));
+    private void goToReservation(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("/fxml/ReservationView.fxml"));
+        switchScene(event);
+    }
+
+    @FXML
+    private void goToPropertyDetails(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("/fxml/PropertyDetails.fxml"));
         switchScene(event);
     }
 }

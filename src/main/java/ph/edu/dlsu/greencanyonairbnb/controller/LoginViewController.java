@@ -24,13 +24,13 @@ public class LoginViewController {
 
     @FXML
     private void goToHelloView(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/ph/edu/dlsu/automatedairbnbbookingsystem/hello-view.fxml"));
+        root = FXMLLoader.load(getClass().getResource("/fxml/hello-view.fxml"));
         switchScene(event);
     }
 
     @FXML
     private void goToSignup(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/ph/edu/dlsu/automatedairbnbbookingsystem/SignupView.fxml"));
+        root = FXMLLoader.load(getClass().getResource("/fxml/SignupView.fxml"));
         switchScene(event);
     }
 }
