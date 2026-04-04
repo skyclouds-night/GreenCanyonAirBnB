@@ -9,9 +9,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
-import ph.edu.dlsu.greencanyonairbnb.security.UserDetails;
 import ph.edu.dlsu.greencanyonairbnb.security.UsersDetailsService;
 
 import java.io.IOException;
@@ -23,8 +23,7 @@ public class AuthTokenFilter extends OncePerRequestFilter {
 
     @Autowired
     private UsersDetailsService userDetailsService;
-    private static final Logger logger = LoggerFactory.getLogger(AuthTokenFilter.class){\
-    }
+    private static final Logger logger = LoggerFactory.getLogger(AuthTokenFilter.class);
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
@@ -33,7 +32,7 @@ public class AuthTokenFilter extends OncePerRequestFilter {
             if(jwt != null && jwtUtils.validateToken(jwt)){
                 String email = jwtUtils.getUserNameFromToken(jwt);
                 UserDetails userDetails = userDetailsService.loadUserByUsername(email);
-                var authentication = new UsernamePasswordAuthenticationToken(userDetails, null, UserDetails.getAuthorities());
+                var authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             }
         }catch (Exception e){
