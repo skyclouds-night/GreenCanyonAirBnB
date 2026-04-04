@@ -39,13 +39,13 @@ public class JwtUtils {
     }
 
     public String getUserNameFromToken(String token){
-        return Jwts.parserBuilder()
-                .setSigningKey(key()).build().parsecClaimsJws(token).getBody().getSubject();
+        return Jwts.parser()
+                .setSigningKey(key()).build().parseClaimsJws(token).getBody().getSubject();
     }
 
     public boolean validateToken(String token){
         try{
-            Jwts.parserBuilder().setSigningKey(key()).build().parse(token);
+            Jwts.parser().setSigningKey(key()).build().parse(token);
             return true;
         }catch(MalformedJwtException e){
             logger.error("Invalid jwt token : {} ", e.getMessage());
