@@ -10,7 +10,7 @@ public interface RoleServiceInt {
     List<Role> getRoles();
     Role createRole (Role theRole);
 
-    void deleteRole(Long id);
+    void deleteRole(Long roleID);
     Role findByName(String guestName);
     User removeUserFromRole(long userID, long roleID);
     User addUserToRole(long userID, long roleID);
