@@ -1,18 +1,147 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
-    <title>Green Canyon AirBnB</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <title>Green Canyon Airbnb</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
-<body class="container mt-5">
-<div class="card shadow">
-    <div class="card-body text-center">
-        <h1 class="display-4">Green Canyon AirBnB</h1>
-        <p class="lead">Welcome to the Automated Booking System.</p>
-        <hr>
-        <p th:text="${message}" class="text-primary"></p>
-        <button class="btn btn-success">Book a Room Now</button>
+<body>
+
+<div class="main-container">
+
+    <!-- TOP NAVBAR -->
+    <div class="navbar top-navbar hbox">
+        <button class="navbar-name">GREEN CANYON</button>
+
+        <div class="nav-links">
+            <button class="navbar-buttons no-border" onclick = window.location.href="/all-properties">Properties</button>
+            <button class="navbar-buttons no-border" onclick = window.location.href="/login">Login</button>
+        </div>
+
+        <button class="navbar-book-now" onclick = window.location.href="/reservation">Book Now</button>
+    </div>
+    <!-- SCROLLABLE CONTENT -->
+    <div class="scroll-container">
+        <div class="vbox content-container">
+
+            <!-- HERO SECTION -->
+            <div class="hbox hero-section">
+                <div class="stack-pane">
+                    <div class="stack-pane-label">
+                        Your Perfect Travel Companion
+                    </div>
+                </div>
+
+                <img src="img/airbnbpic.jpg"
+                     alt="Airbnb Hero"
+                     class="hero-image">
+            </div>
+
+            <!-- FIND PROPERTY + SEARCH BAR -->
+            <div class="find-search-row">
+                <span class="find-property-text">FIND A PROPERTY</span>
+
+                <div class="hbox search-bar">
+
+                    <div class="vbox search-item">
+                        <label class="search-bar-title">Location</label>
+                        <input type="text"
+                               class="search-text-field"
+                               placeholder="Which city do you prefer?">
+                    </div>
+
+                    <div class="separator vertical"></div>
+
+                    <div class="vbox search-item">
+                        <label class="search-bar-title">Check In</label>
+                        <input type="text"
+                               class="search-text-field"
+                               placeholder="Add dates">
+                    </div>
+
+                    <div class="separator vertical"></div>
+
+                    <div class="vbox search-item">
+                        <label class="search-bar-title">Check Out</label>
+                        <input type="text"
+                               class="search-text-field"
+                               placeholder="Add dates">
+                    </div>
+
+                    <div class="separator vertical"></div>
+
+                    <div class="vbox search-item">
+                        <label class="search-bar-title">Guests</label>
+                        <input type="text"
+                               class="search-text-field"
+                               placeholder="Add guests">
+                    </div>
+
+                    <button class="search-btn">Search</button>
+                </div>
+            </div>
+
+            <!-- FEATURED PROPERTIES -->
+            <div class="hbox section-title">
+                <span class="find-property-text">Featured Properties</span>
+            </div>
+
+            <!-- FEATURED PROPERTIES GRID -->
+            <div class="featured-grid">
+
+                <div class="vbox vbox-listings">
+                    <img src="img/airbnbpic1.jpg" class="thumbnail-img" alt="Property">
+                    <button class="property-name-button">Property Name</button>
+                    <p class="property-desc">Description of the property</p>
+                    <p class="property-price">Price</p>
+                </div>
+
+                <div class="vbox vbox-listings">
+                    <img src="img/airbnbpic1.jpg" class="thumbnail-img" alt="Property">
+                    <button class="property-name-button">Property Name</button>
+                    <p class="property-desc">Description of the property</p>
+                    <p class="property-price">Price</p>
+                </div>
+
+                <div class="vbox vbox-listings">
+                    <img src="img/airbnbpic1.jpg" class="thumbnail-img" alt="Property">
+                    <button class="property-name-button">Property Name</button>
+                    <p class="property-desc">Description of the property</p>
+                    <p class="property-price">Price</p>
+                </div>
+
+                <div class="vbox vbox-listings">
+                    <img src="img/airbnbpic1.jpg" class="thumbnail-img" alt="Property">
+                    <button class="property-name-button">Property Name</button>
+                    <p class="property-desc">Description of the property</p>
+                    <p class="property-price">Price</p>
+                </div>
+
+            </div>
+
+            <!-- FOOTER -->
+            <div class="navbar hbox login-footer-container">
+
+                <div class="vbox">
+                    <span class="login-footer">Location</span>
+                    <span class="login-footer-info">Taft Avenue, Manila</span>
+                </div>
+
+                <div class="vbox">
+                    <span class="login-footer">Contact Number</span>
+                    <span class="login-footer-info">+63 (912) 345 6789</span>
+                </div>
+
+                <div class="vbox">
+                    <span class="login-footer">Email</span>
+                    <span class="login-footer-info">greencanyon@gmail.com</span>
+                </div>
+
+            </div>
+
+        </div>
     </div>
 </div>
+
 </body>
 </html>

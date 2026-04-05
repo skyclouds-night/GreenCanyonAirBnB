@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Green Canyon – Reservation</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div class="main-container">
+
+    <!-- TOP NAVBAR -->
+    <div class="navbar top-navbar hbox">
+        <button class="navbar-name">GREEN CANYON</button>
+
+        <div class="nav-links">
+            <button class="navbar-buttons no-border" onclick = window.location.href="/all-properties">Properties</button>
+            <button class="navbar-buttons no-border" onclick = window.location.href="/login">Login</button>
+        </div>
+
+        <button class="navbar-book-now" onclick = window.location.href="/reservation">Book Now</button>
+    </div>
+
+    <!-- CENTER CONTENT -->
+    <div class="scroll-container" style="padding-top:40px">
+
+        <div class="vbox content-container" style="align-items:center; gap:50px">
+
+            <!-- BOOKING CARD -->
+            <div class="vbox booking" style="
+                width:800px;
+                height:650px;
+                padding:20px;
+                gap:20px;
+            ">
+
+                <span class="property-name">Booking Details</span>
+
+                <!-- PROPERTY SUMMARY -->
+                <div class="hbox" style="gap:20px; height:250px">
+
+                    <img
+                        src="img/airbnbpic1.jpg"
+                        alt="Property"
+                        style="width:350px; height:250px; object-fit:cover">
+
+                    <div class="vbox" style="width:400px">
+                        <span class="property-name">Name</span>
+                        <span class="property-address">Address</span>
+                    </div>
+
+                </div>
+
+                <!-- CHECK-IN -->
+                <div class="hbox" style="height:50px">
+                    <span class="booking-bruh">Check In</span>
+                </div>
+
+                <!-- CHECK-OUT -->
+                <div class="hbox" style="height:50px">
+                    <span class="booking-bruh">Check Out</span>
+                </div>
+
+                <!-- PRICE -->
+                <div class="hbox" style="height:50px">
+                    <span class="booking-bruh">Price</span>
+                </div>
+
+                <!-- CONFIRM BUTTON -->
+                <div class="vbox" style="align-items:center; height:50px">
+                    <button class="reserve-button">Confirm</button>
+                </div>
+
+            </div>
+
+            <!-- FOOTER -->
+            <div class="navbar hbox login-footer-container">
+
+                <div class="vbox">
+                    <span class="login-footer">Location</span>
+                    <span class="login-footer-info">Taft Avenue, Manila</span>
+                </div>
+
+                <div class="vbox">
+                    <span class="login-footer">Contact Number</span>
+                    <span class="login-footer-info">+63 (912) 345 6789</span>
+                </div>
+
+                <div class="vbox">
+                    <span class="login-footer">Email</span>
+                    <span class="login-footer-info">greencanyon@gmail.com</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

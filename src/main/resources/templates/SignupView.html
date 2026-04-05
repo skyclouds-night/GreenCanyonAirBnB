@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Green Canyon – Sign Up</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div class="main-container">
+
+    <!-- TOP SECTION -->
+    <div class="navbar vbox top-section">
+        <img src="img/logopic.png"
+             class="login-logo"
+             alt="Green Canyon Logo">
+
+        <button class="login-motto-button  no-border">
+            Your Perfect Travel Companion
+        </button>
+    </div>
+
+    <!-- CENTER SIGNUP FORM -->
+    <div class="vbox" style="
+        align-items:center;
+        gap:10px;
+        margin:50px 100px 0 100px;
+    ">
+
+        <label class="login-details">Full Name</label>
+        <input type="text" class="login-text-field">
+
+        <label class="login-details">Username</label>
+        <input type="text" class="login-text-field">
+
+        <label class="login-details">Password</label>
+        <input type="password" class="login-text-field">
+
+        <label class="login-details">Type of User</label>
+
+        <label>
+            <input type="radio" name="userType" value="guest">
+            Guest
+        </label>
+
+        <label>
+            <input type="radio" name="userType" value="admin">
+            Admin
+        </label>
+
+        <button class="navbar-book-now" style="margin-left:160px;">
+            Sign up
+        </button>
+
+        <div class="hbox" style="justify-content:center; height:100px;">
+            <button class="signup-button" onclick=window.location.href="/login">
+                Already have an account? Log in
+            </button>
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="navbar hbox login-footer-container">
+
+        <div class="vbox">
+            <span class="login-footer">Location</span>
+            <span class="login-footer-info">Taft Avenue, Manila</span>
+        </div>
+
+        <div class="vbox">
+            <span class="login-footer">Contact Number</span>
+            <span class="login-footer-info">+63 (912) 345 6789</span>
+        </div>
+
+        <div class="vbox">
+            <span class="login-footer">Email</span>
+            <span class="login-footer-info">greencanyon@gmail.com</span>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

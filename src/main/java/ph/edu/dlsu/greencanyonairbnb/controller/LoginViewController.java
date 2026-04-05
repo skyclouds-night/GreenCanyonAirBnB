@@ -1,36 +1,12 @@
 package ph.edu.dlsu.greencanyonairbnb.controller;
 
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 
-import java.io.IOException;
-
+@Controller
 public class LoginViewController {
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-
-    private void switchScene(ActionEvent event) {
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    @FXML
-    private void goToHelloView(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/fxml/hello-view.fxml"));
-        switchScene(event);
-    }
-
-    @FXML
-    private void goToSignup(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/fxml/SignupView.fxml"));
-        switchScene(event);
+    @GetMapping("/login")
+    public String home() {
+        return "LoginView";
     }
 }

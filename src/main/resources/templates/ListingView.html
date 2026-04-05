@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Green Canyon – Listings</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div class="main-container">
+
+    <!-- TOP NAVBAR -->
+    <div class="navbar top-navbar hbox">
+        <button class="navbar-name">GREEN CANYON</button>
+
+        <div class="nav-links">
+            <button class="navbar-buttons no-border" onclick = window.location.href="/all-properties">Properties</button>
+            <button class="navbar-buttons no-border" onclick = window.location.href="/login">Login</button>
+        </div>
+
+        <button class="navbar-book-now" onclick = window.location.href="/reservation">Book Now</button>
+    </div>
+
+
+    <!-- SCROLLABLE CENTER CONTENT -->
+    <div class="scroll-container">
+        <div class="vbox content-container">
+
+            <!-- PAGE TITLE -->
+            <div class="hbox section-title">
+                <span class="find-property-text">Listed Properties</span>
+            </div>
+            <div th:each="property : ${properties}">
+                <div class="hbox listings-row">
+                    <div class="vbox vbox-listings">
+                        <img src="img/airbnbpic1.jpg" alt="Property" class="img">
+                        <p class="property-price">${property.price}}</p>
+                    </div>
+            </div>
+
+
+
+            <!-- FOOTER -->
+            <div class="navbar hbox login-footer-container">
+
+                <div class="vbox">
+                    <span class="login-footer">Location</span>
+                    <span class="login-footer-info">Taft Avenue, Manila</span>
+                </div>
+
+                <div class="vbox">
+                    <span class="login-footer">Contact Number</span>
+                    <span class="login-footer-info">+63 (912) 345 6789</span>
+                </div>
+
+                <div class="vbox">
+                    <span class="login-footer">Email</span>
+                    <span class="login-footer-info">greencanyon@gmail.com</span>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
