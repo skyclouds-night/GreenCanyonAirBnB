@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Canyon Airbnb</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="main-container">
+
+<!-- Top Navigation Bar -->
+<header class="header navbar">
+
+    <div><button class="hdr-col1 navbar-name">GREEN CANYON</button></div>
+    <div><button class="hdr-col2">Properties</button></div>
+    <div><button class="hdr-col2">Login</button></div>
+    <div><button class="hdr-col2 navbar-book-now">Book Now</button></div>
+</header>
+
+<main class="scroll-pane">
+    <div class="content-vbox">
+
+        <!-- Hero Section (from Page 1) -->
+        <section class="hero-hbox">
+            <div class="stack-pane">
+                <h1 class="stack-pane-label">Your Perfect Travel Companion</h1>
+            </div>
+            <img src="img/airbnbpic.jpg" alt="Airbnb" class="hero-image">
+        </section>
+
+        <!-- Search Bar Section (from Pages 1 & 2) -->
+        <section class="search-section">
+            <h2 class="find-property-text">FIND A PROPERTY</h2>
+            <div class="search-bar">
+                <div class="search-item">
+                    <label class="search-bar-title">Location</label>
+                    <input type="text" placeholder="Which city do you prefer?" class="search-text-field">
+                </div>
+                <div class="separator"></div>
+                <div class="search-item">
+                    <label class="search-bar-title">Check In</label>
+                    <input type="text" placeholder="Add dates" class="search-text-field">
+                </div>
+                <div class="separator"></div>
+                <div class="search-item">
+                    <label class="search-bar-title">Guests</label>
+                    <input type="text" placeholder="Add guests" class="search-text-field">
+                </div>
+                <button class="search-btn">Search</button>
+            </div>
+        </section>
+
+        <!-- Featured Properties (from Pages 3, 4, & 5) -->
+        <section class="properties-section">
+            <h2 class="find-property-text">Featured Properties</h2>
+            <div class="listings-grid">
+                <!-- Example Property Card -->
+                <div class="vbox-listings">
+                    <img src="img/airbnbpic1.jpg" alt="Property" class="img">
+                    <button class="property-name-button">Property Name</button>
+                    <p class="property-desc">Description of the property</p>
+                    <span class="property-price">Price</span>
+                </div>
+                <!-- Repeat for other properties... -->
+            </div>
+        </section>
+
+        <!-- Footer (from Page 5) -->
+        <footer class="navbar footer">
+            <div class="footer-item">
+                <span class="footer-title">Location</span>
+                <span class="footer-info">Taft Avenue, Manila</span>
+            </div>
+            <div class="footer-item">
+                <span class="footer-title">Contact Number</span>
+                <span class="footer-info">+63 (912) 345 6789</span>
+            </div>
+            <div class="footer-item">
+                <span class="footer-title">Email</span>
+                <span class="footer-info">greencanyon@gmail.com</span>
+            </div>
+        </footer>
+
+    </div>
+</main>
+</body>
+</html>

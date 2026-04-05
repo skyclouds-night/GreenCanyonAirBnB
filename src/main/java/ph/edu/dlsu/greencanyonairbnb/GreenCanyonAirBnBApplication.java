@@ -20,7 +20,6 @@ import java.io.IOException;
 import static javafx.application.Application.launch;
 import static org.apache.tomcat.util.file.ConfigFileLoader.getSource;
 
-@SpringBootApplication
 public class GreenCanyonAirBnBApplication extends Application {
 
 	private ConfigurableApplicationContext context;
@@ -43,12 +42,12 @@ public class GreenCanyonAirBnBApplication extends Application {
 	@Override
 	public void start(Stage stage) throws Exception {
 		this.context.publishEvent(new StageReadyEvent(stage));
-		stage.setTitle("Automated AirBnB Booking System");
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/hello-view.fxml"));
-		Parent root = fxmlLoader.load();
-		Scene scene = new Scene(root, 1000, 800);
-		stage.setScene(scene);
-		stage.show();
+//		stage.setTitle("Automated AirBnB Booking System");
+//		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/hello-view.fxml"));
+//		Parent root = fxmlLoader.load();
+//		Scene scene = new Scene(root, 1000, 800);
+//		stage.setScene(scene);
+//		stage.show();
 	}
 
 	@Override

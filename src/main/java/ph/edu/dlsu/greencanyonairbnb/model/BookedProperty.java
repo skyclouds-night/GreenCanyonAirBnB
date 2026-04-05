@@ -16,7 +16,7 @@ import java.time.*;
 public class BookedProperty {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long bookingID;
+    private long id;
 
     @Column(name = "check_In")
     private LocalDate checkInDate;
@@ -37,7 +37,7 @@ public class BookedProperty {
     private String bookingConfirmationCode;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "property_id")
+    @JoinColumn(name = "property")
     private Property property;
 
     public void setGuests(int NumofGuests){

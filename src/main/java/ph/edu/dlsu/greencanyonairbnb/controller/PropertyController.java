@@ -40,7 +40,7 @@ public class PropertyController {
     public ResponseEntity<PropertyResponse> addNewProperty(@RequestParam("photo") MultipartFile photo, @RequestParam("propertyType") String propertyType, @RequestParam("propertyPrice") BigDecimal propertyPrice) throws SQLException, IOException {
 
         Property savedProperty = propertyService.addNewProperty(photo, propertyType, propertyPrice);
-        PropertyResponse response = new PropertyResponse(savedProperty.getPropertyID(), savedProperty.getPropertyType(), savedProperty.getPropertyPrice());
+        PropertyResponse response = new PropertyResponse(savedProperty.getId(), savedProperty.getPropertyType(), savedProperty.getPropertyPrice());
 
         return ResponseEntity.ok(response);
     }
@@ -50,7 +50,7 @@ public class PropertyController {
         List<Property> properties = propertyService.getAllProperties();
         List<PropertyResponse> propertyResponses = new ArrayList<>();
         for (Property property: properties){
-            byte[] photoBytes = propertyService.getPropertyPhotoByPropertyID(property.getPropertyID());
+            byte[] photoBytes = propertyService.getPropertyPhotoByPropertyID(property.getId());
             if(photoBytes != null && photoBytes.length >0){
                 String base64Photo = Base64.encodeBase64String(photoBytes);
                 PropertyResponse propertyResponse = getPropertyResponse(property);
@@ -95,8 +95,8 @@ public class PropertyController {
     }
 
     private PropertyResponse getPropertyResponse(Property property) {
-        List<BookedProperty> bookings = getAllBookingsByPropertyID(property.getPropertyID());
-        List<BookingResponse> bookingInfo = bookings.stream().map(booking -> new BookingResponse(booking.getBookingID(), booking.getCheckInDate(), booking.getCheckOutDate(), booking.getBookingConfirmationCode())).toList();
+        List<BookedProperty> bookings = getAllBookingsByPropertyID(property.getId());
+        List<BookingResponse> bookingInfo = bookings.stream().map(booking -> new BookingResponse(booking.getId(), booking.getCheckInDate(), booking.getCheckOutDate(), booking.getBookingConfirmationCode())).toList();
         byte[] photoBytes = null;
         Blob photoBlob = property.getPhoto();
         if (photoBlob != null){
@@ -106,7 +106,7 @@ public class PropertyController {
                 throw new PhotoRetrieverException("Error retrieving photo.");
             }
         }
-        return new PropertyResponse(property.getPropertyID(), property.getPropertyType(), property.getPropertyPrice(), property.isBooked(), photoBytes,bookingInfo);
+        return new PropertyResponse(property.getId(), property.getPropertyType(), property.getPropertyPrice(), property.isBooked(), photoBytes,bookingInfo);
     }
 
     private List<BookedProperty> getAllBookingsByPropertyID(Long propertyID) {
@@ -120,7 +120,7 @@ public class PropertyController {
         List<Property> availableProperties = propertyService.getAvailableProperties(checkInDate, checkOutDate, propertyType);
         List<PropertyResponse> propertyResponses = new ArrayList<>();
         for (Property property: availableProperties){
-            byte[] photoBytes = propertyService.getPropertyPhotoByPropertyID(property.getPropertyID());
+            byte[] photoBytes = propertyService.getPropertyPhotoByPropertyID(property.getId());
             if (photoBytes != null && photoBytes.length > 0){
                 String photoBase64 = Base64.encodeBase64String(photoBytes);
                 PropertyResponse propertyResponse = getPropertyResponse(property);

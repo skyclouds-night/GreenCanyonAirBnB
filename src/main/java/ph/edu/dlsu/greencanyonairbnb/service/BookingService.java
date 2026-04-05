@@ -46,7 +46,7 @@ public class BookingService implements BookingServiceInt {
     }
     @Override
     public List<BookedProperty> getAllBookingsByPropertyID(long propertyID) {
-        return bookingRepository.findByPropertyID(propertyID);
+        return bookingRepository.findByPropertyId(propertyID);
     }
 
     private boolean propertyAvailable(BookedProperty bookingRequest, List<BookedProperty> existingBookings) {

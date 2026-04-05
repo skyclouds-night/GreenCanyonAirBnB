@@ -1,315 +1,104 @@
-/*main container*/
+/* Page 1: Main Container & Navbar */
 .main-container {
-    -fx-background-color: F8F3F1;
+    background-color: #F8F3F1; /* */
 }
 
-/*navigation bar*/
+.header {
+    display: flex;
+    width: 100%;
+    padding: 10px;
+}
+
+.header div {
+    padding: 10px;
+    text-align: center;
+}
+.hdr-col1 {
+    flex: 0 0 70%;
+}
+.hdr-col2 {
+    flex: 0 0 10%;
+}
+
+
+
 .navbar {
-    -fx-background-color: E5D9B6;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 5, 0, 0, 2);
+    background-color: #E5D9B6;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15); /* dropshadow mapping */
     max-width: 100%;
 }
 
 .navbar-name {
-    -fx-font-family: Georgia;
-    -fx-background-color: transparent;
-    -fx-border-color: transparent;
-    -fx-font-size: 35px;
-    -fx-text-fill: #40513b;
+    font-family: Georgia, serif;
+    background-color: transparent;
+    border: none;
+    font-size: 35px;
+    color: #40513b;
+    cursor: pointer;
 }
 
 .navbar-name:hover {
-    -fx-background-color: transparent;
-    -fx-text-fill: #6A7E3F;
-}
-
-.navbar-buttons {
-    -fx-font-family: Georgia;
-    -fx-background-color: transparent;
-    -fx-border-color: transparent;
-    -fx-font-size: 20px;
-    -fx-text-fill: #40513b;
-}
-
-.navbar-buttons:hover {
-    -fx-background-color:   transparent;
-    -fx-text-fill: #6A7E3F;
+    color: #6A7E3F;
 }
 
 .navbar-book-now {
-    -fx-font-family: Georgia;
-    -fx-font-size: 20px;
-    -fx-background-color: #40513b;
-    -fx-border-color: transparent;
-    -fx-text-fill: E5D9B6;
-    -fx-background-radius: 17;
+    font-family: Georgia;
+    font-size: 20px;
+    background-color: #40513b;
+    color: #E5D9B6;
+    border-radius: 17px;
+    border: none;
 }
-
-.navbar-book-now:hover {
-    -fx-background-color: #6A7E3F;
-}
-
-.scroll-pane {
-    -fx-background-color: transparent;
-}
-
-.scroll-pane > .viewport {
-    -fx-background-color: F8F3F1;
-}
-
+/* Page 2: StackPane & Search Bar */
 .stack-pane {
-    -fx-background-color: #40513b;
+    background-color: #40513b; /* */
 }
 
 .stack-pane-label {
-    -fx-font-family: "Lucida Calligraphy";
-    -fx-text-fill: E5D9B6;
-    -fx-font-size: 30px;
+    font-family: "Lucida Calligraphy", cursive;
+    color: #E5D9B6;
+    font-size: 30px;
 }
 
-.find-property-text {
-    -fx-font-family: Inter;
-    -fx-text-fill: #40513b;
-    -fx-font-size: 30px;
-    -fx-font-weight: bolder;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10,0,0,2);
-}
-
-/* search bar */
 .search-bar {
-    -fx-background-color: white;
-    -fx-padding: 15;
-    -fx-spacing: 30;
-    -fx-background-radius: 30;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10,0,0,2);
+    background-color: white;
+    padding: 15px;
+    display: flex;
+    gap: 30px; /* spacing mapping */
+    border-radius: 30px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 .search-btn {
-    -fx-background-color: #40513b;
-    -fx-text-fill: white;
-    -fx-background-radius: 20;
+    background-color: #40513b;
+    color: white;
+    border-radius: 20px;
+    border: none;
 }
-
-.search-btn:hover {
-    -fx-background-color: #6A7E3F;
-}
-
-.search-bar-title {
-    -fx-text-fill: #40513b;
-    -fx-font-size: 15px;
-    -fx-font-family: Georgia;
-    -fx-font-weight: bold;
-}
-
-.search-text-field {
-    -fx-border-color: transparent;
-    -fx-background-color: #ffffff;
-}
-
+/* Page 3 & 5: Listings */
 .vbox-listings {
-    -fx-background-color: #ebebeb;
-    -fx-background-radius: 20;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10,0,0,2);
+    background-color: #ebebeb;
+    border-radius: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* */
 }
 
 .property-name-button {
-    -fx-font-family: Georgia;
-    -fx-text-fill: #40513b;
-    -fx-font-size: 25px;
-    -fx-font-weight: bold;
-    -fx-background-color: transparent;
-    -fx-border-color: transparent;
-}
-
-.property-name-button:hover {
-    -fx-background-color: transparent;
-    -fx-text-fill: #6A7E3F;
-}
-
-.property-desc {
-    -fx-font-family: Georgia;
-    -fx-text-fill: #40513b;
-    -fx-font-size: 15px;
-    -fx-font-weight: 100;
-}
-
-.property-price {
-    -fx-font-family: Georgia;
-    -fx-text-fill: #40513b;
-    -fx-font-size: 23px;
-}
-
-.footer-title {
-    -fx-font-family: Georgia;
-    -fx-text-fill: #40513b;
-    -fx-font-size: 25px;
-    -fx-font-weight: bold;
-}
-
-.footer-info {
-    -fx-font-family: Georgia;
-    -fx-text-fill: #40513b;
-    -fx-font-size: 15px;
-    -fx-font-weight: 100;
-}
-
-.login-motto-button {
-    -fx-font-family: "Lucida Calligraphy";
-    -fx-font-size: 15px;
-    -fx-text-fill: #40513b;
-    -fx-background-color: transparent;
-    -fx-border-color: transparent;
-}
-
-.login-motto-button:hover {
-    -fx-background-color: transparent;
-    -fx-text-fill: #6A7E3F;
-}
-
-.login-text-field {
-    -fx-border-color: transparent;
-    -fx-background-color: #ffffff;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10,0,0,2);
-}
-
-.login-details {
-    -fx-font-family: Inter;
-    -fx-text-fill: #40513b;
-    -fx-font-size: 20px;
-    -fx-font-weight: bolder;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10,0,0,2);
-}
-
-.signup-button {
-    -fx-font-family: Georgia;
-    -fx-font-size: 15px;
-    -fx-text-fill: #40513b;
-    -fx-background-color: transparent;
-    -fx-border-color: transparent;
-}
-
-.signup-button:hover {
-    -fx-background-color: transparent;
-    -fx-text-fill: #6A7E3F;
-}
-
-.login-footer {
-    -fx-font-family: Georgia;
-    -fx-text-fill: #40513b;
-    -fx-font-size: 15px;
-    -fx-font-weight: bold;
-}
-
-.login-footer-info {
-    -fx-font-family: Georgia;
-    -fx-text-fill: #40513b;
-    -fx-font-size: 10px;
-    -fx-font-weight: 100;
-}
-
-.radio-button {
-    -fx-font-size: 15px;
-    -fx-text-fill: #40513b;
-    -fx-font-family: Georgia;
-    -fx-padding: 8 0;
-}
-
-.radio-button .radio {
-    -fx-background-color: white;
-    -fx-border-color: #ccc;
-    -fx-border-radius: 50%;
-    -fx-background-radius: 50%;
-    -fx-padding: 5;
-}
-
-.radio-button:selected .dot {
-    -fx-background-color: #40513b;
-}
-
-.radio-button:selected .radio {
-    -fx-border-color: #40513b;
-}
-
-.radio-button:hover .radio {
-    -fx-border-color: #6A7E3F;
+    font-family: Georgia;
+    color: #40513b;
+    font-size: 25px;
+    font-weight: bold;
+    background-color: transparent;
+    border: none;
 }
 
 .img {
-    -fx-background-radius: 50;
-    -fx-effect: dropshadow(gaussian, gray, 15, 0.3, 0, 4);
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(128, 128, 128, 0.3); /* gray shadow */
 }
 
-/*************************************************************************/
-/*Property Details*/
-
-.property-name {
-    -fx-font: Inter;
-    -fx-text-fill: #40513b;
-    -fx-font-size: 35px;
-    -fx-font-weight: bold;
-}
-
-.property-address {
-    -fx-font: Inter;
-    -fx-text-fill: #40513b;
-    -fx-font-size: 19px;
-}
-
-.image-stack {
-    -fx-background-color: #ebebeb;
-    -fx-background-radius: 20;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10,0,0,2);
-}
-
-.property-feature {
-    -fx-background-color: #ebebeb;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10,0,0,2);
-    -fx-background-radius: 20;
-}
-
-.property-price {
-    -fx-font: Inter;
-    -fx-text-fill: #40513b;
-    -fx-font-size: 25px;
-    -fx-font-weight: bold;
-}
-
-
-/* Reservation View */
-
-.book-now {
-    -fx-font-family: Georgia;
-    -fx-font-size: 15px;
-    -fx-background-color: #40513b;
-    -fx-border-color: transparent;
-    -fx-text-fill: E5D9B6;
-    -fx-background-radius: 17;
-}
-
-.booking {
-    -fx-background-color: #ffffff;
-    -fx-background-radius: 20;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10,0,0,2);
-    -fx-border-color: black;
-    -fx-border-radius: 20;
-}
-
-.booking-bruh {
-    -fx-text-fill: #40513b;
-    -fx-font-size: 20px;
-    -fx-font-family: Georgia;
-    -fx-font-weight: bold;
-}
-
-.reserve-button {
-    -fx-font-family: Georgia;
-    -fx-font-size: 20px;
-    -fx-background-color: #40513b;
-    -fx-border-color: transparent;
-    -fx-text-fill: E5D9B6;
-    -fx-background-radius: 17;
-}
-
-.reserve-button:hover {
-    -fx-background-color: #6A7E3F;
+.footer-title {
+    font-family: Georgia;
+    color: #40513b;
+    font-size: 25px;
+    font-weight: bold;
 }

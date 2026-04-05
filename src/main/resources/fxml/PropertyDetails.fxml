@@ -11,21 +11,21 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="800.0" maxWidth="1000.0" minHeight="800.0" minWidth="1000.0" prefHeight="800.0" prefWidth="1000.0" styleClass="main-container" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ph.edu.dlsu.greencanyonairbnb.controller.PropertyDetailsController">
+<BorderPane maxHeight="800.0" maxWidth="1000.0" minHeight="800.0" minWidth="1000.0" prefHeight="800.0" prefWidth="1000.0" styleClass="main-container" stylesheets="@css/styles.css" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ph.edu.dlsu.greencanyonairbnb.controller.PropertyDetailsController">
    <top>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0" styleClass="navbar" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="helloView" mnemonicParsing="false" onAction="#goToHelloView" styleClass="navbar-name" stylesheets="@../css/styles.css" text="GREEN CANYON" />
-            <Button fx:id="listingsView" mnemonicParsing="false" onAction="#goToListingsView" styleClass="navbar-buttons" stylesheets="@../css/styles.css" text="Properties" />
-            <Button mnemonicParsing="false" onAction="#goToLogin" styleClass="navbar-buttons" stylesheets="@../css/styles.css" text="Login" />
-            <Button mnemonicParsing="false" onAction="#goToReservation" styleClass="navbar-book-now" stylesheets="@../css/styles.css" text="Book Now" />
+            <Button fx:id="helloView" mnemonicParsing="false" onAction="#goToHelloView" styleClass="navbar-name" stylesheets="@css/styles.css" text="GREEN CANYON" />
+            <Button fx:id="listingsView" mnemonicParsing="false" onAction="#goToListingsView" styleClass="navbar-buttons" stylesheets="@css/styles.css" text="Properties" />
+            <Button mnemonicParsing="false" onAction="#goToLogin" styleClass="navbar-buttons" stylesheets="@css/styles.css" text="Login" />
+            <Button mnemonicParsing="false" onAction="#goToReservation" styleClass="navbar-book-now" stylesheets="@css/styles.css" text="Book Now" />
          </children>
       </HBox>
    </top>
    <center>
       <ScrollPane BorderPane.alignment="CENTER">
          <content>
-            <VBox alignment="TOP_CENTER" maxWidth="980.0" minWidth="980.0" prefWidth="980.0" spacing="20.0" stylesheets="@../css/styles.css">
+            <VBox alignment="TOP_CENTER" maxWidth="980.0" minWidth="980.0" prefWidth="980.0" spacing="20.0" stylesheets="@css/styles.css">
                <children>
                   <VBox prefHeight="100.0" prefWidth="100.0">
                      <children>
@@ -43,7 +43,7 @@
                               <Insets />
                            </HBox.margin>
                            <image>
-                              <Image url="@../static/airbnbpic1.jpg" />
+                              <Image url="@img/airbnbpic1.jpg" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="325.0" fitWidth="430.0" pickOnBounds="true" preserveRatio="true">
@@ -51,7 +51,7 @@
                               <Insets />
                            </HBox.margin>
                            <image>
-                              <Image url="@../static/airbnbpic1.jpg" />
+                              <Image url="@img/airbnbpic1.jpg" />
                            </image>
                         </ImageView>
                      </children>
@@ -81,7 +81,7 @@
                                  <children>
                                     <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../static/bed%20icon.png" />
+                                          <Image url="@img/bed%20icon.png" />
                                        </image>
                                     </ImageView>
                                     <Label text="Bedrooms" />
@@ -91,7 +91,7 @@
                                  <children>
                                     <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../static/bath%20icon.png" />
+                                          <Image url="@img/bath%20icon.png" />
                                        </image>
                                     </ImageView>
                                     <Label text="Bathrooms" />
@@ -101,7 +101,7 @@
                                  <children>
                                     <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../static/car%20icon.png" />
+                                          <Image url="@img/car%20icon.png" />
                                        </image>
                                     </ImageView>
                                     <Label text="Parking" />
@@ -111,7 +111,7 @@
                                  <children>
                                     <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../static/pet%20icon.png" />
+                                          <Image url="@img/pet%20icon.png" />
                                        </image>
                                     </ImageView>
                                     <Label text="Pets Allowed" />
@@ -122,7 +122,7 @@
                      </children>
                   </VBox>
                   <Region prefHeight="200.0" prefWidth="200.0" />
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0" styleClass="navbar" stylesheets="@../css/styles.css">
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0" styleClass="navbar" stylesheets="@css/styles.css">
                      <children>
                         <VBox alignment="CENTER" maxHeight="200.0" maxWidth="250.0" minHeight="200.0" minWidth="250.0" prefHeight="200.0" prefWidth="250.0" spacing="15.0">
                            <children>

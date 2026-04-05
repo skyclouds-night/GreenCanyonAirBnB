@@ -1,4 +1,4 @@
-package ph.edu.dlsu.greencanyonairbnb;
+package ph.edu.dlsu.greencanyonairbnb.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -20,7 +20,8 @@ public class Property {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long propertyID;
+
+    private Long id;
     private String propertyType;
     private BigDecimal propertyPrice;
     private boolean isBooked = false;

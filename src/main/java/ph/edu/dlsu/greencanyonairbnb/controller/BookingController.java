@@ -77,9 +77,12 @@ public class BookingController {
     }
 
     private BookingResponse getBookingResponse(BookedProperty booking) {
-        Property theProperty = propertyService.getPropertyByID(booking.getProperty().getPropertyID()).get();
-        PropertyResponse property = new PropertyResponse(theProperty.getPropertyID(), theProperty.getPropertyType(), theProperty.getPropertyPrice());
-        return new BookingResponse(booking.getBookingID(), booking.getCheckInDate(), booking.getCheckOutDate(), booking.getGuestName(), booking.getGuestEmail(), booking.getNumofGuests(), booking.getBookingConfirmationCode(), property);
+        Optional<Property> theProperty = propertyService.getPropertyByID(booking.getProperty().getId());
+        if(theProperty.isPresent()){
+            PropertyResponse property = new PropertyResponse(theProperty.get().getId(), theProperty.get().getPropertyType(), theProperty.get().getPropertyPrice());
+            return new BookingResponse(booking.getId(), booking.getCheckInDate(), booking.getCheckOutDate(), booking.getGuestName(), booking.getGuestEmail(), booking.getNumofGuests(), booking.getBookingConfirmationCode(), property);
+        }
+        return new BookingResponse();
 
     }
 }

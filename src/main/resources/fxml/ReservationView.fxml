@@ -10,14 +10,14 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="800.0" maxWidth="1000.0" minHeight="800.0" minWidth="1000.0" prefHeight="800.0" prefWidth="1000.0" styleClass="main-container" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ph.edu.dlsu.greencanyonairbnb.controller.ReservationView">
+<BorderPane maxHeight="800.0" maxWidth="1000.0" minHeight="800.0" minWidth="1000.0" prefHeight="800.0" prefWidth="1000.0" styleClass="main-container" stylesheets="@css/styles.css" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ph.edu.dlsu.greencanyonairbnb.controller.ReservationView">
    <top>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0" styleClass="navbar" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="helloView" mnemonicParsing="false" onAction="#goToHelloView" styleClass="navbar-name" stylesheets="@../css/styles.css" text="GREEN CANYON" />
-            <Button fx:id="listingsView" mnemonicParsing="false" onAction="#goToListingsView" styleClass="navbar-buttons" stylesheets="@../css/styles.css" text="Properties" />
-            <Button mnemonicParsing="false" onAction="#goToLogin" styleClass="navbar-buttons" stylesheets="@../css/styles.css" text="Login" />
-            <Button mnemonicParsing="false" onAction="#goToReservation" styleClass="navbar-book-now" stylesheets="@../css/styles.css" text="Book Now" />
+            <Button fx:id="helloView" mnemonicParsing="false" onAction="#goToHelloView" styleClass="navbar-name" stylesheets="@css/styles.css" text="GREEN CANYON" />
+            <Button fx:id="listingsView" mnemonicParsing="false" onAction="#goToListingsView" styleClass="navbar-buttons" stylesheets="@css/styles.css" text="Properties" />
+            <Button mnemonicParsing="false" onAction="#goToLogin" styleClass="navbar-buttons" stylesheets="@css/styles.css" text="Login" />
+            <Button mnemonicParsing="false" onAction="#goToReservation" styleClass="navbar-book-now" stylesheets="@css/styles.css" text="Book Now" />
          </children>
       </HBox>
    </top>
@@ -33,7 +33,7 @@
                            <children>
                               <ImageView fitHeight="250.0" fitWidth="350.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../static/airbnbpic1.jpg" />
+                                    <Image url="@img/airbnbpic1.jpg" />
                                  </image>
                               </ImageView>
                               <VBox minHeight="200.0" minWidth="400.0" prefHeight="200.0" prefWidth="400.0">

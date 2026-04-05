@@ -85,7 +85,8 @@ public class PropertyService implements PropertyServiceInt{
 
     @Override
     public Optional<Property> getPropertyByID(long propertyID) {
-        return Optional.of(propertyRepository.findById(propertyID).get());
+        Optional<Property> optionalProperty = propertyRepository.findById(propertyID);
+        return Optional.ofNullable(optionalProperty.orElse(null));
     }
 
     @Override

@@ -13,6 +13,7 @@ import java.util.HashSet;
 @Getter
 @Setter
 @NoArgsConstructor
+@Table(name = "app_users")
 public class User {
 
     @Id
