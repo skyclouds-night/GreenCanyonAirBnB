@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import ph.edu.dlsu.greencanyonairbnb.model.Property;
 import ph.edu.dlsu.greencanyonairbnb.repository.PropertyRepository;
 
+import java.util.Base64;
 import java.util.List;
 
 
@@ -23,7 +24,14 @@ public class PropertyService {
     }
 
     public List<Property> getAllProperties() {
-        return propertyRepository.findAll();
+        List<Property> properties = propertyRepository.findAllWithImages();
+        for (Property p : properties) {
+            if (p.getImage() != null && p.getImage().getImgData() != null) {
+                String base64 = Base64.getEncoder().encodeToString(p.getImage().getImgData());
+                p.setBase64Image(base64);
+            }
+        }
+        return properties;
     }
 
 

@@ -91,7 +91,7 @@
                 <div th:each="property : ${properties}">
                     <div class="hbox listings-row">
                         <div class="vbox vbox-listings">
-                            <img src="img/airbnbpic1.jpg" alt="Property" class="img">
+                            <img th:src="'data:image/jpeg;base64, + ${property.image.imageData}'" alt="Property" class="img">
                             <div>Name: <span th:text="${property.propertyName}"></span></div>
                             <div>Details: <span th:text="${property.propertyDetails}"></span></div>
                             <div>Price: <span th:text="${property.propertyPrice}"></span></div>

@@ -31,4 +31,9 @@ public class Property {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
+    @OneToOne(mappedBy = "property", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Image image;
+
+    @Transient
+    private String base64Image;
 }

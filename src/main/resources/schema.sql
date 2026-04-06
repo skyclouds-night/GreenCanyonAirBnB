@@ -18,3 +18,10 @@ CREATE TABLE IF NOT EXISTS app_properties (
     CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES app_users(user_id) ON DELETE CASCADE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     );
+
+CREATE TABLE IF NOT EXISTS property_images (
+    img_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    img_data LONGVARBINARY NOT NULL,
+    property_id BIGINT NOT NULL,
+    CONSTRAINT fk_property_id FOREIGN KEY (property_id) REFERENCES app_properties(property_id) ON DELETE CASCADE
+    );
