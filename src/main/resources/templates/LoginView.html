@@ -15,7 +15,7 @@
              class="login-logo"
              alt="Green Canyon Logo">
 
-        <button class="login-motto-button  no-border">
+        <button class="login-motto-button  no-border" onclick="window.location.href='/'">Login
             Your Perfect Travel Companion
         </button>
     </div>
@@ -25,15 +25,15 @@
 
         <div class="vbox login-field-group">
             <label class="login-details">Username</label>
-            <input type="text" class="login-text-field">
+            <input id="usernameVal" type="text" class="login-text-field">
         </div>
 
         <div class="vbox login-field-group">
             <label class="login-details">Password</label>
-            <input type="password" class="login-text-field">
+            <input id="passwordVal" type="password" class="login-text-field">
         </div>
 
-        <button class="navbar-book-now login-button">
+        <button id="loginBtn" class="navbar-book-now login-button">
             Log in
         </button>
 
@@ -66,6 +66,28 @@
     </div>
 
 </div>
-
+<script>
+    document.getElementById('loginBtn').addEventListener('click', function() {
+        const username = document.getElementById('usernameVal').value;
+        const password =  document.getElementById('passwordVal').value;
+        fetch('/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                username: username,
+                password: password
+            })
+        })
+            .then(response => {
+                if (response.ok) {
+                    window.location.href = "/"; // Redirect after success
+                } else {
+                    alert("Invalid Username or Password");
+                }
+            });
+    });
+</script>
 </body>
 </html>

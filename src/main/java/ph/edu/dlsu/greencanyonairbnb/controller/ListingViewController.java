@@ -18,6 +18,6 @@ public class ListingViewController {
     public String viewProperties(Model model) {
         List<Property> properties = propertyService.getAllProperties();
         model.addAttribute("properties", properties);
-        return "ListingView";//ListingView.html
+        return "ListingView"; //ListingView.html
     }
 }

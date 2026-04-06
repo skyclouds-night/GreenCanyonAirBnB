@@ -15,7 +15,7 @@
              class="login-logo"
              alt="Green Canyon Logo">
 
-        <button class="login-motto-button  no-border">
+        <button class="login-motto-button  no-border"  onclick="window.location.href='/'">
             Your Perfect Travel Companion
         </button>
     </div>
@@ -28,27 +28,27 @@
     ">
 
         <label class="login-details">Full Name</label>
-        <input type="text" class="login-text-field">
+        <input id="suFullname" type="text" class="login-text-field">
 
         <label class="login-details">Username</label>
-        <input type="text" class="login-text-field">
+        <input id="suUsername" type="text" class="login-text-field">
 
         <label class="login-details">Password</label>
-        <input type="password" class="login-text-field">
+        <input id="suPassword" type="password" class="login-text-field">
 
         <label class="login-details">Type of User</label>
 
         <label>
-            <input type="radio" name="userType" value="guest">
+            <input type="radio" name="userType" value="guest" checked>
             Guest
         </label>
 
         <label>
-            <input type="radio" name="userType" value="admin">
+            <input id="suAdmin" type="radio" name="userType" value="admin">
             Admin
         </label>
 
-        <button class="navbar-book-now" style="margin-left:160px;">
+        <button id="signupBtn" class="navbar-book-now" style="margin-left:160px;">
             Sign up
         </button>
 
@@ -82,5 +82,32 @@
 
 </div>
 
+<script>
+    document.getElementById('signupBtn').addEventListener('click', function() {
+        const username = document.getElementById('suUsername').value;
+        const password =  document.getElementById('suPassword').value;
+        const fullname = document.getElementById('suFullname').value;
+        const admin = document.getElementById('suAdmin').checked;
+        fetch('/signup', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                username: username,
+                password: password,
+                fullname: fullname,
+                role: admin ? 'admin' : 'user'
+            })
+        })
+            .then(response => {
+                if (response.ok) {
+                    window.location.href = "/"; // Redirect after success
+                } else {
+                    alert("username: " + username + " already exists!");
+                }
+            });
+    });
+</script>
 </body>
 </html>

@@ -7,20 +7,15 @@ import ph.edu.dlsu.greencanyonairbnb.model.Property;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface PropertyRepository extends JpaRepository<Property, Long> {
 
-    @Query("Select Distinct p.propertyType from Property p")
-    List<String> findDistinctPropertyTypes();
+    List<Property> findByUserId(Long userId);
 
-    @Query("Select p from Property p " +
-            "Where p.propertyType like %:propertyType% " +
-            "And p.ID not in (" +
-            "Select bp.property.id from BookedProperty bp " +
-            "Where ((bp.checkInDate <= :checkOutDate) and (bp.checkOutDate >= :checkInDate))" +
-            ")")
-
-    List<Property> findAvailablePropertiesByDatesAndType(LocalDate checkInDate, LocalDate checkOutDate, String propertyType);
+    Optional<Property> findByPropertyName(String name);
+    List<Property> findPropertiesByIsBooked(boolean isBooked);
+    List<Property> findAllByUserId(Long userId);
 
 }
