@@ -6,14 +6,13 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="800.0" maxWidth="1000.0" minHeight="800.0" minWidth="1000.0" prefHeight="800.0" prefWidth="1000.0" styleClass="main-container" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ph.edu.dlsu.greencanyonairbnb.controller.HelloViewController">
+<BorderPane maxHeight="800.0" maxWidth="1000.0" minHeight="800.0" minWidth="1000.0" prefHeight="800.0" prefWidth="1000.0" styleClass="main-container" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ph.edu.dlsu.greencanyonairbnb.controller.HelloViewController">
     <center>
         <ScrollPane fitToWidth="true" pannable="true" BorderPane.alignment="CENTER">
             <content>
@@ -30,11 +29,7 @@
                                         </Label>
                                     </children>
                                 </StackPane>
-                                <ImageView fitHeight="300.0" fitWidth="550.0" pickOnBounds="true">
-                                    <image>
-                                        <Image url="@../static/airbnbpic.jpg" />
-                                    </image>
-                                </ImageView>
+                                <ImageView fitHeight="300.0" fitWidth="550.0" pickOnBounds="true" />
                             </children>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" stylesheets="@../css/styles.css">
@@ -115,9 +110,6 @@
                                 <VBox maxHeight="270.0" maxWidth="250.0" minHeight="270.0" minWidth="250.0" prefHeight="270.0" prefWidth="250.0" spacing="12.0" styleClass="vbox-listings" stylesheets="@../css/styles.css">
                                     <children>
                                         <ImageView fitHeight="120.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true" styleClass="img">
-                                            <image>
-                                                <Image url="@../static/airbnbpic.jpg" />
-                                            </image>
                                             <VBox.margin>
                                                 <Insets left="35.0" top="10.0" />
                                             </VBox.margin>
@@ -138,9 +130,6 @@
                                 <VBox maxHeight="270.0" maxWidth="250.0" minHeight="270.0" minWidth="250.0" prefHeight="270.0" prefWidth="250.0" spacing="12.0" styleClass="vbox-listings">
                                     <children>
                                         <ImageView fitHeight="120.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true" styleClass="img">
-                                            <image>
-                                                <Image url="@../static/airbnbpic.jpg" />
-                                            </image>
                                             <VBox.margin>
                                                 <Insets left="35.0" top="10.0" />
                                             </VBox.margin>
@@ -165,9 +154,6 @@
                                 <VBox maxHeight="270.0" maxWidth="250.0" minHeight="270.0" minWidth="250.0" prefHeight="270.0" prefWidth="250.0" spacing="12.0" styleClass="vbox-listings">
                                     <children>
                                         <ImageView fitHeight="120.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true" styleClass="img">
-                                            <image>
-                                                <Image url="@../static/airbnbpic1.jpg" />
-                                            </image>
                                             <VBox.margin>
                                                 <Insets left="35.0" top="10.0" />
                                             </VBox.margin>
@@ -188,9 +174,6 @@
                                 <VBox maxHeight="270.0" maxWidth="250.0" minHeight="270.0" minWidth="250.0" prefHeight="270.0" prefWidth="250.0" spacing="12.0" styleClass="vbox-listings">
                                     <children>
                                         <ImageView fitHeight="120.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true" styleClass="img">
-                                            <image>
-                                                <Image url="@../static/airbnbpic1.jpg" />
-                                            </image>
                                             <VBox.margin>
                                                 <Insets left="35.0" top="10.0" />
                                             </VBox.margin>
@@ -249,7 +232,7 @@
                 <Button fx:id="helloView" mnemonicParsing="false" onAction="#goToHelloView" styleClass="navbar-name" stylesheets="@../css/styles.css" text="GREEN CANYON" />
                 <Button fx:id="listingsView" mnemonicParsing="false" onAction="#goToListingsView" styleClass="navbar-buttons" stylesheets="@../css/styles.css" text="Properties" />
                 <Button mnemonicParsing="false" onAction="#goToLogin" styleClass="navbar-buttons" stylesheets="@../css/styles.css" text="Login" />
-                <Button mnemonicParsing="false" onAction="#goToReservation" styleClass="navbar-book-now" stylesheets="@../css/styles.css" text="Book Now" />
+                <Button mnemonicParsing="false" styleClass="navbar-book-now" stylesheets="@../css/styles.css" text="Book Now" />
             </children>
         </HBox>
     </top>
