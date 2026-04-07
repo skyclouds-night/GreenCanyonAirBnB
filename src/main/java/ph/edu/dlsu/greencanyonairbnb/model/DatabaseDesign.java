@@ -123,13 +123,13 @@ public class DatabaseDesign {
 
                 // Payment Methods
                 stmt.executeUpdate(
-                        "CREATE TABLE payment_accounts (" +
+                        "CREATE TABLE IF NOT EXISTS payment_accounts (" +
                         "id INT AUTO_INCREMENT PRIMARY KEY," +
                         "admin_id INT NOT NULL," +
                         "method ENUM('GCash','Maya','QRPh') NOT NULL," + //GCash, Maya, QRPh
                         "account_name VARCHAR(100)," +
                         "account_number VARCHAR(50)," +
-                        "qr_image_path TEXT,"  +
+                        "qr_image LONGBLOB,"  +
                         "is_active BOOLEAN DEFAULT TRUE,"  +
                         "created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)" );
 
