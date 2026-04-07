@@ -39,12 +39,16 @@
 			<artifactId>spring-boot-starter-webmvc</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.openjfx</groupId>
-			<artifactId>javafx</artifactId>
-			<version>11</version>
-			<type>pom</type>
-			<scope>compile</scope>
-		</dependency>
+		<groupId>org.openjfx</groupId>
+		<artifactId>javafx-controls</artifactId>
+		<version>21</version>
+	</dependency>
+
+	<dependency>
+		<groupId>org.openjfx</groupId>
+		<artifactId>javafx-fxml</artifactId>
+		<version>21</version>
+	</dependency>
 
 		<dependency>
 			<groupId>com.mysql</groupId>
