@@ -81,7 +81,7 @@
                                  <children>
                                     <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../img/bed%20icon.png" />
+                                          <Image url="@../img/bed icon.png" />
                                        </image>
                                     </ImageView>
                                     <Label styleClass="search-bar-title" text="Bedrooms" />
@@ -91,7 +91,7 @@
                                  <children>
                                     <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../img/bath%20icon.png" />
+                                          <Image url="@../img/bath icon.png" />
                                        </image>
                                     </ImageView>
                                     <Label styleClass="search-bar-title" text="Bathrooms" />
@@ -101,7 +101,7 @@
                                  <children>
                                     <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../img/car%20icon.png" />
+                                          <Image url="@../img/car icon.png" />
                                        </image>
                                     </ImageView>
                                     <Label styleClass="search-bar-title" text="Parking" />
@@ -111,7 +111,7 @@
                                  <children>
                                     <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../img/pet%20icon.png" />
+                                          <Image url="@../img/pet icon.png" />
                                        </image>
                                     </ImageView>
                                     <Label styleClass="search-bar-title" text="Pets Allowed" />
