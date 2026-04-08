@@ -6,11 +6,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 
 public class ReservationViewController {
@@ -49,5 +53,19 @@ public class ReservationViewController {
         root = FXMLLoader.load(getClass().getResource("/fxml/ReservationView.fxml"));
         switchScene(event);
     }
+
+//    @FXML
+//    private DatePicker datePicker;
+//
+//    @FXML
+//    private Label selectedDate;
+//
+//    @FXML
+//    void datePicker(ActionEvent evt) {
+//        LocalDate localDate = datePicker.getValue();
+//        String pattern = "MMMM dd, yyyy";
+//        String datePattern = localDate.format(DateTimeFormatter.ofPattern(""));
+//        selectedDate.setText("Selected Date: " +datePicker.getValue().toString());
+//    }
 
 }

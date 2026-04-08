@@ -51,4 +51,5 @@ public class HelloViewController {
         root = FXMLLoader.load(getClass().getResource("/fxml/PropertyDetails.fxml"));
         switchScene(event);
     }
+
 }

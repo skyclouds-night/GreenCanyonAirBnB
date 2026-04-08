@@ -53,10 +53,4 @@ public class ListingViewController {
         switchScene(event);
     }
 
-    @FXML
-    private void goToReservation(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/fxml/ListingsView.fxml"));
-        switchScene(event);
-    }
-
 }

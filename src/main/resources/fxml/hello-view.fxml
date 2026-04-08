@@ -10,21 +10,12 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="800.0" maxWidth="1000.0" minHeight="800.0" minWidth="1000.0" prefHeight="800.0" prefWidth="1000.0" styleClass="main-container" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ph.edu.dlsu.greencanyonairbnb.controller.HelloViewController">
-    <top>
-        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0" styleClass="navbar" stylesheets="@/css/styles.css" BorderPane.alignment="CENTER">
-            <children>
-                <Button fx:id="helloView" mnemonicParsing="false" onAction="#goToHelloView" styleClass="navbar-name" stylesheets="@../css/styles.css" text="GREEN CANYON" />
-                <Button fx:id="listingsView" mnemonicParsing="false" onAction="#goToListingsView" styleClass="navbar-buttons" stylesheets="@../css/styles.css" text="Properties" />
-                <Button mnemonicParsing="false" onAction="#goToLogin" styleClass="navbar-buttons" stylesheets="@../css/styles.css" text="Login" />
-                <Button mnemonicParsing="false" styleClass="navbar-book-now" stylesheets="@../css/styles.css" text="Book Now" />
-            </children>
-        </HBox>
-    </top>
-   <right>
+<BorderPane maxHeight="800.0" maxWidth="1000.0" minHeight="800.0" minWidth="1000.0" prefHeight="800.0" prefWidth="1000.0" styleClass="main-container" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ph.edu.dlsu.greencanyonairbnb.controller.HelloViewController">
+    <center>
         <ScrollPane fitToWidth="true" pannable="true" BorderPane.alignment="CENTER">
             <content>
                 <VBox alignment="TOP_CENTER" maxWidth="980.0" minWidth="980.0" prefWidth="980.0" spacing="20.0" stylesheets="@../css/styles.css">
@@ -128,15 +119,10 @@
                                                 <Insets left="35.0" top="10.0" />
                                             </VBox.margin>
                                  <image>
-                                    <Image url="@../img/airbnbpic1.jpg" />
+                                    <Image url="@../img/airbnbpic.jpg" />
                                  </image>
                                         </ImageView>
                                         <Button mnemonicParsing="false" onAction="#goToPropertyDetails" styleClass="property-name-button" text="Property Name" />
-                                        <Label styleClass="property-desc" text="Description of the property">
-                                            <VBox.margin>
-                                                <Insets left="15.0" />
-                                            </VBox.margin>
-                                        </Label>
                                         <Label styleClass="property-price" text="Price">
                                             <VBox.margin>
                                                 <Insets left="15.0" />
@@ -151,15 +137,10 @@
                                                 <Insets left="35.0" top="10.0" />
                                             </VBox.margin>
                                  <image>
-                                    <Image url="@../img/airbnbpic1.jpg" />
+                                    <Image url="@../img/airbnbpic.jpg" />
                                  </image>
                                         </ImageView>
-                                        <Button mnemonicParsing="false" onAction="#goToListingsView" styleClass="property-name-button" text="Property Name" />
-                                        <Label styleClass="property-desc" text="Description of the property">
-                                            <VBox.margin>
-                                                <Insets left="15.0" />
-                                            </VBox.margin>
-                                        </Label>
+                                        <Button mnemonicParsing="false" onAction="#goToPropertyDetails" styleClass="property-name-button" text="Property Name" />
                                         <Label styleClass="property-price" text="Price">
                                             <VBox.margin>
                                                 <Insets left="15.0" />
@@ -178,15 +159,10 @@
                                                 <Insets left="35.0" top="10.0" />
                                             </VBox.margin>
                                  <image>
-                                    <Image url="@../img/airbnbpic1.jpg" />
+                                    <Image url="@../img/airbnbpic.jpg" />
                                  </image>
                                         </ImageView>
-                                        <Button mnemonicParsing="false" onAction="#goToListingsView" styleClass="property-name-button" text="Property Name" />
-                                        <Label styleClass="property-desc" text="Description of the property">
-                                            <VBox.margin>
-                                                <Insets left="15.0" />
-                                            </VBox.margin>
-                                        </Label>
+                                        <Button mnemonicParsing="false" onAction="#goToPropertyDetails" styleClass="property-name-button" text="Property Name" />
                                         <Label styleClass="property-price" text="Price">
                                             <VBox.margin>
                                                 <Insets left="15.0" />
@@ -201,15 +177,10 @@
                                                 <Insets left="35.0" top="10.0" />
                                             </VBox.margin>
                                  <image>
-                                    <Image url="@../img/airbnbpic1.jpg" />
+                                    <Image url="@../img/airbnbpic.jpg" />
                                  </image>
                                         </ImageView>
-                                        <Button mnemonicParsing="false" onAction="#goToListingsView" styleClass="property-name-button" text="Property Name" />
-                                        <Label styleClass="property-desc" text="Description of the property">
-                                            <VBox.margin>
-                                                <Insets left="15.0" />
-                                            </VBox.margin>
-                                        </Label>
+                                        <Button mnemonicParsing="false" onAction="#goToPropertyDetails" styleClass="property-name-button" text="Property Name" />
                                         <Label styleClass="property-price" text="Price">
                                             <VBox.margin>
                                                 <Insets left="15.0" />
@@ -219,6 +190,7 @@
                                 </VBox>
                             </children>
                         </HBox>
+                  <Region prefHeight="50.0" prefWidth="200.0" />
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0" styleClass="navbar" stylesheets="@../css/styles.css">
                             <children>
                                 <VBox alignment="CENTER" maxHeight="200.0" maxWidth="250.0" minHeight="200.0" minWidth="250.0" prefHeight="200.0" prefWidth="250.0" spacing="15.0">
@@ -251,5 +223,15 @@
                 </VBox>
             </content>
         </ScrollPane>
-   </right>
+    </center>
+    <top>
+        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0" styleClass="navbar" stylesheets="@/css/styles.css" BorderPane.alignment="CENTER">
+            <children>
+                <Button fx:id="helloView" mnemonicParsing="false" onAction="#goToHelloView" styleClass="navbar-name" stylesheets="@../css/styles.css" text="GREEN CANYON" />
+                <Button fx:id="listingsView" mnemonicParsing="false" onAction="#goToListingsView" styleClass="navbar-buttons" stylesheets="@../css/styles.css" text="Properties" />
+                <Button mnemonicParsing="false" onAction="#goToLogin" styleClass="navbar-buttons" stylesheets="@../css/styles.css" text="Login" />
+                <Button mnemonicParsing="false" styleClass="navbar-book-now" stylesheets="@../css/styles.css" text="Account" />
+            </children>
+        </HBox>
+    </top>
 </BorderPane>
