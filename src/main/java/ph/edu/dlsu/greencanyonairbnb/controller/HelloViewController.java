@@ -23,13 +23,13 @@ public class HelloViewController {
 
     @FXML
     private void goToHelloView(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/ph/edu/dlsu/greencanyonairbnb/hello-view.fxml"));
+        root = FXMLLoader.load(getClass().getResource("/fxml/hello-view.fxml"));
         switchScene(event);
     }
 
     @FXML
     private void goToListingsView(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/ph/edu/dlsu/greencanyonairbnb/ListingsView.fxml"));
+        root = FXMLLoader.load(getClass().getResource("/fxml/ListingsView.fxml"));
         switchScene(event);
     }
 
@@ -42,7 +42,7 @@ public class HelloViewController {
 
     @FXML
     private void goToLogin(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/ph/edu/dlsu/greencanyonairbnb/LoginView.fxml"));
+        root = FXMLLoader.load(getClass().getResource("/fxml/LoginView.fxml"));
         switchScene(event);
     }
 }
