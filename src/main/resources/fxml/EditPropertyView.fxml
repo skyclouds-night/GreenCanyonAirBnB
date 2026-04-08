@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+
+<BorderPane maxHeight="800.0" maxWidth="1000.0" minHeight="800.0" minWidth="1000.0" prefHeight="800.0" prefWidth="1000.0" styleClass="main-container" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0" styleClass="navbar" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="helloView" mnemonicParsing="false" onAction="#goToHelloView" styleClass="navbar-name" stylesheets="@../css/styles.css" text="GREEN CANYON" />
+            <Button fx:id="listingsView" mnemonicParsing="false" onAction="#goToListingsView" styleClass="navbar-buttons" stylesheets="@../css/styles.css" text="Properties" />
+            <Button mnemonicParsing="false" onAction="#goToLogin" styleClass="navbar-buttons" stylesheets="@../css/styles.css" text="Login" />
+            <Button mnemonicParsing="false" onAction="#goToReservation" styleClass="navbar-book-now" stylesheets="@../css/styles.css" text="Book Now" />
+         </children>
+      </HBox>
+   </top>
+   <center>
+      <ScrollPane BorderPane.alignment="CENTER">
+         <content>
+            <VBox maxWidth="980.0" minWidth="980.0" prefWidth="980.0" spacing="25.0">
+               <children>
+                  <Label styleClass="property-name" text="What kind of place will you host?">
+                     <padding>
+                        <Insets left="30.0" />
+                     </padding>
+                  </Label>
+                  <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" spacing="25.0">
+                     <children>
+                        <RadioButton mnemonicParsing="false" text="Apartment" />
+                        <RadioButton mnemonicParsing="false" text="Flat" />
+                        <RadioButton mnemonicParsing="false" text="Room" />
+                        <RadioButton mnemonicParsing="false" text="Villa" />
+                     </children>
+                     <padding>
+                        <Insets left="50.0" />
+                     </padding>
+                  </HBox>
+                  <Label styleClass="property-name" text="Add a short description of your place.">
+                     <padding>
+                        <Insets left="30.0" />
+                     </padding>
+                  </Label>
+                  <TextArea maxWidth="650.0" minWidth="650.0" prefHeight="100.0" prefWidth="650.0">
+                     <VBox.margin>
+                        <Insets left="50.0" />
+                     </VBox.margin>
+                  </TextArea>
+                  <Label styleClass="property-name" text="Add facilities available at your place.">
+                     <padding>
+                        <Insets left="30.0" />
+                     </padding>
+                  </Label>
+                  <HBox prefHeight="20.0" prefWidth="200.0" spacing="20.0">
+                     <children>
+                        <Label styleClass="search-bar-title" text="Bedrooms:" />
+                        <TextField />
+                     </children>
+                     <padding>
+                        <Insets left="50.0" />
+                     </padding>
+                  </HBox>
+                  <HBox prefHeight="20.0" prefWidth="200.0" spacing="20.0">
+                     <children>
+                        <Label styleClass="search-bar-title" text="Bathrooms:" />
+                        <TextField />
+                     </children>
+                     <padding>
+                        <Insets left="50.0" />
+                     </padding>
+                  </HBox>
+                  <HBox prefHeight="20.0" prefWidth="200.0" spacing="20.0">
+                     <children>
+                        <Label styleClass="search-bar-title" text="Parking:" />
+                        <TextField />
+                     </children>
+                     <padding>
+                        <Insets left="50.0" />
+                     </padding>
+                  </HBox>
+                  <HBox prefHeight="20.0" prefWidth="200.0" spacing="20.0">
+                     <children>
+                        <Label styleClass="search-bar-title" text="Pets Allowed:" />
+                        <TextField />
+                     </children>
+                     <padding>
+                        <Insets left="50.0" />
+                     </padding>
+                  </HBox>
+                  <Button mnemonicParsing="false" styleClass="navbar-book-now" text="Save">
+                     <VBox.margin>
+                        <Insets left="470.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Region prefHeight="50.0" prefWidth="200.0" />
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0" styleClass="navbar" stylesheets="@../css/styles.css">
+                     <children>
+                        <VBox alignment="CENTER" maxHeight="200.0" maxWidth="250.0" minHeight="200.0" minWidth="250.0" prefHeight="200.0" prefWidth="250.0" spacing="15.0">
+                           <children>
+                              <Label styleClass="footer-title" text="Location" />
+                              <Label styleClass="footer-info" text="Taft Avenue, Manila" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" maxHeight="200.0" maxWidth="250.0" minHeight="200.0" minWidth="250.0" prefHeight="200.0" prefWidth="250.0" spacing="15.0">
+                           <children>
+                              <Label styleClass="footer-title" text="Contact Number" />
+                              <Label styleClass="footer-info" text="+63 (912) 345 6789" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" maxHeight="200.0" maxWidth="250.0" minHeight="200.0" minWidth="250.0" prefHeight="200.0" prefWidth="250.0" spacing="15.0">
+                           <children>
+                              <Label styleClass="footer-title" text="Email" />
+                              <Label styleClass="footer-info" text="greencanyon@gmail.com" />
+                           </children>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </center>
+</BorderPane>
