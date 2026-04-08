@@ -314,6 +314,15 @@
     -fx-background-color: #6A7E3F;
 }
 
-.save-button {
+.notif {
+    -fx-text-fill: #40513b;
+    -fx-font-size: 30px;
+    -fx-font-family: Georgia;
+    -fx-font-weight: bold;
+}
 
+.notif-deets {
+    -fx-text-fill: #40513b;
+    -fx-font-size: 20px;
+    -fx-font-family: Georgia;
 }

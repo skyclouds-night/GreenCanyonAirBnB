@@ -7,6 +7,7 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
@@ -35,10 +36,13 @@
                   </Label>
                   <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" spacing="25.0">
                      <children>
-                        <RadioButton mnemonicParsing="false" text="Apartment" />
-                        <RadioButton mnemonicParsing="false" text="Flat" />
-                        <RadioButton mnemonicParsing="false" text="Room" />
-                        <RadioButton mnemonicParsing="false" text="Villa" />
+                        <RadioButton mnemonicParsing="false" text="Apartment">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="place" />
+                           </toggleGroup></RadioButton>
+                        <RadioButton mnemonicParsing="false" text="Flat" toggleGroup="$place" />
+                        <RadioButton mnemonicParsing="false" text="Room" toggleGroup="$place" />
+                        <RadioButton mnemonicParsing="false" text="Villa" toggleGroup="$place" />
                      </children>
                      <padding>
                         <Insets left="50.0" />

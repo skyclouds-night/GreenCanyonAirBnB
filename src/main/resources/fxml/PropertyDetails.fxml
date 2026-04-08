@@ -18,7 +18,7 @@
             <Button fx:id="helloView" mnemonicParsing="false" onAction="#goToHelloView" styleClass="navbar-name" stylesheets="@../css/styles.css" text="GREEN CANYON" />
             <Button fx:id="listingsView" mnemonicParsing="false" onAction="#goToListingsView" styleClass="navbar-buttons" stylesheets="@../css/styles.css" text="Properties" />
             <Button mnemonicParsing="false" onAction="#goToLogin" styleClass="navbar-buttons" stylesheets="@../css/styles.css" text="Login" />
-            <Button mnemonicParsing="false" onAction="#goToReservation" styleClass="navbar-book-now" stylesheets="@../css/styles.css" text="Account" />
+            <Button mnemonicParsing="false" onAction="#goToAccount" styleClass="navbar-book-now" stylesheets="@../css/styles.css" text="Account" />
          </children>
       </HBox>
    </top>
@@ -38,7 +38,7 @@
                   </VBox>
                   <HBox alignment="CENTER" maxHeight="350.0" maxWidth="925.0" minHeight="350.0" minWidth="925.0" prefHeight="350.0" prefWidth="925.0" spacing="10.0" styleClass="image-stack">
                      <children>
-                        <ImageView fitHeight="325.0" fitWidth="430.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="325.0" fitWidth="430.0" pickOnBounds="true" preserveRatio="true" styleClass="img">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
@@ -46,7 +46,7 @@
                               <Image url="@../img/airbnbpic.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="325.0" fitWidth="430.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="325.0" fitWidth="430.0" pickOnBounds="true" preserveRatio="true" styleClass="img">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>

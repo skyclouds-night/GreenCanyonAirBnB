@@ -46,5 +46,11 @@ public class PropertyDetailsViewController {
         switchScene(event);
     }
 
+    @FXML
+    private void goToAccount(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("/fxml/GuestAccountView.fxml"));
+        switchScene(event);
+    }
+
 
 }

@@ -230,7 +230,7 @@
                 <Button fx:id="helloView" mnemonicParsing="false" onAction="#goToHelloView" styleClass="navbar-name" stylesheets="@../css/styles.css" text="GREEN CANYON" />
                 <Button fx:id="listingsView" mnemonicParsing="false" onAction="#goToListingsView" styleClass="navbar-buttons" stylesheets="@../css/styles.css" text="Properties" />
                 <Button mnemonicParsing="false" onAction="#goToLogin" styleClass="navbar-buttons" stylesheets="@../css/styles.css" text="Login" />
-                <Button mnemonicParsing="false" styleClass="navbar-book-now" stylesheets="@../css/styles.css" text="Account" />
+                <Button mnemonicParsing="false" onAction="#goToAccount" styleClass="navbar-book-now" stylesheets="@../css/styles.css" text="Account" />
             </children>
         </HBox>
     </top>

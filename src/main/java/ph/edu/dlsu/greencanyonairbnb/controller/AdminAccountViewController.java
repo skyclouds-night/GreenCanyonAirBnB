@@ -6,19 +6,16 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import java.util.List;
 
-
-public class ReservationViewController {
+public class AdminAccountViewController {
 
     private Stage stage;
     private Scene scene;
@@ -47,40 +44,6 @@ public class ReservationViewController {
     private void goToLogin(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("/fxml/LoginView.fxml"));
         switchScene(event);
-    }
-
-    @FXML
-    private void goToReservation(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/fxml/ReservationView.fxml"));
-        switchScene(event);
-    }
-
-    @FXML
-    private DatePicker datePicker;
-
-    @FXML
-    private Label selectedDate;
-
-    @FXML
-    void datePicker(ActionEvent evt) {
-        LocalDate localDate = datePicker.getValue();
-        String pattern = "MMMM dd, yyyy";
-        String datePattern = localDate.format(DateTimeFormatter.ofPattern(pattern));
-        selectedDate.setText("Selected Date: " +datePattern);
-    }
-
-    @FXML
-    private Label selectedDate1;
-
-    @FXML
-    private DatePicker datePicker1;
-
-    @FXML
-    void datePicker1(ActionEvent evt) {
-        LocalDate localDate = datePicker1.getValue();
-        String pattern = "MMMM dd, yyyy";
-        String datePattern = localDate.format(DateTimeFormatter.ofPattern(pattern));
-        selectedDate1.setText("Selected Date: " +datePattern);
     }
 
     @FXML

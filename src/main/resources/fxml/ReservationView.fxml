@@ -2,9 +2,11 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -19,7 +21,7 @@
             <Button fx:id="helloView" mnemonicParsing="false" onAction="#goToHelloView" styleClass="navbar-name" stylesheets="@../css/styles.css" text="GREEN CANYON" />
             <Button fx:id="listingsView" mnemonicParsing="false" onAction="#goToListingsView" styleClass="navbar-buttons" stylesheets="@../css/styles.css" text="Properties" />
             <Button mnemonicParsing="false" onAction="#goToLogin" styleClass="navbar-buttons" stylesheets="@../css/styles.css" text="Login" />
-            <Button mnemonicParsing="false" styleClass="navbar-book-now" stylesheets="@../css/styles.css" text="Account" />
+            <Button mnemonicParsing="false" onAction="#goToAccount" styleClass="navbar-book-now" stylesheets="@../css/styles.css" text="Account" />
          </children>
       </HBox>
    </top>
@@ -33,7 +35,7 @@
                         <Label styleClass="property-name" text="Booking Details" />
                         <HBox minHeight="250.0" minWidth="200.0" prefHeight="250.0" prefWidth="200.0" spacing="20.0">
                            <children>
-                              <ImageView fitHeight="250.0" fitWidth="350.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="250.0" fitWidth="350.0" pickOnBounds="true" preserveRatio="true" styleClass="img">
                                  <image>
                                     <Image url="@../img/airbnbpic.jpg" />
                                  </image>
@@ -48,23 +50,47 @@
                         </HBox>
                         <HBox prefHeight="50.0" prefWidth="200.0" spacing="50.0">
                            <children>
-                              <Label styleClass="booking-bruh" text="Check In Date" />
-                              <VBox>
+                              <Label styleClass="booking-bruh" text="Check In Date:" />
+                              <VBox spacing="10.0">
                                  <children>
-                                    <ComboBox fx:id="datePicker" editable="true" onAction="#datePicker" prefHeight="30.0" prefWidth="220.0" promptText="Enter your check-in date" />
-                                    <Label fx:id="selectedDate" text="Selected Date" />
+                                    <DatePicker fx:id="datePicker" onAction="#datePicker" prefHeight="30.0" prefWidth="200.0" promptText="Choose your check-in date" />
+                                    <Label fx:id="selectedDate" styleClass="property-desc" text="Selected Date" />
                                  </children>
                               </VBox>
                            </children>
                         </HBox>
-                        <HBox prefHeight="50.0" prefWidth="200.0">
+                        <HBox prefHeight="50.0" prefWidth="200.0" spacing="50.0">
                            <children>
-                              <Label styleClass="booking-bruh" text="Check Out Date" />
+                              <Label styleClass="booking-bruh" text="Check Out Date:" />
+                              <VBox spacing="10.0">
+                                 <children>
+                                    <DatePicker fx:id="datePicker1" onAction="#datePicker1" prefHeight="30.0" prefWidth="200.0" promptText="Choose your check-in date" />
+                                    <Label fx:id="selectedDate1" styleClass="property-desc" text="Selected Date" />
+                                 </children>
+                              </VBox>
                            </children>
                         </HBox>
-                        <HBox prefHeight="50.0" prefWidth="200.0">
+                        <HBox prefHeight="50.0" prefWidth="200.0" spacing="50.0">
                            <children>
-                              <Label styleClass="booking-bruh" text="Amount to pay" />
+                              <Label styleClass="booking-bruh" text="Amount to pay:" />
+                              <Label styleClass="property-desc" text="PHP" />
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="50.0" prefWidth="200.0" spacing="50.0">
+                           <children>
+                              <Label styleClass="booking-bruh" text="Amount of guests:" />
+                              <Label styleClass="property-desc" text="_ Guests" />
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="50.0">
+                           <children>
+                              <Label styleClass="booking-bruh" text="Mode of Payment:" />
+                              <RadioButton mnemonicParsing="false" text="GCash">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="mop" />
+                                 </toggleGroup>
+                              </RadioButton>
+                              <RadioButton mnemonicParsing="false" text="Cash on Hand" toggleGroup="$mop" />
                            </children>
                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0" spacing="200.0">
@@ -73,7 +99,7 @@
                               <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                            </children>
                         </HBox>
-                        <VBox alignment="CENTER" prefHeight="50.0" prefWidth="100.0">
+                        <VBox alignment="CENTER" prefHeight="100.0" prefWidth="100.0">
                            <children>
                               <Button mnemonicParsing="false" styleClass="reserve-button" text="Confirm" />
                            </children>
