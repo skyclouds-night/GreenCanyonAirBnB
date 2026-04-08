@@ -5,11 +5,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import ph.edu.dlsu.greencanyonairbnb.model.DatabaseDesign;
 
 import java.io.IOException;
 
 
 public class GreenCanyonAirBnBApplication extends Application {
+
+
     @Override
     public void start (Stage stage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/hello-view.fxml"));
@@ -21,6 +24,8 @@ public class GreenCanyonAirBnBApplication extends Application {
     }
 
     public static void main(String[] args) {
+        DatabaseDesign.initialize();
+
         launch(args);
     }
 

@@ -1,5 +1,12 @@
 package ph.edu.dlsu.greencanyonairbnb.model;
 
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -11,7 +18,8 @@ public class DatabaseDesign {
     private static final String USER = "avnadmin";
     private static final String PASSWORD = "AVNS_5sND-yAwDsrsP5yiXoI";
 
-    public static void main(String[] args) {
+
+    public static void initialize() {
         try {
             // Load MySQL driver
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -135,6 +143,20 @@ public class DatabaseDesign {
 
                 System.out.println("Database tables created successfully.");
 
+                //Sample Admin Id
+                stmt.executeUpdate(
+                        "INSERT IGNORE INTO Users (first_name, last_name, email, password_has, role)" +
+                        "VALUES ('Admin', 'AdminL', 'joshua_quebrata@dlsu.edu.ph', 'admin_pass', 'admin')"
+                );
+                //Sample Property
+                stmt.executeUpdate(
+                        "INSERT IGNORE INTO Properties (admin_id, property_name, description, address, price_per_night, max_guests)" +
+                                "VALUES (1, 'Test Airbnb', 'Somewhere me thinks', 'Taft Avenue, Manila', '5000', 4)"
+                );
+
+                System.out.println("Sample Admin and Property Created");
+
+
             }
 
         } catch (ClassNotFoundException e) {
@@ -144,5 +166,6 @@ public class DatabaseDesign {
             System.err.println("SQL Error: " + e.getMessage());
             e.printStackTrace();
         }
+
     }
 }
