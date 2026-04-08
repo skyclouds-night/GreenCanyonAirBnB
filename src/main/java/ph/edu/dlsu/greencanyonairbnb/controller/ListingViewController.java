@@ -49,7 +49,7 @@ public class ListingViewController {
 
     @FXML
     private void goToPropertyDetails(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/fxml/ListingsView.fxml"));
+        root = FXMLLoader.load(getClass().getResource("/fxml/PropertyDetails.fxml"));
         switchScene(event);
     }
 
