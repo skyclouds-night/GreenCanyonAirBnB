@@ -45,4 +45,10 @@ public class HelloViewController {
         root = FXMLLoader.load(getClass().getResource("/fxml/LoginView.fxml"));
         switchScene(event);
     }
+
+    @FXML
+    private void goToPropertyDetails(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("/fxml/PropertyDetails.fxml"));
+        switchScene(event);
+    }
 }

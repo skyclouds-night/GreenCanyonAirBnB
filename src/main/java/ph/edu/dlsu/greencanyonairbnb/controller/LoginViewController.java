@@ -34,12 +34,6 @@ public class LoginViewController {
         switchScene(event);
     }
 
-    @FXML
-    private void goToListingsView(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/fxml/ListingsView.fxml"));
-        switchScene(event);
-    }
-
     private void switchScene(ActionEvent event) {
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -48,8 +42,8 @@ public class LoginViewController {
     }
 
     @FXML
-    private void goToLogin(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/fxml/LoginView.fxml"));
+    private void goToSignup(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("/fxml/SignupView.fxml"));
         switchScene(event);
     }
 

@@ -39,4 +39,12 @@ public class PropertyDetailsViewController {
         root = FXMLLoader.load(getClass().getResource("/fxml/LoginView.fxml"));
         switchScene(event);
     }
+
+    @FXML
+    private void goToReservation(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("/fxml/ReservationView.fxml"));
+        switchScene(event);
+    }
+
+
 }
