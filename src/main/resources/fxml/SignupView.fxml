@@ -4,15 +4,17 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="800.0" maxWidth="600.0" minHeight="800.0" minWidth="600.0" prefHeight="800.0" prefWidth="600.0" styleClass="main-container" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ph.edu.dlsu.greencanyonairbnb.controller.SignupViewController">
+<BorderPane maxHeight="800.0" maxWidth="600.0" minHeight="800.0" minWidth="600.0" prefHeight="800.0" prefWidth="600.0" styleClass="main-container" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ph.edu.dlsu.greencanyonairbnb.controller.SignupViewController">
     <top>
         <VBox alignment="CENTER" prefHeight="110.0" prefWidth="100.0" styleClass="navbar" BorderPane.alignment="CENTER">
             <children>
@@ -25,63 +27,75 @@
             </children>
         </VBox>
     </top>
-    <center>
-        <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" BorderPane.alignment="CENTER">
-            <children>
-                <Label styleClass="login-details" text="Full Name" />
-                <TextField fx:id="fullNameField" styleClass="login-text-field" />
-                <Label styleClass="login-details" text="Username" />
-                <TextField fx:id="usernameField" styleClass="login-text-field" />
-                <Label styleClass="login-details" text="Email" />
-                <TextField fx:id="emailField" styleClass="login-text-field" />
-            <Label styleClass="login-details" text="Phone Number" />
-            <TextField fx:id="phoneNumberField" styleClass="login-text-field" />
-            <Label styleClass="login-details" text="Password" />
-            <TextField fx:id="passwordField" styleClass="login-text-field" />
-                <Label styleClass="login-details" text="Type of User" />
-                <RadioButton fx:id="guestButton" mnemonicParsing="false" text="Guest">
-                    <toggleGroup>
-                        <ToggleGroup fx:id="userTypeGroup" />
-                    </toggleGroup></RadioButton>
-                <RadioButton fx:id="adminButton" mnemonicParsing="false" text="Admin" toggleGroup="$userTypeGroup" />
-                <Button mnemonicParsing="false" onAction="#signUpAccount" styleClass="navbar-book-now" text="Sign up">
-                    <VBox.margin>
-                        <Insets left="160.0" />
-                    </VBox.margin>
-                </Button>
-                <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
-                    <children>
-                        <Button mnemonicParsing="false" onAction="#goToLogin" styleClass="signup-button" text="Already have an account? Log in" />
-                    </children>
-                </HBox>
-            </children>
-            <BorderPane.margin>
-                <Insets left="100.0" right="100.0" top="50.0" />
-            </BorderPane.margin>
-        </VBox>
-    </center>
-    <bottom>
-        <HBox alignment="CENTER" minHeight="150.0" minWidth="400.0" prefHeight="150.0" prefWidth="600.0" spacing="50.0" styleClass="navbar" BorderPane.alignment="CENTER">
-            <children>
-                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="150.0" spacing="15.0">
-                    <children>
-                        <Label styleClass="login-footer" text="Location" />
-                        <Label styleClass="login-footer-info" text="Taft Avenue, Manila" />
-                    </children>
-                </VBox>
-                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="150.0" spacing="15.0">
-                    <children>
-                        <Label styleClass="login-footer" text="Contact Number" />
-                        <Label styleClass="login-footer-info" text="+63 (912) 345 6789" />
-                    </children>
-                </VBox>
-                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="150.0" spacing="15.0">
-                    <children>
-                        <Label styleClass="login-footer" text="Email" />
-                        <Label styleClass="login-footer-info" text="greencanyon@gmail.com" />
-                    </children>
-                </VBox>
-            </children>
-        </HBox>
-    </bottom>
+   <center>
+      <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <content>
+            <VBox maxHeight="830.0" maxWidth="584.0" minHeight="830.0" minWidth="584.0" prefHeight="830.0" prefWidth="584.0" spacing="20.0">
+               <children>
+                  <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                     <children>
+                        <Label styleClass="login-details" text="Full Name" />
+                        <TextField fx:id="fullNameField" styleClass="login-text-field" />
+                        <Label styleClass="login-details" text="Username" />
+                        <TextField fx:id="usernameField" styleClass="login-text-field" />
+                        <Label styleClass="login-details" text="Email" />
+                        <TextField fx:id="emailField" styleClass="login-text-field" />
+                        <Label styleClass="login-details" text="Phone Number" />
+                        <TextField fx:id="phoneNumberField" styleClass="login-text-field" />
+                        <Label styleClass="login-details" text="Password" />
+                        <TextField fx:id="passwordField" styleClass="login-text-field" />
+                        <Label styleClass="login-details" text="Type of User" />
+                        <RadioButton fx:id="guestButton" mnemonicParsing="false" text="Guest">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="userTypeGroup" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="adminButton" mnemonicParsing="false" text="Admin" toggleGroup="$userTypeGroup" />
+                        <Button mnemonicParsing="false" onAction="#signUpAccount" styleClass="navbar-book-now" text="Sign up">
+                           <VBox.margin>
+                              <Insets left="200.0" />
+                           </VBox.margin>
+                        </Button>
+                        <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#goToLogin" styleClass="signup-button" text="Already have an account? Log in">
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="50.0" right="50.0" top="30.0" />
+                     </VBox.margin>
+                  </VBox>
+                  <Region prefHeight="50.0" prefWidth="200.0" />
+                  <HBox alignment="CENTER" maxHeight="150.0" maxWidth="584.0" minHeight="150.0" minWidth="584.0" prefHeight="150.0" prefWidth="584.0" spacing="50.0" styleClass="navbar">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="150.0" spacing="15.0">
+                           <children>
+                              <Label styleClass="login-footer" text="Location" />
+                              <Label styleClass="login-footer-info" text="Taft Avenue, Manila" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="150.0" spacing="15.0">
+                           <children>
+                              <Label styleClass="login-footer" text="Contact Number" />
+                              <Label styleClass="login-footer-info" text="+63 (912) 345 6789" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="150.0" spacing="15.0">
+                           <children>
+                              <Label styleClass="login-footer" text="Email" />
+                              <Label styleClass="login-footer-info" text="greencanyon@gmail.com" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </center>
 </BorderPane>
