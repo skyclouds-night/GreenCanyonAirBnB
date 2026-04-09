@@ -9,6 +9,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 
 import java.awt.*;
 import java.io.IOException;
@@ -24,12 +26,26 @@ public class EditPropertyViewController {
     private static final String USER = "avnadmin";
     private static final String PASSWORD = "AVNS_5sND-yAwDsrsP5yiXoI";
 
-    @FXML private ToggleGroup place;
-    @FXML private TextArea descriptionArea;
-    @FXML private TextField bedroomField;
-    @FXML private TextField bathroomField;
-    @FXML private TextField parkingField;
-    @FXML private TextField petsField;
+    @FXML
+    private ToggleGroup place;
+
+    @FXML
+    private TextArea descriptionArea;
+
+    @FXML
+    private TextField bedroomField;
+
+    @FXML
+    private TextField bathroomField;
+
+    @FXML
+    private TextField parkingField;
+
+    @FXML
+    private TextField petsField;
+
+    @FXML
+    private TextField priceField;
 
     private Stage stage;
     private Scene scene;
@@ -49,6 +65,7 @@ public class EditPropertyViewController {
         int bathrooms = bathroomField.getText().isEmpty() ? 0 : Integer.parseInt(bathroomField.getText());
         int parking = parkingField.getText().isEmpty() ? 0 : Integer.parseInt(parkingField.getText());
         String pets = petsField.getText();
+        int price = priceField.getText();
 
         // 2. Database Logic
         String sql = "INSERT INTO Properties (admin_id, property_name, description, address, price_per_night, bedrooms, bathrooms, parking, pets_allowed) " +
@@ -61,7 +78,7 @@ public class EditPropertyViewController {
             pstmt.setString(2, propertyType);
             pstmt.setString(3, description);
             pstmt.setString(4, "Taft Avenue, Manila");
-            pstmt.setDouble(5, 0.0);
+            pstmt.setDouble(5, price);
             pstmt.setInt(6, bedrooms);
             pstmt.setInt(7, bathrooms);
             pstmt.setInt(8, parking);
