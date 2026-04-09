@@ -12,7 +12,6 @@ import javafx.stage.Stage;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-import java.awt.*;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -55,42 +54,51 @@ public class EditPropertyViewController {
 
     @FXML
     private void Save(ActionEvent event) throws IOException {
-// 1. Extract data from UI
-        RadioButton selectedRadioButton = (RadioButton) place.getSelectedToggle();
-        String propertyType = (selectedRadioButton != null) ? selectedRadioButton.getText() : "Not Specified";
-        String description = descriptionArea.getText();
+        String currentUser = "admin";
+        int adminId = -1;
 
-        // Handle potential empty strings for numeric fields to avoid NumberFormatExceptions
-        int bedrooms = bedroomField.getText().isEmpty() ? 0 : Integer.parseInt(bedroomField.getText());
-        int bathrooms = bathroomField.getText().isEmpty() ? 0 : Integer.parseInt(bathroomField.getText());
-        int parking = parkingField.getText().isEmpty() ? 0 : Integer.parseInt(parkingField.getText());
-        String pets = petsField.getText();
-        int price = priceField.getText();
+        int bedrooms = getIntOrZero(bedroomField.getText());
+        int bathrooms = getIntOrZero(bathroomField.getText());
+        int parking = getIntOrZero(parkingField.getText());
+        double price = getDoubleOrZero(priceField.getText());
 
-        // 2. Database Logic
-        String sql = "INSERT INTO Properties (admin_id, property_name, description, address, price_per_night, bedrooms, bathrooms, parking, pets_allowed) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD)) {
 
-        try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            String getUserSql = "SELECT user_id FROM Users WHERE username = ?";
+            try (PreparedStatement getUserPstmt = conn.prepareStatement(getUserSql)) {
+                getUserPstmt.setString(1, currentUser);
+                var rs = getUserPstmt.executeQuery();
+                if (rs.next()) {
+                    adminId = rs.getInt("user_id");
+                }
+            }
 
-            pstmt.setInt(1, 1); // Mock Admin ID
-            pstmt.setString(2, propertyType);
-            pstmt.setString(3, description);
-            pstmt.setString(4, "Taft Avenue, Manila");
-            pstmt.setDouble(5, price);
-            pstmt.setInt(6, bedrooms);
-            pstmt.setInt(7, bathrooms);
-            pstmt.setInt(8, parking);
-            pstmt.setString(9, pets);
+            if (adminId == -1) {
+                System.err.println("Error: Admin user not found in database.");
+                return;
+            }
 
-            pstmt.executeUpdate();
-            System.out.println("All property details saved successfully!");
+            String sql = "INSERT INTO Properties (admin_id, property_name, description, address, price_per_night, bedrooms, bathrooms, parking, pets_allowed) " +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
+            try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+                RadioButton selected = (RadioButton) place.getSelectedToggle();
+
+                pstmt.setInt(1, adminId); // Using the ID we just fetched
+                pstmt.setString(2, selected != null ? selected.getText() : "Apartment");
+                pstmt.setString(3, descriptionArea.getText());
+                pstmt.setString(4, "Taft Avenue, Manila");
+                pstmt.setDouble(5, price);
+                pstmt.setInt(6, bedrooms);
+                pstmt.setInt(7, bathrooms);
+                pstmt.setInt(8, parking);
+                pstmt.setString(9, petsField.getText());
+
+                pstmt.executeUpdate();
+                System.out.println("Saved property for Admin ID: " + adminId);
+            }
         } catch (SQLException e) {
-            System.err.println("Database Error: " + e.getMessage());
-        } catch (NumberFormatException e) {
-            System.err.println("Format Error: Please enter numbers for Bedrooms/Bathrooms/Parking.");
+            throw new RuntimeException(e);
         }
     }
 
@@ -123,6 +131,16 @@ public class EditPropertyViewController {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    private int getIntOrZero(String text) {
+        try { return text.isEmpty() ? 0 : Integer.parseInt(text); }
+        catch (NumberFormatException e) { return 0; }
+    }
+
+    private double getDoubleOrZero(String text) {
+        try { return text.isEmpty() ? 0.0 : Double.parseDouble(text); }
+        catch (NumberFormatException e) { return 0.0; }
     }
 
 }
