@@ -53,7 +53,7 @@
                         <Insets left="30.0" />
                      </padding>
                   </Label>
-                  <TextArea fx:id="description" maxWidth="650.0" minWidth="650.0" prefHeight="100.0" prefWidth="650.0">
+                  <TextArea fx:id="descriptionArea" maxWidth="650.0" minWidth="650.0" prefHeight="100.0" prefWidth="650.0">
                      <VBox.margin>
                         <Insets left="50.0" />
                      </VBox.margin>
@@ -66,7 +66,7 @@
                   <HBox prefHeight="20.0" prefWidth="200.0" spacing="20.0">
                      <children>
                         <Label styleClass="search-bar-title" text="Bedrooms:" />
-                        <TextField fx:id="bedroom" />
+                        <TextField fx:id="bedroomField" />
                      </children>
                      <padding>
                         <Insets left="50.0" />
@@ -75,7 +75,7 @@
                   <HBox prefHeight="20.0" prefWidth="200.0" spacing="20.0">
                      <children>
                         <Label styleClass="search-bar-title" text="Bathrooms:" />
-                        <TextField fx:id="bathroom" />
+                        <TextField fx:id="bathroomField" />
                      </children>
                      <padding>
                         <Insets left="50.0" />
@@ -84,7 +84,7 @@
                   <HBox prefHeight="20.0" prefWidth="200.0" spacing="20.0">
                      <children>
                         <Label styleClass="search-bar-title" text="Parking:" />
-                        <TextField fx:id="parking" />
+                        <TextField fx:id="parkingField" />
                      </children>
                      <padding>
                         <Insets left="50.0" />
@@ -93,7 +93,7 @@
                   <HBox prefHeight="20.0" prefWidth="200.0" spacing="20.0">
                      <children>
                         <Label styleClass="search-bar-title" text="Pets Allowed:" />
-                        <TextField fx:id="pets" />
+                        <TextField fx:id="petsField" />
                      </children>
                      <padding>
                         <Insets left="50.0" />
@@ -104,7 +104,7 @@
                         <Insets left="30.0" />
                      </padding>
                   </Label>
-                  <TextField maxHeight="50.0" maxWidth="150.0" minHeight="50.0" minWidth="150.0" prefHeight="50.0" prefWidth="150.0">
+                  <TextField fx:id="priceField" maxHeight="50.0" maxWidth="150.0" minHeight="50.0" minWidth="150.0" prefHeight="50.0" prefWidth="150.0">
                      <VBox.margin>
                         <Insets left="50.0" />
                      </VBox.margin>
