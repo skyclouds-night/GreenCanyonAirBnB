@@ -286,6 +286,9 @@
     -fx-background-radius: 17;
 }
 
+.book-now:hover {
+    -fx-background-color: #6A7E3F;
+}
 .booking {
     -fx-background-color: #ffffff;
     -fx-background-radius: 20;
