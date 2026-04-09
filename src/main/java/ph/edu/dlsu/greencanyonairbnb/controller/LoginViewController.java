@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,7 +81,13 @@ public class LoginViewController {
                 switchScene(event);
             }
             else {
-                System.out.println("Invalid Email or Password"); //Change to popup !
+//                System.out.println("Invalid Email or Password"); //Change to popup !
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Login Failed");
+                alert.setHeaderText("Invalid Credentials");
+                alert.setContentText("The username or password you entered is incorrect. Please try again.");
+
+                alert.showAndWait();
             }
 
         } catch (SQLException e) {
