@@ -3,6 +3,7 @@ package ph.edu.dlsu.greencanyonairbnb.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -15,15 +16,31 @@ import org.springframework.web.bind.annotation.GetMapping;
 import ph.edu.dlsu.greencanyonairbnb.model.UserSession;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.List;
+import java.util.ResourceBundle;
 
-public class HelloViewController {
+public class HelloViewController implements Initializable {
     @FXML
     private Button loginBtn;
 
     private Stage stage;
     private Scene scene;
     private Parent root;
+    private String currentRole = UserSession.getRole();
+    private String currentUsername = UserSession.getUsername();
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+
+        if (currentUsername != null && currentRole != null) {
+            loginBtn.setText("Sign Out");
+        } else {
+            loginBtn.setText("Login");
+        }
+
+    }
 
 
     @FXML
@@ -47,8 +64,12 @@ public class HelloViewController {
 
     @FXML
     private void goToLogin(ActionEvent event) throws IOException {
+        if (currentUsername != null && currentRole != null) {
+            UserSession.endSession();
+        }
         root = FXMLLoader.load(getClass().getResource("/fxml/LoginView.fxml"));
         switchScene(event);
+
     }
 
     @FXML

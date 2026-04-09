@@ -3,6 +3,7 @@ package ph.edu.dlsu.greencanyonairbnb.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -14,14 +15,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import ph.edu.dlsu.greencanyonairbnb.model.UserSession;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.List;
+import java.util.ResourceBundle;
 
 
-public class ListingViewController {
+public class ListingViewController implements Initializable {
 
     private Stage stage;
     private Scene scene;
     private Parent root;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+    }
 
     @FXML
     private void goToHelloView(ActionEvent event) throws IOException {
