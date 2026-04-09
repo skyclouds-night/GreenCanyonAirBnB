@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import ph.edu.dlsu.greencanyonairbnb.model.UserSession;
 
 import java.io.IOException;
 
@@ -48,8 +49,17 @@ public class PropertyDetailsViewController {
 
     @FXML
     private void goToAccount(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/fxml/GuestAccountView.fxml"));
-        switchScene(event);
+        String accountRole = UserSession.getRole();
+        System.out.println("Current Role: " + accountRole);
+
+        if ("admin".equalsIgnoreCase(accountRole)) {
+            root = FXMLLoader.load(getClass().getResource("/fxml/AdminAccountView.fxml"));
+            switchScene(event);
+        } else {
+            root = FXMLLoader.load(getClass().getResource("/fxml/GuestAccountView.fxml"));
+            switchScene(event);
+        }
+
     }
 
 

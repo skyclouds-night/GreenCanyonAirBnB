@@ -12,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import ph.edu.dlsu.greencanyonairbnb.model.UserSession;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -85,8 +86,16 @@ public class ReservationViewController {
 
     @FXML
     private void goToAccount(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/fxml/GuestAccountView.fxml"));
-        switchScene(event);
-    }
+        String accountRole = UserSession.getRole();
+        System.out.println("Current Role: " + accountRole);
 
+        if ("admin".equalsIgnoreCase(accountRole)) {
+            root = FXMLLoader.load(getClass().getResource("/fxml/AdminAccountView.fxml"));
+            switchScene(event);
+        } else {
+            root = FXMLLoader.load(getClass().getResource("/fxml/GuestAccountView.fxml"));
+            switchScene(event);
+        }
+
+    }
 }

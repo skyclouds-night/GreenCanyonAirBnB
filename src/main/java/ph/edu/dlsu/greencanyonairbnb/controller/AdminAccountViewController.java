@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import ph.edu.dlsu.greencanyonairbnb.model.UserSession;
 
 import java.io.IOException;
 import java.util.List;
@@ -48,8 +49,16 @@ public class AdminAccountViewController {
 
     @FXML
     private void goToAccount(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/fxml/GuestAccountView.fxml"));
-        switchScene(event);
-    }
+        String accountRole = UserSession.getRole();
+        System.out.println("Current Role: " + accountRole);
 
+        if ("admin".equalsIgnoreCase(accountRole)) {
+            root = FXMLLoader.load(getClass().getResource("/fxml/AdminAccountView.fxml"));
+            switchScene(event);
+        } else {
+            root = FXMLLoader.load(getClass().getResource("/fxml/GuestAccountView.fxml"));
+            switchScene(event);
+        }
+
+    }
 }
