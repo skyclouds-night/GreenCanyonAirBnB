@@ -32,8 +32,8 @@ public class DatabaseDesign {
                 stmt.executeUpdate(
                         "CREATE TABLE IF NOT EXISTS Users (" +
                                 "user_id INT AUTO_INCREMENT PRIMARY KEY," +
-                                "first_name VARCHAR(100)," +
-                                 "last_name VARCHAR(100)," +
+                                "full_name VARCHAR(100)," +
+                                "username VARCHAR(100)," +
                                 "email VARCHAR(150) UNIQUE NOT NULL," +
                                 "password_hash VARCHAR(255) NOT NULL," +
                                 "phone_number VARCHAR(20)," +
@@ -145,8 +145,8 @@ public class DatabaseDesign {
 
                 //Sample Admin Id
                 stmt.executeUpdate(
-                        "INSERT IGNORE INTO Users (first_name, last_name, email, password_has, role)" +
-                        "VALUES ('Admin', 'AdminL', 'joshua_quebrata@dlsu.edu.ph', 'admin_pass', 'admin')"
+                        "INSERT IGNORE INTO Users (full_name, username, email, password_hash, phone_number, role)" +
+                        "VALUES ('Admin Name', 'admin','test@example.com', 'admin_pass','09123450021', 'admin')"
                 );
                 //Sample Property
                 stmt.executeUpdate(

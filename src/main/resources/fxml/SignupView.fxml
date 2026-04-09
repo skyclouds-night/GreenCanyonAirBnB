@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="800.0" maxWidth="600.0" minHeight="800.0" minWidth="600.0" prefHeight="800.0" prefWidth="600.0" styleClass="main-container" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ph.edu.dlsu.greencanyonairbnb.controller.SignupViewController">
+<BorderPane maxHeight="800.0" maxWidth="600.0" minHeight="800.0" minWidth="600.0" prefHeight="800.0" prefWidth="600.0" styleClass="main-container" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ph.edu.dlsu.greencanyonairbnb.controller.SignupViewController">
     <top>
         <VBox alignment="CENTER" prefHeight="110.0" prefWidth="100.0" styleClass="navbar" BorderPane.alignment="CENTER">
             <children>
@@ -29,18 +29,22 @@
         <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" BorderPane.alignment="CENTER">
             <children>
                 <Label styleClass="login-details" text="Full Name" />
-                <TextField styleClass="login-text-field" />
+                <TextField fx:id="fullNameField" styleClass="login-text-field" />
                 <Label styleClass="login-details" text="Username" />
-                <TextField styleClass="login-text-field" />
-                <Label styleClass="login-details" text="Password" />
-                <TextField styleClass="login-text-field" />
+                <TextField fx:id="usernameField" styleClass="login-text-field" />
+                <Label styleClass="login-details" text="Email" />
+                <TextField fx:id="emailField" styleClass="login-text-field" />
+            <Label styleClass="login-details" text="Phone Number" />
+            <TextField fx:id="phoneNumberField" styleClass="login-text-field" />
+            <Label styleClass="login-details" text="Password" />
+            <TextField fx:id="passwordField" styleClass="login-text-field" />
                 <Label styleClass="login-details" text="Type of User" />
-                <RadioButton mnemonicParsing="false" text="Guest">
+                <RadioButton fx:id="guestButton" mnemonicParsing="false" text="Guest">
                     <toggleGroup>
                         <ToggleGroup fx:id="userTypeGroup" />
                     </toggleGroup></RadioButton>
-                <RadioButton mnemonicParsing="false" text="Admin" toggleGroup="$userTypeGroup" />
-                <Button mnemonicParsing="false" onAction="#goToHelloView" styleClass="navbar-book-now" text="Sign up">
+                <RadioButton fx:id="adminButton" mnemonicParsing="false" text="Admin" toggleGroup="$userTypeGroup" />
+                <Button mnemonicParsing="false" onAction="#signUpAccount" styleClass="navbar-book-now" text="Sign up">
                     <VBox.margin>
                         <Insets left="160.0" />
                     </VBox.margin>
