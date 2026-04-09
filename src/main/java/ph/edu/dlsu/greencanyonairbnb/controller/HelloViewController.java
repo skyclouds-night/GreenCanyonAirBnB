@@ -35,7 +35,7 @@ public class HelloViewController implements Initializable {
 
 
         if (currentUsername != null && currentRole != null) {
-            loginBtn.setText("Sign Out");
+            loginBtn.setText("Log Out");
         } else {
             loginBtn.setText("Login");
         }
