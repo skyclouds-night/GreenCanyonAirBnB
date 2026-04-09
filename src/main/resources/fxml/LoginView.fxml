@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="800.0" maxWidth="600.0" minHeight="800.0" minWidth="600.0" prefHeight="800.0" prefWidth="600.0" styleClass="main-container" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ph.edu.dlsu.greencanyonairbnb.controller.LoginViewController">
+<BorderPane maxHeight="800.0" maxWidth="600.0" minHeight="800.0" minWidth="600.0" prefHeight="800.0" prefWidth="600.0" styleClass="main-container" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ph.edu.dlsu.greencanyonairbnb.controller.LoginViewController">
     <top>
         <VBox alignment="CENTER" prefHeight="110.0" prefWidth="100.0" styleClass="navbar" BorderPane.alignment="CENTER">
             <children>
@@ -27,10 +27,10 @@
         <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0" BorderPane.alignment="CENTER">
             <children>
                 <Label styleClass="login-details" text="Username" />
-                <TextField minWidth="100.0" prefWidth="100.0" styleClass="login-text-field" />
+                <TextField fx:id="usernameField" minWidth="100.0" prefWidth="100.0" styleClass="login-text-field" />
                 <Label styleClass="login-details" text="Password" />
-                <TextField styleClass="login-text-field" />
-                <Button mnemonicParsing="false" styleClass="navbar-book-now" text="Log in">
+                <TextField fx:id="passwordField" styleClass="login-text-field" />
+                <Button mnemonicParsing="false" onAction="#handleLogin" styleClass="navbar-book-now" text="Log in">
                     <VBox.margin>
                         <Insets left="160.0" />
                     </VBox.margin>

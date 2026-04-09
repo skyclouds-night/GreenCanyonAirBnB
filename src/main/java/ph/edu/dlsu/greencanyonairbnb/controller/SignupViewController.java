@@ -17,7 +17,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import ph.edu.dlsu.greencanyonairbnb.model.User;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -86,7 +85,7 @@ public class SignupViewController {
 
     @FXML
     private void signUpAccount(ActionEvent event) throws IOException {
-        String sql = "INSERT INTO Users (INSERT IGNORE INTO Users (full_name, username, email, password_hash, phone_number role)" +
+        String sql = "INSERT IGNORE INTO Users (full_name, user_name, email, password_hash, phone_number, role) " +
                 "VALUES (?, ?, ?, ?, ?, ?)";
 
         RadioButton selectedRole =  (RadioButton) userTypeGroup.getSelectedToggle();
