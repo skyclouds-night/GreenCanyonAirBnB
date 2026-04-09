@@ -49,7 +49,10 @@ public class DatabaseDesign {
                                 "description TEXT," +
                                 "address VARCHAR(255)," +
                                 "price_per_night DECIMAL(10,2)," +
-                                "max_guests INT," +
+                                "bedrooms INT," +
+                                "bathrooms INT," +
+                                "parking INT," +
+                                "pets_allowed VARCHAR(50)," +
                                 "created_at DATETIME DEFAULT CURRENT_TIMESTAMP," +
                                 "FOREIGN KEY (admin_id) REFERENCES Users(user_id))"
                 );

@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="800.0" maxWidth="1000.0" minHeight="800.0" minWidth="1000.0" prefHeight="800.0" prefWidth="1000.0" styleClass="main-container" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="800.0" maxWidth="1000.0" minHeight="800.0" minWidth="1000.0" prefHeight="800.0" prefWidth="1000.0" styleClass="main-container" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ph.edu.dlsu.greencanyonairbnb.controller.EditPropertyViewController">
    <top>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0" styleClass="navbar" BorderPane.alignment="CENTER">
          <children>
@@ -53,7 +53,7 @@
                         <Insets left="30.0" />
                      </padding>
                   </Label>
-                  <TextArea maxWidth="650.0" minWidth="650.0" prefHeight="100.0" prefWidth="650.0">
+                  <TextArea fx:id="description" maxWidth="650.0" minWidth="650.0" prefHeight="100.0" prefWidth="650.0">
                      <VBox.margin>
                         <Insets left="50.0" />
                      </VBox.margin>
@@ -66,7 +66,7 @@
                   <HBox prefHeight="20.0" prefWidth="200.0" spacing="20.0">
                      <children>
                         <Label styleClass="search-bar-title" text="Bedrooms:" />
-                        <TextField />
+                        <TextField fx:id="bedroom" />
                      </children>
                      <padding>
                         <Insets left="50.0" />
@@ -75,7 +75,7 @@
                   <HBox prefHeight="20.0" prefWidth="200.0" spacing="20.0">
                      <children>
                         <Label styleClass="search-bar-title" text="Bathrooms:" />
-                        <TextField />
+                        <TextField fx:id="bathroom" />
                      </children>
                      <padding>
                         <Insets left="50.0" />
@@ -84,7 +84,7 @@
                   <HBox prefHeight="20.0" prefWidth="200.0" spacing="20.0">
                      <children>
                         <Label styleClass="search-bar-title" text="Parking:" />
-                        <TextField />
+                        <TextField fx:id="parking" />
                      </children>
                      <padding>
                         <Insets left="50.0" />
@@ -93,7 +93,7 @@
                   <HBox prefHeight="20.0" prefWidth="200.0" spacing="20.0">
                      <children>
                         <Label styleClass="search-bar-title" text="Pets Allowed:" />
-                        <TextField />
+                        <TextField fx:id="pets" />
                      </children>
                      <padding>
                         <Insets left="50.0" />
