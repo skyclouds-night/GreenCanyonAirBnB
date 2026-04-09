@@ -29,6 +29,13 @@ public class EditPropertyViewController {
     private ToggleGroup place;
 
     @FXML
+    private TextField nameField;
+
+    @FXML
+    private TextField addressField;
+
+
+    @FXML
     private TextArea descriptionArea;
 
     @FXML
@@ -78,21 +85,22 @@ public class EditPropertyViewController {
                 return;
             }
 
-            String sql = "INSERT INTO Properties (admin_id, property_name, description, address, price_per_night, bedrooms, bathrooms, parking, pets_allowed) " +
-                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO Properties (admin_id, property_name, description, address, price_per_night, bedrooms, bathrooms, parking, pets_allowed, property_type) " +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
             try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
                 RadioButton selected = (RadioButton) place.getSelectedToggle();
 
-                pstmt.setInt(1, adminId); // Using the ID we just fetched
-                pstmt.setString(2, selected != null ? selected.getText() : "Apartment");
+                pstmt.setInt(1, adminId);
+                pstmt.setString(2, nameField.getText());
                 pstmt.setString(3, descriptionArea.getText());
-                pstmt.setString(4, "Taft Avenue, Manila");
+                pstmt.setString(4, addressField.getText());
                 pstmt.setDouble(5, price);
                 pstmt.setInt(6, bedrooms);
                 pstmt.setInt(7, bathrooms);
                 pstmt.setInt(8, parking);
                 pstmt.setString(9, petsField.getText());
+                pstmt.setString(10, selected != null ? selected.getText() : "Apartment");
 
                 pstmt.executeUpdate();
                 System.out.println("Saved property for Admin ID: " + adminId);

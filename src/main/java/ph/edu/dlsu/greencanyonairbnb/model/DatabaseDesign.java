@@ -53,6 +53,7 @@ public class DatabaseDesign {
                                 "bathrooms INT," +
                                 "parking INT," +
                                 "pets_allowed VARCHAR(50)," +
+                                "property_type VARCHAR(50)," +
                                 "created_at DATETIME DEFAULT CURRENT_TIMESTAMP," +
                                 "FOREIGN KEY (admin_id) REFERENCES Users(user_id))"
                 );
