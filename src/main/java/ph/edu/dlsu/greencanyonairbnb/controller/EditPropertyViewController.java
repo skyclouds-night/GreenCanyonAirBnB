@@ -151,4 +151,10 @@ public class EditPropertyViewController {
         catch (NumberFormatException e) { return 0.0; }
     }
 
+    @FXML
+    private void goToAdminView(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("/fxml/HostView.fxml"));
+        switchScene(event);
+    }
+
 }

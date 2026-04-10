@@ -13,11 +13,11 @@
 
 <BorderPane maxHeight="800.0" maxWidth="1000.0" minHeight="800.0" minWidth="1000.0" prefHeight="800.0" prefWidth="1000.0" styleClass="main-container" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ph.edu.dlsu.greencanyonairbnb.controller.AdminAccountViewController">
    <top>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0" styleClass="navbar" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="80.0" styleClass="navbar" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="helloView" mnemonicParsing="false" onAction="#goToHelloView" styleClass="navbar-name" stylesheets="@../css/styles.css" text="GREEN CANYON" />
             <Button fx:id="listingsView" mnemonicParsing="false" onAction="#goToListingsView" styleClass="navbar-buttons" stylesheets="@../css/styles.css" text="Properties" />
-            <Button mnemonicParsing="false" onAction="#goToModify" styleClass="navbar-buttons" stylesheets="@../css/styles.css" text="Edit Property" />
+            <Button mnemonicParsing="false" onAction="#goToAdminView" styleClass="navbar-buttons" stylesheets="@../css/styles.css" text="Edit Property" />
             <Button mnemonicParsing="false" onAction="#goToAccount" styleClass="navbar-book-now" stylesheets="@../css/styles.css" text="Account" />
          </children>
       </HBox>

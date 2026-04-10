@@ -58,8 +58,8 @@ public class HostViewController {
     }
 
     @FXML
-    private void goToLogin(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/fxml/LoginView.fxml"));
+    private void goToAdminView(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("/fxml/HostView.fxml"));
         switchScene(event);
     }
 }
