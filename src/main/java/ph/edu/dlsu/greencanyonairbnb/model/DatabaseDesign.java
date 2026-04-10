@@ -150,10 +150,25 @@ public class DatabaseDesign {
                         "INSERT IGNORE INTO Users (full_name, username, email, password_hash, phone_number, role)" +
                         "VALUES ('Admin Name', 'admin','test@example.com', 'admin_pass','09123450021', 'admin')"
                 );
-                //Sample Property
+                //Sample Properties
                 stmt.executeUpdate(
                         "INSERT IGNORE INTO Properties (admin_id, property_name, description, address, price_per_night, bedrooms, bathrooms, parking, pets_allowed, property_type)" +
                                 "VALUES (1, 'Test Airbnb', 'Somewhere me thinks', 'Taft Avenue, Manila', '5000', 2, 2, 3, 'YES', '2-Bedroom')"
+                );
+
+                stmt.executeUpdate(
+                        "INSERT IGNORE INTO Properties (admin_id, property_name, description, address, price_per_night, bedrooms, bathrooms, parking, pets_allowed, property_type)" +
+                                "VALUES (1, 'Condo Test', 'Also somewhere!', 'Makati, Manila', '6000', 2, 2, 3, 'YES', '1-Bedroom')"
+                );
+
+                stmt.executeUpdate(
+                        "INSERT IGNORE INTO Properties (admin_id, property_name, description, address, price_per_night, bedrooms, bathrooms, parking, pets_allowed, property_type)" +
+                                "VALUES (1, 'Studio thing', 'its cool', 'Quezon City', '4500', 2, 2, 3, 'YES', 'Studio')"
+                );
+
+                stmt.executeUpdate(
+                        "INSERT IGNORE INTO Properties (admin_id, property_name, description, address, price_per_night, bedrooms, bathrooms, parking, pets_allowed, property_type)" +
+                                "VALUES (1, 'Fancy Penthouse', 'kinda rich', 'BGC, Manila', '12000', 2, 2, 3, 'YES', 'Penthouse')"
                 );
 
                 System.out.println("Sample Admin and Property Created");
