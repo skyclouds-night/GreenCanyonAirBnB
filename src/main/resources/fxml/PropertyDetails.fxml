@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="800.0" maxWidth="1000.0" minHeight="800.0" minWidth="1000.0" prefHeight="800.0" prefWidth="1000.0" styleClass="main-container" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ph.edu.dlsu.greencanyonairbnb.controller.PropertyDetailsViewController">
+<BorderPane maxHeight="800.0" maxWidth="1000.0" minHeight="800.0" minWidth="1000.0" prefHeight="800.0" prefWidth="1000.0" styleClass="main-container" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ph.edu.dlsu.greencanyonairbnb.controller.PropertyDetailsViewController">
    <top>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0" styleClass="navbar" BorderPane.alignment="CENTER">
          <children>
@@ -29,8 +29,8 @@
                <children>
                   <VBox prefHeight="100.0" prefWidth="100.0">
                      <children>
-                        <Label styleClass="property-name" text="Name" />
-                        <Label styleClass="property-address" text="Address" />
+                        <Label fx:id="propertyName" styleClass="property-name" text="Name" />
+                        <Label fx:id="propertyAddress" styleClass="property-address" text="Address" />
                      </children>
                      <VBox.margin>
                         <Insets left="25.0" />
@@ -38,7 +38,7 @@
                   </VBox>
                   <HBox alignment="CENTER" maxHeight="350.0" maxWidth="925.0" minHeight="350.0" minWidth="925.0" prefHeight="350.0" prefWidth="925.0" spacing="10.0" styleClass="image-stack">
                      <children>
-                        <ImageView fitHeight="325.0" fitWidth="430.0" pickOnBounds="true" preserveRatio="true" styleClass="img">
+                        <ImageView fx:id="propertyImage" fitHeight="325.0" fitWidth="430.0" pickOnBounds="true" preserveRatio="true" styleClass="img">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
@@ -46,7 +46,7 @@
                               <Image url="@../img/airbnbpic.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="325.0" fitWidth="430.0" pickOnBounds="true" preserveRatio="true" styleClass="img">
+                        <ImageView fx:id="propertyImage1" fitHeight="325.0" fitWidth="430.0" pickOnBounds="true" preserveRatio="true" styleClass="img">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
@@ -61,12 +61,12 @@
                         <VBox prefHeight="200.0" prefWidth="500.0" spacing="20.0">
                            <children>
                               <Label styleClass="property-name" text="About the Property" />
-                              <Label styleClass="property-address" text="Description" />
+                              <Label fx:id="propertyDescription" styleClass="property-address" text="Description" />
                            </children>
                         </VBox>
                         <VBox alignment="CENTER" maxHeight="200.0" maxWidth="400.0" minHeight="200.0" minWidth="400.0" prefHeight="200.0" prefWidth="400.0" spacing="40.0" styleClass="image-stack">
                            <children>
-                              <Label styleClass="property-price" text="Price/day" />
+                              <Label fx:id="propertyPricePerNight" styleClass="property-price" text="Price/day" />
                               <Button mnemonicParsing="false" onAction="#goToReservation" styleClass="book-now" text="Book Now" />
                            </children>
                         </VBox>

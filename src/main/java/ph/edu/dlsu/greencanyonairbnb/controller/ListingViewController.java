@@ -6,13 +6,18 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,21 +42,22 @@ public class ListingViewController implements Initializable {
     private Scene scene;
     private Parent root;
     @FXML
-    private VBox propertyContainer;
+    private FlowPane propertyFlowPane;
 
     private ObservableList<Property> propertyList = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        propertyContainer.getStylesheets().add(getClass().getResource("/css/styles.css").toExternalForm());
-        propertyContainer.getChildren().clear();
+        propertyFlowPane.getStylesheets().add(getClass().getResource("/css/styles.css").toExternalForm());
+        propertyFlowPane.getChildren().clear();
         loadAllProperties();
 
     }
 
+    @SneakyThrows
     private void loadAllProperties() {
         propertyList.clear();
-        String query = "SELECT property_id, property_name, price_per_night, address FROM Properties";
+        String query = "SELECT property_id, property_name, price_per_night, address, image_url, description FROM Properties";
 
         try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
              Statement stmt = conn.createStatement();
@@ -62,18 +68,68 @@ public class ListingViewController implements Initializable {
                         rs.getInt("property_id"),
                         rs.getString("property_name"),
                         rs.getDouble("price_per_night"),
-                        rs.getString("address")
+                        rs.getString("address"),
+                        rs.getString("image_url"),
+                        rs.getString("description")
                 );
+                String imgUrl = p.getImageUrl();
+                if (imgUrl == null) {
+                    imgUrl = "airbnbpic.jpg";
+                }
+
                 propertyList.add(p);
                 System.out.println("Property Added: "+ p.getPropertyName());
+
+                String imagePath = getClass().getResource("/img/" + imgUrl).toExternalForm();
+                Image propertyImage = new Image(imagePath);
+
+                ImageView imageView = new ImageView(propertyImage);
+                imageView.setFitWidth(250);
+                imageView.setFitHeight(120);
+                imageView.setPreserveRatio(true);
 
                 Label propertyPrice =  new Label("₱" + String.valueOf(p.getPrice()));
                 Button propertyName = new Button(p.getPropertyName());
 
-                propertyPrice.getStyleClass().add("property-name-button");
-                propertyName.getStyleClass().add("property-price");
+                propertyName.setOnAction(event -> {
+                    try {
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/PropertyDetails.fxml"));
+                        root = loader.load();
+                        PropertyDetailsViewController detailsController = loader.getController();
+                        detailsController.setPropertyData(p);
 
-                propertyContainer.getChildren().addAll(propertyName, propertyPrice);
+                        switchScene(event);
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                });
+
+                VBox propertyCard = new VBox(12);
+                propertyCard.getStyleClass().add("vbox-listings");
+                propertyCard.setPrefWidth(250);
+                propertyCard.setPrefHeight(270);
+                propertyCard.setMaxWidth(250);
+                propertyCard.setMaxHeight(270);
+                propertyCard.setMinWidth(250);
+                propertyCard.setMinHeight(270);
+                propertyCard.setMaxWidth(250);
+                propertyCard.setMaxHeight(270);
+                propertyCard.setFillWidth(true);
+                propertyCard.setCacheShape(true);
+                propertyCard.setCenterShape(true);
+                propertyCard.setScaleShape(true);
+
+                propertyCard.setMargin(imageView, new Insets(10, 0, 0, 35));
+                propertyCard.setMargin(propertyPrice, new Insets(10, 0, 0, 15));
+
+                propertyName.getStyleClass().add("property-name-button");
+                propertyPrice.getStyleClass().add("property-price");
+                imageView.getStyleClass().add("img");
+
+                propertyCard.getChildren().addAll(imageView, propertyName, propertyPrice);
+                propertyFlowPane.getChildren().add(propertyCard);
+
             }
 
 
@@ -109,6 +165,7 @@ public class ListingViewController implements Initializable {
 
     @FXML
     private void goToPropertyDetails(ActionEvent event) throws IOException {
+
         root = FXMLLoader.load(getClass().getResource("/fxml/PropertyDetails.fxml"));
         switchScene(event);
     }

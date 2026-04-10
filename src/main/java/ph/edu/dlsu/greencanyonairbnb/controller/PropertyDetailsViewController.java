@@ -6,7 +6,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import ph.edu.dlsu.greencanyonairbnb.model.Property;
 import ph.edu.dlsu.greencanyonairbnb.model.UserSession;
 
 import java.io.IOException;
@@ -15,6 +18,31 @@ public class PropertyDetailsViewController {
     private Stage stage;
     private Scene scene;
     private Parent root;
+
+    @FXML
+    private Label propertyName;
+    @FXML
+    private Label propertyAddress;
+    @FXML
+    private Label propertyDescription;
+    @FXML
+    private Label propertyPricePerNight;
+    @FXML
+    private ImageView propertyImage;
+    @FXML
+    private ImageView propertyImage1;
+
+    private Property selectedProperty;
+
+    public void setPropertyData(Property property) {
+        this.selectedProperty = property;
+
+        propertyName.setText(property.getPropertyName());
+        propertyPricePerNight.setText("₱" + property.getPrice() + "/Night");
+        propertyAddress.setText(property.getPropertyAddress());
+        propertyDescription.setText(property.getPropertyAddress());
+    }
+
 
     @FXML
     private void goToHelloView(ActionEvent event) throws IOException {
