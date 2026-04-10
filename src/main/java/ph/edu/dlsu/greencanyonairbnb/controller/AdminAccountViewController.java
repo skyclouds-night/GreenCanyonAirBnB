@@ -42,8 +42,8 @@ public class AdminAccountViewController {
     }
 
     @FXML
-    private void goToModify(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/fxml/EditPropertyView.fxml"));
+    private void goToAdminView(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("/fxml/HostView.fxml"));
         switchScene(event);
     }
 
