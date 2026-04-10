@@ -33,7 +33,6 @@ public class HelloViewController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-
         if (currentUsername != null && currentRole != null) {
             loginBtn.setText("Log Out");
         } else {

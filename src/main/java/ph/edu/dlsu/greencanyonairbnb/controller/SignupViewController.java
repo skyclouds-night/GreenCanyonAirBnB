@@ -41,10 +41,6 @@ public class SignupViewController {
     @FXML
     private TextField passwordField;
     @FXML
-    private RadioButton guestButton;
-    @FXML
-    private RadioButton adminButton;
-    @FXML
     private ToggleGroup userTypeGroup;
 
 

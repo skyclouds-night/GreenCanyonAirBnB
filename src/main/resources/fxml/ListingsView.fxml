@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="800.0" maxWidth="1000.0" minHeight="800.0" minWidth="1000.0" prefHeight="800.0" prefWidth="1000.0" styleClass="main-container" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ph.edu.dlsu.greencanyonairbnb.controller.ListingViewController">
+<BorderPane maxHeight="800.0" maxWidth="1000.0" minHeight="800.0" minWidth="1000.0" prefHeight="800.0" prefWidth="1000.0" styleClass="main-container" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ph.edu.dlsu.greencanyonairbnb.controller.ListingViewController">
     <top>
         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0" styleClass="navbar" stylesheets="@/css/styles.css" BorderPane.alignment="CENTER">
             <children>
@@ -37,7 +37,7 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="500.0" spacing="150.0" stylesheets="@../css/styles.css">
                             <children>
-                                <VBox maxHeight="270.0" maxWidth="250.0" minHeight="270.0" minWidth="250.0" prefHeight="270.0" prefWidth="250.0" spacing="12.0" styleClass="vbox-listings">
+                                <VBox fx:id="propertyContainer" maxHeight="270.0" maxWidth="250.0" minHeight="270.0" minWidth="250.0" prefHeight="270.0" prefWidth="250.0" spacing="12.0" styleClass="vbox-listings">
                                     <children>
                                         <ImageView fitHeight="120.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true" styleClass="img">
                                             <VBox.margin>
