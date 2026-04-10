@@ -57,7 +57,7 @@ public class ListingViewController implements Initializable {
     @SneakyThrows
     private void loadAllProperties() {
         propertyList.clear();
-        String query = "SELECT property_id, property_name, price_per_night, address, image_url FROM Properties";
+        String query = "SELECT property_id, property_name, price_per_night, address, image_url, description FROM Properties";
 
         try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
              Statement stmt = conn.createStatement();
@@ -69,7 +69,8 @@ public class ListingViewController implements Initializable {
                         rs.getString("property_name"),
                         rs.getDouble("price_per_night"),
                         rs.getString("address"),
-                        rs.getString("image_url")
+                        rs.getString("image_url"),
+                        rs.getString("description")
                 );
                 String imgUrl = p.getImageUrl();
                 if (imgUrl == null) {
@@ -92,7 +93,13 @@ public class ListingViewController implements Initializable {
 
                 propertyName.setOnAction(event -> {
                     try {
-                        goToPropertyDetails(event);
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/PropertyDetails.fxml"));
+                        root = loader.load();
+                        PropertyDetailsViewController detailsController = loader.getController();
+                        detailsController.setPropertyData(p);
+
+                        switchScene(event);
+
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -158,6 +165,7 @@ public class ListingViewController implements Initializable {
 
     @FXML
     private void goToPropertyDetails(ActionEvent event) throws IOException {
+
         root = FXMLLoader.load(getClass().getResource("/fxml/PropertyDetails.fxml"));
         switchScene(event);
     }
