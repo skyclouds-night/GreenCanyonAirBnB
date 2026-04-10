@@ -24,6 +24,12 @@ public class HostViewController {
     }
 
     @FXML
+    private void goToModify(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("/fxml/EditPropertyView.fxml"));
+        switchScene(event);
+    }
+
+    @FXML
     private void goToListingsView(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("/fxml/ListingsView.fxml"));
         switchScene(event);
@@ -49,5 +55,11 @@ public class HostViewController {
             switchScene(event);
         }
 
+    }
+
+    @FXML
+    private void goToLogin(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("/fxml/LoginView.fxml"));
+        switchScene(event);
     }
 }

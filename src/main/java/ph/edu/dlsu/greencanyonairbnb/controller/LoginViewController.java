@@ -76,10 +76,17 @@ public class LoginViewController {
                 String name = rs.getString("full_name");
                 String role = rs.getString("role");
                 UserSession.setUser(id,name,role);
+                String accountRole = UserSession.getRole();
 
-                root = FXMLLoader.load(getClass().getResource("/fxml/hello-view.fxml"));
-                switchScene(event);
+                if ("admin".equalsIgnoreCase(accountRole)) {
+                    root = FXMLLoader.load(getClass().getResource("/fxml/HostView.fxml"));
+                    switchScene(event);
+                } else {
+                    root = FXMLLoader.load(getClass().getResource("/fxml/hello-view.fxml"));
+                    switchScene(event);
+                }
             }
+
             else {
 //                System.out.println("Invalid Email or Password"); //Change to popup !
                 Alert alert = new Alert(Alert.AlertType.ERROR);

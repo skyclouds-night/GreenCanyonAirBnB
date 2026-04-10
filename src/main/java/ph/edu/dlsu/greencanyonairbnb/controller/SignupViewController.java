@@ -81,7 +81,7 @@ public class SignupViewController {
 
     @FXML
     private void signUpAccount(ActionEvent event) throws IOException {
-        String sql = "INSERT IGNORE INTO Users (full_name, user_name, email, password_hash, phone_number, role) " +
+        String sql = "INSERT IGNORE INTO Users (full_name, username, email, password_hash, phone_number, role) " +
                 "VALUES (?, ?, ?, ?, ?, ?)";
 
         RadioButton selectedRole =  (RadioButton) userTypeGroup.getSelectedToggle();
