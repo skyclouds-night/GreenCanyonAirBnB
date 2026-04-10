@@ -5,16 +5,19 @@ public class Property {
     private String propertyName;
     private double price;
     private String propertyAddress;
+    private String imageUrl;
 
-    public Property (int id, String propertyName, double price, String propertyAddress) {
+    public Property (int id, String propertyName, double price, String propertyAddress, String imageUrl) {
         this.id = id;
         this.propertyName = propertyName;
         this.price = price;
         this.propertyAddress = propertyAddress;
+        this.imageUrl = imageUrl;
     }
 
     public String getPropertyName() {return propertyName;}
     public double getPrice() {return price;}
     public String getPropertyAddress() {return propertyAddress;}
+    public String getImageUrl() {return imageUrl;}
 
 }

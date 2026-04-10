@@ -7,10 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class DatabaseDesign {
 
@@ -45,7 +42,7 @@ public class DatabaseDesign {
                         "CREATE TABLE IF NOT EXISTS Properties (" +
                                 "property_id INT AUTO_INCREMENT PRIMARY KEY," +
                                 "admin_id INT," +
-                                "property_name VARCHAR(150)," +
+                                "property_name VARCHAR(150) UNIQUE," +
                                 "description TEXT," +
                                 "address VARCHAR(255)," +
                                 "price_per_night DECIMAL(10,2)," +
@@ -54,6 +51,7 @@ public class DatabaseDesign {
                                 "parking INT," +
                                 "pets_allowed VARCHAR(50)," +
                                 "property_type VARCHAR(50)," +
+                                "image_url VARCHAR(255) DEFAULT 'airbnbpic.jpg'," +
                                 "created_at DATETIME DEFAULT CURRENT_TIMESTAMP," +
                                 "FOREIGN KEY (admin_id) REFERENCES Users(user_id))"
                 );
@@ -154,11 +152,33 @@ public class DatabaseDesign {
                 );
                 //Sample Property
                 stmt.executeUpdate(
-                        "INSERT IGNORE INTO Properties (admin_id, property_name, description, address, price_per_night, max_guests)" +
-                                "VALUES (1, 'Test Airbnb', 'Somewhere me thinks', 'Taft Avenue, Manila', '5000', 4)"
+                        "INSERT IGNORE INTO Properties (admin_id, property_name, description, address, price_per_night, bedrooms, bathrooms, parking, pets_allowed, property_type)" +
+                                "VALUES (1, 'Test Airbnb', 'Somewhere me thinks', 'Taft Avenue, Manila', '5000', 2, 2, 3, 'YES', '2-Bedroom')"
                 );
 
                 System.out.println("Sample Admin and Property Created");
+
+                System.out.println("CURRENT USERS:");
+                try (ResultSet rsUsers = stmt.executeQuery("SELECT user_id, full_name, role, email FROM Users")) {
+                    while (rsUsers.next()) {
+                        System.out.printf("ID: %d | Name: %-15s | Role: %-6s | Email: %s%n",
+                                rsUsers.getInt("user_id"),
+                                rsUsers.getString("full_name"),
+                                rsUsers.getString("role"),
+                                rsUsers.getString("email"));
+                    }
+                }
+
+                System.out.println("CURRENT PROPERTIES:");
+                System.out.println("\n--- Current Properties in Database ---");
+                try (ResultSet rsProps = stmt.executeQuery("SELECT property_id, property_name, price_per_night FROM Properties")) {
+                    while (rsProps.next()) {
+                        System.out.printf("ID: %d | Property: %-20s | Price: ₱%.2f%n",
+                                rsProps.getInt("property_id"),
+                                rsProps.getString("property_name"),
+                                rsProps.getDouble("price_per_night"));
+                    }
+                }
 
 
             }
