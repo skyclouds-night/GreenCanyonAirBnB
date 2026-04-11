@@ -9,14 +9,21 @@ import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import ph.edu.dlsu.greencanyonairbnb.model.Payment;
+import ph.edu.dlsu.greencanyonairbnb.model.PaymentAccount;
 import ph.edu.dlsu.greencanyonairbnb.model.UserSession;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
+import javafx.scene.image.ImageView;
+
 
 
 public class ReservationViewController {
@@ -97,5 +104,27 @@ public class ReservationViewController {
             switchScene(event);
         }
 
+
+
     }
+
+    @FXML
+    private ImageView PaymentQR;
+
+    private Payment paymentModel = new Payment();
+
+    public void loadAdminPaymentImage(int propertyID) {
+        List<PaymentAccount> accounts = paymentModel.getMethodsByProperty(propertyID);
+
+        if (!accounts.isEmpty()) {
+            byte[] imageBytes = accounts.get(0).getQrImage();
+
+            if (imageBytes != null) {
+                Image img = new Image(new ByteArrayInputStream(imageBytes));
+
+                PaymentQR.setImage(img);
+            }
+        }
+    }
+
 }
