@@ -6,21 +6,43 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import ph.edu.dlsu.greencanyonairbnb.model.Property;
 import ph.edu.dlsu.greencanyonairbnb.model.UserSession;
 
 import java.io.IOException;
-import java.util.List;
 
-public class AdminAccountViewController {
-
+public class AdminPropertyView {
     private Stage stage;
     private Scene scene;
     private Parent root;
+
+    @FXML
+    private Label propertyName;
+    @FXML
+    private Label propertyAddress;
+    @FXML
+    private Label propertyDescription;
+    @FXML
+    private Label propertyPricePerNight;
+    @FXML
+    private ImageView propertyImage;
+    @FXML
+    private ImageView propertyImage1;
+
+    private Property selectedProperty;
+
+    public void setPropertyData(Property property) {
+        this.selectedProperty = property;
+
+        propertyName.setText(property.getPropertyName());
+        propertyPricePerNight.setText("₱" + property.getPrice() + "/Night");
+        propertyAddress.setText(property.getPropertyAddress());
+        propertyDescription.setText(property.getPropertyAddress());
+    }
+
 
     @FXML
     private void goToHelloView(ActionEvent event) throws IOException {
@@ -42,10 +64,11 @@ public class AdminAccountViewController {
     }
 
     @FXML
-    private void goToAdminView(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/fxml/HostView.fxml"));
+    private void goToLogin(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("/fxml/LoginView.fxml"));
         switchScene(event);
     }
+
 
     @FXML
     private void goToAccount(ActionEvent event) throws IOException {
@@ -62,4 +85,9 @@ public class AdminAccountViewController {
 
     }
 
+    @FXML
+    private void goToModify(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("/fxml/EditPropertyView.fxml"));
+        switchScene(event);
+    }
 }
