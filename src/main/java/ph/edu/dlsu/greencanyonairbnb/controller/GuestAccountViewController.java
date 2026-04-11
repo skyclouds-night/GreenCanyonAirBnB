@@ -6,21 +6,38 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import ph.edu.dlsu.greencanyonairbnb.model.DatabaseDesign;
 import ph.edu.dlsu.greencanyonairbnb.model.UserSession;
 
 import java.io.IOException;
-import java.util.List;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Optional;
 
 public class GuestAccountViewController {
 
     private Stage stage;
     private Scene scene;
     private Parent root;
+
+    @FXML
+    private Label property;
+
+    @FXML
+    private Label CheckIn;
+
+    @FXML
+    private Label Guests;
+
+    @FXML
+    private Label totalPrice;
+
 
     @FXML
     private void goToHelloView(ActionEvent event) throws IOException {
@@ -35,7 +52,7 @@ public class GuestAccountViewController {
     }
 
     private void switchScene(ActionEvent event) {
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
@@ -61,4 +78,100 @@ public class GuestAccountViewController {
         }
 
     }
+
+
+
+    @FXML
+    public void initialize() {
+        refreshBookingLabels();
+    }
+
+    private void refreshBookingLabels() {
+        int currentUserId = UserSession.getUserId();
+
+        // SQL Query joining Bookings and Properties to get the Property Name
+        String sql = "SELECT p.property_name, b.check_in_date, b.total_price " +
+                "FROM Bookings b " +
+                "JOIN Properties p ON b.property_id = p.property_id " +
+                "WHERE b.guest_id = ? " +
+                "ORDER BY b.created_at DESC LIMIT 1";
+
+        try (Connection conn = DatabaseDesign.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1, currentUserId);
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                // Update the labels with the retrieved data
+                property.setText(rs.getString("property_name"));
+                CheckIn.setText(rs.getString("check_in_date"));
+                totalPrice.setText(String.format("₱%.2f", rs.getDouble("total_price")));
+
+                // If you don't have a guest count in your DB yet, we use a placeholder
+                Guests.setText("1 Guest");
+            } else {
+                // Default text if no booking is found
+                property.setText("No Bookings Found");
+                CheckIn.setText("--");
+                totalPrice.setText("₱0.00");
+                Guests.setText("--");
+            }
+
+        } catch (SQLException e) {
+            System.err.println("Error connecting to database: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void handleCancelReservation(ActionEvent event) {
+        // 1. Create a Confirmation Alert
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Cancel Reservation");
+        alert.setHeaderText("Are you sure you want to cancel your booking?");
+        alert.setContentText("This action cannot be undone and will remove your reservation from our system.");
+
+        // 2. Wait for user response
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            deleteLatestBooking();
+        }
+    }
+
+    private void deleteLatestBooking() {
+        int userId = UserSession.getUserId();
+
+        // SQL to delete the most recent booking for this user
+        // Note: We use a subquery to find the ID of the latest booking
+        String sql = "DELETE FROM Bookings WHERE guest_id = ? ORDER BY created_at DESC LIMIT 1";
+
+        try (Connection conn = DatabaseDesign.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1, userId);
+            int rowsAffected = pstmt.executeUpdate();
+
+            if (rowsAffected > 0) {
+                // 3. Show Success Message
+                Alert success = new Alert(Alert.AlertType.INFORMATION);
+                success.setTitle("Cancelled");
+                success.setHeaderText(null);
+                success.setContentText("Your reservation has been successfully removed.");
+                success.showAndWait();
+
+                // 4. Clear the UI labels
+                property.setText("No Bookings Found");
+                CheckIn.setText("--");
+                totalPrice.setText("₱0.00");
+                Guests.setText("--");
+            }
+
+        } catch (SQLException e) {
+            System.err.println("Error deleting booking: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
 }
+

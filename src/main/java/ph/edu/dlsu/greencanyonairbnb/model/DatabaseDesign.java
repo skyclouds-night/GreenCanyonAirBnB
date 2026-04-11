@@ -16,6 +16,10 @@ public class DatabaseDesign {
     private static final String PASSWORD = "AVNS_5sND-yAwDsrsP5yiXoI";
 
 
+    public static Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(URL, USER, PASSWORD);
+    }
+
     public static void initialize() {
         try {
             // Load MySQL driver
@@ -197,6 +201,7 @@ public class DatabaseDesign {
 
 
             }
+
 
         } catch (ClassNotFoundException e) {
             System.err.println("MySQL JDBC Driver not found!");
