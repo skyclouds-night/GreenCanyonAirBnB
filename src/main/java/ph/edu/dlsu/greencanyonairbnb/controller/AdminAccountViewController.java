@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +17,7 @@ import ph.edu.dlsu.greencanyonairbnb.model.DatabaseDesign;
 import ph.edu.dlsu.greencanyonairbnb.model.UserSession;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 
 public class AdminAccountViewController {
@@ -83,44 +81,100 @@ public class AdminAccountViewController {
 
     @FXML
     public void initialize() {
-        refreshBookingLabels();
+        loadPendingBookings();
     }
 
-    private void refreshBookingLabels() {
-        int currentUserId = UserSession.getUserId();
-
-        // SQL Query joining Bookings and Properties to get the Property Name
-        String sql = "SELECT p.property_name, b.check_in_date, b.total_price " +
+    public void loadPendingBookings() {
+        String sql = "SELECT b.booking_id, b.guest_id, u.full_name, b.total_price " +
                 "FROM Bookings b " +
-                "JOIN Properties p ON b.property_id = p.property_id " +
-                "WHERE b.guest_id = ? " +
-                "ORDER BY b.created_at DESC LIMIT 1";
+                "JOIN Users u ON b.guest_id = u.user_id " +
+                "WHERE b.booking_status = 'pending'";
 
         try (Connection conn = DatabaseDesign.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
 
-            pstmt.setInt(1, currentUserId);
-            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                int bId = rs.getInt("booking_id");
+                int gId = rs.getInt("guest_id");
+                String name = rs.getString("full_name");
 
-            if (rs.next()) {
-                property.setText(rs.getString("property_name"));
-                CheckIn.setText(rs.getString("check_in_date"));
-                totalPrice.setText(String.format("₱%.2f", rs.getDouble("total_price")));
-
-                // If you don't have a guest count in your DB yet, we use a placeholder
-                Guests.setText("1 Guest");
-            } else {
-                // Default text if no booking is found
-                property.setText("No Bookings Found");
-                CheckIn.setText("--");
-                totalPrice.setText("₱0.00");
-                Guests.setText("--");
+                System.out.println("Pending: " + name + " (Booking #" + bId + ")");
             }
-
         } catch (SQLException e) {
-            System.err.println("Error connecting to database: " + e.getMessage());
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void handleAcceptBooking(ActionEvent event) {
+        int bookingId = 1;
+        int guestId = 2;
+
+        String updateSql = "UPDATE Bookings SET booking_status = 'confirmed' WHERE booking_id = ?";
+        String notifySql = "INSERT INTO Messages (sender_id, receiver_id, message_text, read_status) VALUES (?, ?, ?, ?)";
+
+        try (Connection conn = DatabaseDesign.getConnection()) {
+            conn.setAutoCommit(false);
+
+            try (PreparedStatement pstmt = conn.prepareStatement(updateSql)) {
+                pstmt.setInt(1, bookingId);
+                pstmt.executeUpdate();
+            }
+
+            try (PreparedStatement pstmtNotify = conn.prepareStatement(notifySql)) {
+                pstmtNotify.setInt(1, UserSession.getUserId());
+                pstmtNotify.setInt(2, guestId);
+                pstmtNotify.setString(3, "Your reservation #" + bookingId + " has been ACCEPTED.");
+                pstmtNotify.setBoolean(4, false);
+                pstmtNotify.executeUpdate();
+            }
+
+            conn.commit();
+            showAlert("Success", "Booking confirmed and guest notified.");
+
+        } catch (SQLException e) {
+            showAlert("Error", "Try Again.");
+        }
+    }
+
+    @FXML
+    private void handleRejectBooking(ActionEvent event) {
+        int bookingId = 1;
+        int guestId = 2;
+
+        String deleteSql = "DELETE FROM Bookings WHERE booking_id = ?";
+        String notifySql = "INSERT INTO Messages (sender_id, receiver_id, message_text, read_status) VALUES (?, ?, ?, ?)";
+
+        try (Connection conn = DatabaseDesign.getConnection()) {
+            conn.setAutoCommit(false);
+
+            try (PreparedStatement pstmtNotify = conn.prepareStatement(notifySql)) {
+                pstmtNotify.setInt(1, UserSession.getUserId());
+                pstmtNotify.setInt(2, guestId);
+                pstmtNotify.setString(3, "Reservation #" + bookingId + " was REJECTED. Please check for other dates.");
+                pstmtNotify.setBoolean(4, false);
+                pstmtNotify.executeUpdate();
+            }
+
+            try (PreparedStatement pstmtDelete = conn.prepareStatement(deleteSql)) {
+                pstmtDelete.setInt(1, bookingId);
+                pstmtDelete.executeUpdate();
+            }
+
+            conn.commit();
+            showAlert("Rejected", "Booking removed from database and guest notified.");
+
+        } catch (SQLException e) {
+            showAlert("Error", "Try Again.");
+        }
+    }
+    private void showAlert(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 
 }

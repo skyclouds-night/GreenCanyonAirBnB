@@ -89,7 +89,6 @@ public class GuestAccountViewController {
     private void refreshBookingLabels() {
         int currentUserId = UserSession.getUserId();
 
-        // SQL Query joining Bookings and Properties to get the Property Name
         String sql = "SELECT p.property_name, b.check_in_date, b.total_price " +
                 "FROM Bookings b " +
                 "JOIN Properties p ON b.property_id = p.property_id " +
@@ -103,15 +102,12 @@ public class GuestAccountViewController {
             ResultSet rs = pstmt.executeQuery();
 
             if (rs.next()) {
-                // Update the labels with the retrieved data
                 property.setText(rs.getString("property_name"));
                 CheckIn.setText(rs.getString("check_in_date"));
                 totalPrice.setText(String.format("₱%.2f", rs.getDouble("total_price")));
 
-                // If you don't have a guest count in your DB yet, we use a placeholder
                 Guests.setText("1 Guest");
             } else {
-                // Default text if no booking is found
                 property.setText("No Bookings Found");
                 CheckIn.setText("--");
                 totalPrice.setText("₱0.00");
@@ -126,50 +122,67 @@ public class GuestAccountViewController {
 
     @FXML
     private void handleCancelReservation(ActionEvent event) {
-        // 1. Create a Confirmation Alert
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Cancel Reservation");
         alert.setHeaderText("Are you sure you want to cancel your booking?");
-        alert.setContentText("This action cannot be undone and will remove your reservation from our system.");
+        alert.setContentText("This will notify the Admin and permanently remove your reservation.");
 
-        // 2. Wait for user response
         Optional<ButtonType> result = alert.showAndWait();
 
         if (result.isPresent() && result.get() == ButtonType.OK) {
-            deleteLatestBooking();
+            processCancellationAndNotify();
         }
     }
 
-    private void deleteLatestBooking() {
+    private void processCancellationAndNotify() {
         int userId = UserSession.getUserId();
+        String userName = UserSession.getUsername(); // Ensure this is set during login
 
-        // SQL to delete the most recent booking for this user
-        // Note: We use a subquery to find the ID of the latest booking
-        String sql = "DELETE FROM Bookings WHERE guest_id = ? ORDER BY created_at DESC LIMIT 1";
+        // SQL Queries
+        String notifySql = "INSERT INTO Messages (sender_id, receiver_id, message_text, read_status) VALUES (?, ?, ?, ?)";
+        String deleteSql = "DELETE FROM Bookings WHERE guest_id = ? ORDER BY created_at DESC LIMIT 1";
 
-        try (Connection conn = DatabaseDesign.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        try (Connection conn = DatabaseDesign.getConnection()) {
+            conn.setAutoCommit(false);
 
-            pstmt.setInt(1, userId);
-            int rowsAffected = pstmt.executeUpdate();
+            try {
+                try (PreparedStatement pstmtNotify = conn.prepareStatement(notifySql)) {
+                    pstmtNotify.setInt(1, userId); // Sender
+                    pstmtNotify.setInt(2, 1);      // Receiver (Admin)
+                    pstmtNotify.setString(3, "ALERT: Guest " + userName + " has cancelled their most recent booking.");
+                    pstmtNotify.setBoolean(4, false); // Unread
+                    pstmtNotify.executeUpdate();
+                }
 
-            if (rowsAffected > 0) {
-                // 3. Show Success Message
-                Alert success = new Alert(Alert.AlertType.INFORMATION);
-                success.setTitle("Cancelled");
-                success.setHeaderText(null);
-                success.setContentText("Your reservation has been successfully removed.");
-                success.showAndWait();
+                try (PreparedStatement pstmtDelete = conn.prepareStatement(deleteSql)) {
+                    pstmtDelete.setInt(1, userId);
+                    int rowsAffected = pstmtDelete.executeUpdate();
 
-                // 4. Clear the UI labels
-                property.setText("No Bookings Found");
-                CheckIn.setText("--");
-                totalPrice.setText("₱0.00");
-                Guests.setText("--");
+                    if (rowsAffected > 0) {
+                        conn.commit();
+
+                        Alert success = new Alert(Alert.AlertType.INFORMATION);
+                        success.setTitle("Cancelled");
+                        success.setHeaderText(null);
+                        success.setContentText("Your reservation has been removed and the Admin has been notified.");
+                        success.showAndWait();
+
+                        property.setText("No Bookings Found");
+                        CheckIn.setText("--");
+                        totalPrice.setText("₱0.00");
+                        Guests.setText("--");
+                    } else {
+                        conn.rollback();
+                        System.err.println("No booking found to delete.");
+                    }
+                }
+            } catch (SQLException e) {
+                conn.rollback();
+                throw e;
             }
 
         } catch (SQLException e) {
-            System.err.println("Error deleting booking: " + e.getMessage());
+            System.err.println("Error during cancellation process: " + e.getMessage());
             e.printStackTrace();
         }
     }

@@ -208,7 +208,7 @@ public class ReservationViewController {
             pstmt.setDate(3, java.sql.Date.valueOf(checkIn));
             pstmt.setDate(4, java.sql.Date.valueOf(checkOut));
             pstmt.setDouble(5, totalAmount);
-            pstmt.setInt(6, numGuests);
+            pstmt.setInt(6, numGuests); // Set the guest count here
 
             int rowsAffected = pstmt.executeUpdate();
 

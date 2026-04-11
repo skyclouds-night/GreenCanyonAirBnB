@@ -71,6 +71,8 @@ public class DatabaseDesign {
                 );
 
                 // BOOKINGS
+                stmt.executeUpdate("ALTER TABLE Bookings ADD COLUMN IF NOT EXISTS guest_count INT DEFAULT 1");
+
                 stmt.executeUpdate(
                         "CREATE TABLE IF NOT EXISTS Bookings (" +
                                 "booking_id INT AUTO_INCREMENT PRIMARY KEY," +
