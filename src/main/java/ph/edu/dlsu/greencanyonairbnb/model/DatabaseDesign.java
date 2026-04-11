@@ -78,6 +78,7 @@ public class DatabaseDesign {
                                 "guest_id INT," +
                                 "check_in_date DATE," +
                                 "check_out_date DATE," +
+                                "guest_count INT," +
                                 "total_price DECIMAL(10,2)," +
                                 "booking_status ENUM('pending','confirmed','cancelled')," +
                                 "created_at DATETIME DEFAULT CURRENT_TIMESTAMP," +
