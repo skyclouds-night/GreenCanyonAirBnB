@@ -5,6 +5,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
@@ -134,6 +136,38 @@
                            </padding>
                         </VBox>
                      </children>
+                  </StackPane>
+                  <StackPane maxHeight="250.0" maxWidth="600.0" minHeight="250.0" minWidth="600.0" prefHeight="250.0" prefWidth="600.0" styleClass="booking">
+                     <children>
+                        <VBox maxHeight="250.0" maxWidth="600.0" minHeight="250.0" minWidth="600.0" prefHeight="250.0" prefWidth="600.0" spacing="25.0">
+                           <children>
+                              <Label styleClass="notif" text="Add your QR code.">
+                                 <VBox.margin>
+                                    <Insets left="20.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Separator prefWidth="200.0">
+                                 <VBox.margin>
+                                    <Insets left="1.0" right="1.0" />
+                                 </VBox.margin>
+                              </Separator>
+                              <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                 <VBox.margin>
+                                    <Insets left="200.0" />
+                                 </VBox.margin>
+                                 <image>
+                                    <Image url="@../img/Screenshot%202026-04-11%20151735.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                           <StackPane.margin>
+                              <Insets top="40.0" />
+                           </StackPane.margin>
+                        </VBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="200.0" />
+                     </VBox.margin>
                   </StackPane>
                   <Region prefHeight="100.0" prefWidth="200.0" />
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0" styleClass="navbar" stylesheets="@../css/styles.css">
