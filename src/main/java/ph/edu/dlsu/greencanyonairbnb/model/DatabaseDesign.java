@@ -78,10 +78,10 @@ public class DatabaseDesign {
                                 "guest_id INT," +
                                 "check_in_date DATE," +
                                 "check_out_date DATE," +
-                                "guest_count INT," +
                                 "total_price DECIMAL(10,2)," +
                                 "booking_status ENUM('pending','confirmed','cancelled')," +
                                 "created_at DATETIME DEFAULT CURRENT_TIMESTAMP," +
+                                "guest_count INT," +
                                 "FOREIGN KEY (property_id) REFERENCES Properties(property_id)," +
                                 "FOREIGN KEY (guest_id) REFERENCES Users(user_id))"
                 );
